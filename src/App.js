@@ -10,7 +10,7 @@ import Reserve from './components/dashboard/reserve/reserve';
 import History from './components/dashboard/history/history';
 import Home from './components/dashboard/home';
 import Signup from './components/login/signup';
-import appointmentsList from './components/appointmentsList';
+import AppointmentsList from './components/appointmentsList';
 
 function App() {
   return (
@@ -35,5 +35,6 @@ function App() {
       </div>
     </BrowserRouter>
   );
+}
 
 export default App;
