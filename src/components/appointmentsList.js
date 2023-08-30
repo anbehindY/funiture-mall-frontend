@@ -7,4 +7,7 @@ function AppointmentsList() {
           try {
             const response = await axios.get('/api/appointments'); // Replace with your API endpoint
             setAppointments(response.data);
-          } catch (error) 
+          } catch (error) {
+            console.error('Error fetching appointments:', error);
+          }
+        }
