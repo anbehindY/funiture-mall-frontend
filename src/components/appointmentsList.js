@@ -14,3 +14,6 @@ function AppointmentsList() {
         }
         fetchAppointments();
   }, []);
+  return (
+    <div>
+      <h2>Appointments List</h2>
