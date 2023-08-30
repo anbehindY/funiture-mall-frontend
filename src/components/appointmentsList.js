@@ -17,3 +17,5 @@ function AppointmentsList() {
   return (
     <div>
       <h2>Appointments List</h2>
+      <ul>
+        {appointments.map(appointment =>
