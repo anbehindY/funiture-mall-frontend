@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/login/login';
@@ -27,8 +28,12 @@ function App() {
         <Route path="/signup" exact element={<Signup />} />
         <Route path="*" exact element={<NotFound />} />
       </Routes>
+      <div className="App">
+        <header className="App-header">
+          <AppointmentsList />
+        </header>
+      </div>
     </BrowserRouter>
   );
-}
 
 export default App;
