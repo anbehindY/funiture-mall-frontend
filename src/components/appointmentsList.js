@@ -12,3 +12,5 @@ function AppointmentsList() {
             console.error('Error fetching appointments:', error);
           }
         }
+        fetchAppointments();
+  }, []);
