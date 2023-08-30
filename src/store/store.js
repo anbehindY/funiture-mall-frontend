@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import furnitureReducer from './furnitureSlice';
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    furniture: furnitureReducer,
+  },
 });
 
 export default store;

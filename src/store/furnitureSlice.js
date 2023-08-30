@@ -1,6 +1,9 @@
-const missionSlice = createSlice({
+const furnitureSlice = createSlice({
   name: 'furniture',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: () => {},
 });
+
+
+export default furnitureSlice.reducer;
