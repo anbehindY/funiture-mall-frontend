@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/login/login';
 import NotFound from './components/pagenotfound.js/notfound';
-import Furnitures from './components/dashboard/furniture/furnitures';
+import Furnitures from './components/dashboard/furniture/Furnitures';
 import Customer from './components/dashboard/customer/customer';
 import Product from './components/dashboard/product/product';
 import Reserve from './components/dashboard/reserve/reserve';
