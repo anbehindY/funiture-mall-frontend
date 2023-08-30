@@ -21,3 +21,4 @@ function AppointmentsList() {
         {appointments.map(appointment =>
         <li key={appointment.id}></li>
         <strong>Date:</strong> {appointment.date}<br />
+        <strong>City:</strong> {appointment.city}<br />
