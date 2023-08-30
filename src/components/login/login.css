@@ -73,7 +73,7 @@
   background: #3786bd;
   border-radius: 5px;
   width: 180px;
-  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.2);
   border: none;
   margin: 19px 0 40px;
   cursor: pointer;
@@ -91,6 +91,7 @@ input::placeholder {
   color: #999;
   font-size: 16px;
 }
+
 .form-login strong {
   color: #121b12;
   font-size: 16px;

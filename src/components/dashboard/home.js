@@ -1,13 +1,14 @@
-import { DashboardProvider } from "./dashboardprovider";
-import Dashboard from "./dashboard";
+import { DashboardProvider } from './dashboardprovider';
+import Dashboard from './dashboard';
 
-const Home = ({ children }) => {
-    return (
-        <DashboardProvider>
-            {children}
-            <Dashboard />
-        </DashboardProvider>
-    );
+const Home = (data) => {
+  const { children } = data;
+  return (
+    <DashboardProvider>
+      {children}
+      <Dashboard />
+    </DashboardProvider>
+  );
 };
 
 export default Home;

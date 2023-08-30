@@ -9,6 +9,7 @@ import Reserve from './components/dashboard/reserve/reserve';
 import History from './components/dashboard/history/history';
 import Home from './components/dashboard/home';
 import Signup from './components/login/signup';
+
 function App() {
   return (
     <BrowserRouter>
@@ -27,6 +28,6 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
