@@ -19,3 +19,4 @@ function AppointmentsList() {
       <h2>Appointments List</h2>
       <ul>
         {appointments.map(appointment =>
+        <li key={appointment.id}></li>
