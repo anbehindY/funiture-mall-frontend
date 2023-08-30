@@ -3,8 +3,7 @@ import axios from 'axios';
 
 export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   const furnitures = await axios.get('http://[::1]:3001/api/v1/furnitures');
-  //   return furnitures.data;
-  console.log(furnitures.data);
+  return furnitures.data;
 });
 
 export const initialState = {
@@ -17,8 +16,7 @@ const furnitureSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getFurnitures.fulfilled, (state, { payload }) => {
-      console.log(payload);
-      console.log(state);
+      state.furnitures.push(payload);
     });
   },
 });

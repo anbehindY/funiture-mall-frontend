@@ -1,58 +1,36 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFurnitures } from '../../../store/furnitureSlice';
 import fimage from '../../../assets/sofa.jpg';
 
 import './furniture.css';
 
 const Furnitures = () => {
-  // const { furnitures } = useSelector((store) => store.furniture);
+  const { furnitures } = useSelector((store) => store.furniture);
 
   const dispatch = useDispatch();
 
-  // console.log(furnitures);
+  console.log(furnitures);
 
   useEffect(() => {
-    dispatch(getFurnitures());
-  }, []);
+    if (furnitures.length === 0) {
+      dispatch(getFurnitures());
+    }
+  }, [dispatch, furnitures]);
 
   return (
     <div className="furniture-container">
       <div className="furniture-header">
         <h1>Furnitures Lists </h1>
       </div>
-      <div className="furniture-content">
-        <div className="furniture-image">
+
+      {furnitures[0]?.map((furniture) => (
+        <div className="furniture-image" key={furniture.id}>
           <img src={fimage} alt="Furniture" />
-          <div>
-            <h2>Furniture 1</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              nec mattis tellus. Ut semper dui eget efficitur sollicitudin.
-            </p>
-          </div>
+          <h1>{furniture.name}</h1>
+          <p>{furniture.description}</p>
         </div>
-        <div className="furniture-image">
-          <img src={fimage} alt="Furniture" />
-          <div>
-            <h2>Furniture 2</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              nec mattis tellus. Ut semper dui eget efficitur sollicitudin.
-            </p>
-          </div>
-        </div>
-        <div className="furniture-image">
-          <img src={fimage} alt="Furniture" />
-          <div>
-            <h2>Furniture 3</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              nec mattis tellus. Ut semper dui eget efficitur sollicitudin.
-            </p>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };
