@@ -1,0 +1,145 @@
+.dashboard-layout {
+  margin: 0;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  overflow: auto;
+  max-width: 1600px;
+  min-height: 548px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+}
+
+.item,
+.top-part,
+.top-part .count {
+  display: flex;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.leftsidebar-container {
+  background-color: #f5f8ff;
+  width: 200px;
+  overflow-x: hidden;
+  border-right: 1px solid #e3e7f7;
+  position: relative;
+}
+
+.left-content {
+  padding: 20px;
+}
+
+.item {
+  color: #353536;
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.category-list {
+  margin-top: 50px;
+}
+
+.category-list .item {
+  color: #8e92a4;
+}
+
+.actions {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: #fe4d46;
+  box-shadow: 14px 0 0 0 #fbc023, 28px 0 0 0 #7dd21f;
+}
+
+.circle-2 {
+  border-radius: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: #d5d7e3;
+  box-shadow: -6px 0 0 0 #d5d7e3, 6px 0 0 0 #d5d7e3;
+}
+
+.logo-image {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e3e7f7;
+}
+
+.logo-image img {
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 375px;
+  padding: 10px 20px 0 20px;
+  background-color: #fff;
+}
+
+.dashboard-content .header {
+  font-size: 18px;
+  color: #353536;
+}
+
+.content-categories {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .leftsidebar-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .dashboard-container {
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .right-bar,
+  .dashboard-content {
+    width: 100%;
+    display: block;
+  }
+
+  .tasks-wrapper {
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .dashboard-content {
+    padding: 40px 10px 0 10px;
+  }
+
+  .category {
+    padding: 20px;
+  }
+}
