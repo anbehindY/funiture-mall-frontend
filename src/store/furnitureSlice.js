@@ -6,16 +6,16 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   return furnitures.data;
 });
 
-export const getSingleFurniture = createAsyncThunk(
-  'get/furnitures',
-  async () => {
-    const furniture = await axios.get(
-      `http://[::1]:3001/api/v1/furnitures/${id}`
-    );
-    // return furnitures.data;
-    console.log(furniture);
-  }
-);
+// export const getSingleFurniture = createAsyncThunk(
+//   'get/furnitures',
+//   async () => {
+//     const furniture = await axios.get(
+//       `http://[::1]:3001/api/v1/furnitures/${id}`
+//     );
+//     // return furnitures.data;
+//     console.log(furniture);
+//   }
+// );
 
 export const initialState = {
   furnitures: [],
@@ -46,4 +46,4 @@ const furnitureSlice = createSlice({
 });
 
 export default furnitureSlice;
-export const { singleFurniture } = furnitureSlice.actions;
+// export const { singleFurniture } = furnitureSlice.actions;

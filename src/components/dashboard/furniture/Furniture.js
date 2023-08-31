@@ -13,28 +13,25 @@ const Furniture = () => {
     // if (furnitures.length === 0) {
     dispatch(getFurnitures());
     // }
-  }, [dispatch, id]);
+  }, [dispatch]);
 
-  console.log(furnitures);
+  // console.log(furnitures);
 
-  // console.log(id);
+  console.log(id);
 
-  const filteredItem = furnitures?.map((fur) => {
-    if (fur.id === id) {
-      return fur;
-    } else {
-       console.log('Not seen');
-    }
-  });
+  const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
 
-  console.log(filteredItem);
+  filteredItem && console.log(`${filteredItem[0].image}`);
 
   return (
     <div className="furniture-image">
-      {/* <img src={filteredItem.image} alt="Furniture" />
-      <h1>{filteredItem.name}</h1>
-      <p>{filteredItem.description}</p> */}
-      <p>{`Hello ${id}`}</p>
+      {filteredItem && (
+        <div className="furniture-image">
+          <img src={`${filteredItem[0].image}`} alt="Furniture" />
+          <h1>{filteredItem[0].name}</h1>
+          <p>{filteredItem[0].description}</p>
+        </div>
+      )}
     </div>
   );
 };
