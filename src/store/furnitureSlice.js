@@ -6,6 +6,8 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   return furnitures.data;
 });
 
+
+
 export const initialState = {
   furnitures: [],
 };
