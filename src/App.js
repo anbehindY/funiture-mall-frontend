@@ -28,7 +28,7 @@ function App() {
         <Route path="/signup" exact element={<Signup />} />
         <Route path="*" exact element={<NotFound />} />
       </Routes>
-      
+
     </BrowserRouter>
   );
 }
