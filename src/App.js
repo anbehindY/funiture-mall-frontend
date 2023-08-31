@@ -21,18 +21,14 @@ function App() {
           <Route path="/furnitures" exact element={<Furnitures />} />
           <Route path="/customers" exact element={<Customer />} />
           <Route path="/products" exact element={<Product />} />
-          <Route path="/reserves" exact element={<Reserve />} />
+          <Route path="/Appointments" exact element={<appointmentsList />} />
           <Route path="/histories" exact element={<History />} />
         </Route>
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="*" exact element={<NotFound />} />
       </Routes>
-      <div className="App">
-        <header className="App-header">
-          <AppointmentsList />
-        </header>
-      </div>
+      
     </BrowserRouter>
   );
 }
