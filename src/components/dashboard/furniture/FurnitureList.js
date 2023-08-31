@@ -19,7 +19,7 @@ const FurnitureList = () => {
   return (
     <div className="furniture-container">
       {furnitures[0]?.map((furniture) => (
-        <Link to={`/furnitures/${furniture.id}`}>
+        <Link to={`/furnitures/${furniture.id}`} key={furniture.id}>
           <div className="furniture-image">
             <img src={furniture.image} alt="Furniture" />
             <h1>{furniture.name}</h1>
