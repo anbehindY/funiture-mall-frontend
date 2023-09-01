@@ -2,15 +2,19 @@ import axios from 'axios';
 import './login.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
   const signin = async (e) => {
     e.preventDefault();
-    const user = { user: { email: e.target.email.value, password: e.target.password.value } };
+    const user = {
+      user: { email: e.target.email.value, password: e.target.password.value },
+    };
     try {
-      await axios.post('http://localhost:3001/login', user, { withCredentials: true })
+      await axios
+        .post('http://localhost:3001/login', user, { withCredentials: true })
         .then((response) => {
           if (response.data) {
             navigate('/furnitures');
@@ -27,7 +31,10 @@ const Login = () => {
           }
         });
     } catch (error) {
-      setMessage(() => 'You cannot access the system.<br> Please contact your administrator.');
+      setMessage(
+        () =>
+          'You cannot access the system.<br> Please contact your administrator.'
+      );
     } finally {
       e.target.reset();
     }
@@ -40,23 +47,46 @@ const Login = () => {
           <div className="form-row">
             <label htmlFor="email_id">
               Your Email
-              <input type="text" name="email" id="email_id" className="input-text" placeholder="Your Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" minLength={8} maxLength={30} />
+              <input
+                type="text"
+                name="email"
+                id="email_id"
+                className="input-text"
+                placeholder="Your Email"
+                required
+                pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
+                minLength={8}
+                maxLength={30}
+              />
             </label>
           </div>
           <div className="form-row">
             <label htmlFor="password_id">
               Password
-              <input type="password" name="password" id="password_id" className="input-text" placeholder="Your Password" required minLength={6} maxLength={50} />
+              <input
+                type="password"
+                name="password"
+                id="password_id"
+                className="input-text"
+                placeholder="Your Password"
+                required
+                minLength={6}
+                maxLength={50}
+              />
             </label>
           </div>
           <div className="form-row-last">
-            <input type="submit" name="register" className="register" value="Login" />
+            <input
+              type="submit"
+              name="register"
+              className="register"
+              value="Login"
+            />
           </div>
-          <strong>
-            {message}
-            {' '}
-          </strong>
         </form>
+        <p>
+          Don't have an account? <Link to="/signup">Click here to Register</Link>
+        </p>
       </div>
     </div>
   );
