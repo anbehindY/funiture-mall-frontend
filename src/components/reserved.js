@@ -37,3 +37,11 @@ function Reserve() {
             value={selectedDate}
             onChange={event => setSelectedDate(event.target.value)}
           />
+          </label>
+        <label>
+          Select City:
+          <input
+            type="text"
+            value={selectedCity}
+            onChange={event => setSelectedCity(event.target.value)}
+          />
