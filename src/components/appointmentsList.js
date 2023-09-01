@@ -10,5 +10,12 @@ function AppointmentsList() {
     // Fetch user appointments when the component mounts
     dispatch(fetchAppointments());
   }, [dispatch]);
-
+  if (error) {
+    return (
+      <div>
+        Error:
+        {error}
+      </div>
+    );
+  }
 
