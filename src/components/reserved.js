@@ -42,6 +42,9 @@ import { setUsername } from '../redux/reservationActions';
       </form>
     </div>
   );
-}
+  const mapStateToProps = (state) => ({
+    username: state.username,
+  });
+  
 
 export default Reserve;
