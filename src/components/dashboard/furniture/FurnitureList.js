@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFurnitures } from '../../../store/furnitureSlice';
 import { Link } from 'react-router-dom';
+import { getFurnitures } from '../../../store/furnitureSlice';
 
 const FurnitureList = () => {
   const { furnitures } = useSelector((store) => store.furniture);

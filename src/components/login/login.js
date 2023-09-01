@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
-import { userLogin } from '../../store/userSllice';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { userLogin } from '../../store/userSllice';
 
 import './login.css';
 
@@ -14,12 +13,10 @@ const Login = () => {
     password: '',
   });
 
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setUser({
+    setUserData({
       ...userData,
       [e.target.name]: e.target.value,
     });
@@ -27,8 +24,6 @@ const Login = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-
-    console.log(userData);
 
     dispatch(userLogin(userData));
 
@@ -101,7 +96,7 @@ const Login = () => {
           </div>
         </form>
         <p>
-          Don't have an account?{' '}
+          Don't have an account?
           <Link to="/signup">Click here to Register</Link>
         </p>
       </div>
@@ -110,3 +105,4 @@ const Login = () => {
 };
 
 export default Login;
+

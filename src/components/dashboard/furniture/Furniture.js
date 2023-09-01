@@ -10,18 +10,10 @@ const Furniture = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // if (furnitures.length === 0) {
     dispatch(getFurnitures());
-    // }
   }, [dispatch]);
 
-  // console.log(furnitures);
-
-  console.log(id);
-
   const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
-
-  filteredItem && console.log(`${filteredItem[0].image}`);
 
   return (
     <div className="furniture-image">
