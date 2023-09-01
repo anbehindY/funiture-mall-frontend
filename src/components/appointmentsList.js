@@ -7,12 +7,13 @@ function AppointmentsList() {
   useEffect(() => {
     async function fetchAppointments() {
       try {
-        const response = await axios.get('/api/appointments'); // Replace with your API endpoint
+        const response = await axios.get('/api/v1/appointments'); // Replace with your API endpoint
         setAppointments(response.data);
       } catch (error) {
-        console.error('Error fetching appointments:', error);
+        throw new Error('Error fetching appointments:', error);
       }
     }
+
     fetchAppointments();
   }, []);
 
@@ -31,7 +32,6 @@ function AppointmentsList() {
               {' '}
               {appointment.city}
               <br />
-              {/* Other appointment details */}
             </>
           </li>
         ))}
