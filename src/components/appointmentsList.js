@@ -6,3 +6,9 @@ function AppointmentsList() {
   const appointments = useSelector((state) => state.appointments);
     const error = useSelector((state) => state.appointments.error);
   const dispatch = useDispatch();
+  useEffect(() => {
+    // Fetch user appointments when the component mounts
+    dispatch(fetchAppointments());
+  }, [dispatch]);
+
+
