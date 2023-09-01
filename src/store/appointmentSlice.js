@@ -26,3 +26,17 @@ const appointmentsSlice = createSlice({
   reducers: {
     // You can define additional reducers here if needed
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchAppointments.fulfilled, (state, action) => {
+        state.appointments = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchAppointments.rejected, (state, action) => {
+        state.appointments = [];
+        state.error = action.error.message;
+      });
+  },
+});
+
+export default appointmentsSlice.reducer;
