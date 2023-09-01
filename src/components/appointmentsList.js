@@ -18,4 +18,26 @@ function AppointmentsList() {
       </div>
     );
   }
+  return (
+    <div>
+      <h2>My appointments</h2>
+      <ul>
+        {appointments.map((appointment) => (
+          <li key={appointment.id}>
+            <strong>Item name:</strong>
+            {' '}
+            {appointment.itemName}
+            ,
+            {' '}
+            <strong>Date:</strong>
+            {' '}
+            {appointment.date}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default AppointmentsList;
 
