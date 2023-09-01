@@ -12,3 +12,10 @@ export const fetchAppointments = createAsyncThunk('appointments/fetchAppointment
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
+    const data = await response.json();
+    return data;
+    console.log(data);
+  } catch (error) {
+    throw error;
+  }
+});
