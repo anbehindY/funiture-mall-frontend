@@ -45,3 +45,11 @@ function Reserve() {
             value={selectedCity}
             onChange={event => setSelectedCity(event.target.value)}
           />
+          </label>
+        <button type="submit">Reserve</button>
+      </form>
+    </div>
+  );
+}
+
+export default Reserve;
