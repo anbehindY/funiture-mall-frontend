@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { setUsername } from '../redux/reservationActions';
+import { setUsername } from '../store/reservationActions';
 
-function Reserve({ username, setUsername }) {
+function Reserve() {
+  const [username, setUsername] = useState('');
+  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const handleReserve = (event) => {
+  event.preventDefault();
   return (
     <div>
       <h2>Reserve an Appointment</h2>
@@ -43,7 +49,7 @@ function Reserve({ username, setUsername }) {
       </form>
     </div>
   );
-}
+};
 const mapStateToProps = (state) => ({
   username: state.username,
 });

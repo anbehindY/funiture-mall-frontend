@@ -4,7 +4,7 @@ import { fetchAppointments } from '../store/appointmentSlice'; // Replace with t
 
 function AppointmentsList() {
   const appointments = useSelector((state) => state.appointments);
-    const error = useSelector((state) => state.appointments.error);
+  const error = useSelector((state) => state.appointments.error);
   const dispatch = useDispatch();
   useEffect(() => {
     // Fetch user appointments when the component mounts
@@ -40,4 +40,3 @@ function AppointmentsList() {
 }
 
 export default AppointmentsList;
-
