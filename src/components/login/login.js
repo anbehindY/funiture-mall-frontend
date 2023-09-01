@@ -96,7 +96,7 @@ const Login = () => {
           </div>
         </form>
         <p>
-          Don't have an account?
+          Don&apos;t have an account?
           <Link to="/signup">Click here to Register</Link>
         </p>
       </div>
@@ -105,4 +105,3 @@ const Login = () => {
 };
 
 export default Login;
-
