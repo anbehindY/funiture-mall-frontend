@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { setUsername } from '../redux/reservationActions';
 
-function Reserve() {
-    const [username, setUsername] = useState(''); // Set the username if available
-    const [selectedItem, setSelectedItem] = useState(''); // Autofill the selected item
-    const [selectedDate, setSelectedDate] = useState('');
-    const [selectedCity, setSelectedCity] = useState('');
-  
-    const handleReserve = () => {
-      // Handle the reservation process, e.g., send data to the server
-    };
-
-    return (
+   return (
         <div>
           <h2>Reserve an Appointment</h2>
           <form onSubmit={handleReserve}>
