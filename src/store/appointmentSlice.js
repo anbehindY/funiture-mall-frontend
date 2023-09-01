@@ -19,3 +19,10 @@ export const fetchAppointments = createAsyncThunk('appointments/fetchAppointment
     throw error;
   }
 });
+// Create a slice
+const appointmentsSlice = createSlice({
+  name: 'appointments',
+  initialState,
+  reducers: {
+    // You can define additional reducers here if needed
+  },
