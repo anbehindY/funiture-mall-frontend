@@ -31,8 +31,9 @@ function App() {
   return (
     <Routes>
       <Route path="/" exact element={<Home />}>
-        <Route path="/" exact element={<Furnitures />} />
-        <Route path="/furnitures" exact element={<Furnitures />} />
+        <Route path="/" exact element={<FurnitureList />} />
+        <Route path="/furnitures" exact element={<FurnitureList />} />
+        <Route path="/furnitures/:id" element={<Furniture />} />
         <Route path="/customers" exact element={<Customer />} />
         <Route path="/products" exact element={<Product />} />
         <Route path="/reserves" exact element={<Reserve />} />
