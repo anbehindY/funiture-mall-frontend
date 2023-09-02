@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Login from './components/login/login';
 import NotFound from './components/pagenotfound.js/notfound';
@@ -11,28 +11,33 @@ import Reserve from './components/dashboard/reserve/reserve';
 import History from './components/dashboard/history/history';
 import Home from './components/dashboard/home';
 import Signup from './components/login/signup';
-import User from './User';
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
 
+  const navigate = useNavigate();
+
   console.log(currUser);
   if (currUser) {
-    console.log(currUser);
-    return (
-      <div>
-        Hello {currUser.email}
-        <h1>I am a private message</h1>
-        <FurnitureList currUser={currUser} />
-      </div>
-    );
+    navigate('/furnitures');
+    // return (
+    //   <div>
+    //     Hello {currUser.email}
+    //     <h1>I am a private message</h1>
+    //     <FurnitureList currUser={currUser} />
+    //   </div>
+    // );
   }
 
   return (
     <Routes>
       <Route path="/" exact element={<Home />}>
-        <Route path="/" exact element={<FurnitureList />} />
-        <Route path="/furnitures" exact element={<FurnitureList />} />
+        <Route path="/" exact element={<FurnitureList currUser={currUser} />} />
+        <Route
+          path="/furnitures"
+          exact
+          element={<FurnitureList currUser={currUser} />}
+        />
         <Route path="/furnitures/:id" element={<Furniture />} />
         <Route path="/customers" exact element={<Customer />} />
         <Route path="/products" exact element={<Product />} />
