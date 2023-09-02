@@ -30,15 +30,14 @@ function App() {
 
   return (
     <>
-      <FurnitureList currUser={currUser} />
+     
       <Routes>
-        <Route path="/" exact element={<Home />}>
-          <Route path="/furnitures/:id" element={<Furniture />} />
-          <Route path="/customers" exact element={<Customer />} />
-          <Route path="/products" exact element={<Product />} />
-          <Route path="/reserves" exact element={<Reserve />} />
-          <Route path="/histories" exact element={<History />} />
-        </Route>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/furnitures/:id" element={<Furniture />} />
+        <Route path="/customers" exact element={<Customer />} />
+        <Route path="/products" exact element={<Product />} />
+        <Route path="/reserves" exact element={<Reserve />} />
+        <Route path="/histories" exact element={<History />} />
         <Route
           path="/login"
           exact
