@@ -29,28 +29,27 @@ function App() {
   }
 
   return (
-    <>
-     
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/furnitures/:id" element={<Furniture />} />
+    <Routes>
+      <Route path="/" exact element={<Home />}>
+        <Route path="/" exact element={<Furnitures />} />
+        <Route path="/furnitures" exact element={<Furnitures />} />
         <Route path="/customers" exact element={<Customer />} />
         <Route path="/products" exact element={<Product />} />
         <Route path="/reserves" exact element={<Reserve />} />
         <Route path="/histories" exact element={<History />} />
-        <Route
-          path="/login"
-          exact
-          element={<Login currUser={currUser} setCurrUser={setCurrUser} />}
-        />
-        <Route
-          path="/signup"
-          exact
-          element={<Signup currUser={currUser} setCurrUser={setCurrUser} />}
-        />
-        <Route path="*" exact element={<NotFound />} />
-      </Routes>
-    </>
+      </Route>
+      <Route
+        path="/login"
+        exact
+        element={<Login currUser={currUser} setCurrUser={setCurrUser} />}
+      />
+      <Route
+        path="/signup"
+        exact
+        element={<Signup currUser={currUser} setCurrUser={setCurrUser} />}
+      />
+      <Route path="*" exact element={<NotFound />} />
+    </Routes>
   );
 }
 
