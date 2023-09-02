@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getFurnitures } from '../../../store/furnitureSlice';
 
-const FurnitureList = () => {
+const FurnitureList = ({ curUser }) => {
   const { furnitures } = useSelector((store) => store.furniture);
 
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const FurnitureList = () => {
   // console.log(furnitures);
 
   useEffect(() => {
-    if (furnitures.length === 0) {
+    if (curUser) {
       dispatch(getFurnitures());
     }
   }, [dispatch, furnitures]);

@@ -2,7 +2,12 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
-  const furnitures = await axios.get('http://[::1]:3001/api/v1/furnitures');
+  const furnitures = await axios.get('http://[::1]:3001/api/v1/furnitures', {
+    headers: {
+      'content-type': 'application/json',
+      'authorization': localStorage.getItem('token'),
+    },
+  });
   return furnitures.data;
 });
 
@@ -28,7 +33,6 @@ const furnitureSlice = createSlice({
     // singleFurniture: (state, { payload }) => {
     //   console.log(payload);
     //   console.log(state.furnitures);
-
     //   // const newState = state.furnitures.map((furniture) => {
     //   //   if (furniture.id === payload) {
     //   //     return { ...furniture };
