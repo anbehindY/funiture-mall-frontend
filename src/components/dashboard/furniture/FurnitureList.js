@@ -1,7 +1,8 @@
-import React, { useState,useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+// // import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { getFurnitures } from '../../../store/furnitureSlice';
+import LeftSidebar from '../sidebar/leftsidebar';
+// // import { getFurnitures } from '../../../store/furnitureSlice';
 
 const FurnitureList = ({ currUser }) => {
   // const { furnitures } = useSelector((store) => store.furniture);
@@ -35,14 +36,14 @@ const FurnitureList = ({ currUser }) => {
       setFur(null);
     }
   };
-  useEffect(() => {
-    if (currUser) getFurnitures();
-  }, [currUser]);
 
-  // console.log(fur);
+  useEffect(() => {
+    getFurnitures();
+  }, [currUser]);
 
   return (
     <div className="furniture-container">
+      <LeftSidebar />
       {fur?.map((furniture) => (
         <Link to={`/furnitures/${furniture.id}`} key={furniture.id}>
           <div className="furniture-image">
@@ -52,8 +53,34 @@ const FurnitureList = ({ currUser }) => {
           </div>
         </Link>
       ))}
-      {/* <p>furnitures list</p> */}
     </div>
   );
 };
 export default FurnitureList;
+
+
+// i worked on project setup this
+// my attention
+
+// create furniture from front end = Prince
+// list fetch furnitue from appoint = Prince
+// distails details of furnitue = Prince
+// list appointment = Esther
+// display details of appointment = Esther
+// create appointment this may easy = Esther
+//  can remove appointment =Esther
+//  can remove furniture = Prince
+
+// the customer should login into system (authorization greate job)
+// list fetch furnitue from appoint
+// distails details of furnitue
+// list their appointment
+// display details of his/her appointment
+// create appointment this may easy
+
+//  can remove appointment
+
+//  responsiveness big work next time
+//  required
+
+//  crucial job is on authentication and authorization

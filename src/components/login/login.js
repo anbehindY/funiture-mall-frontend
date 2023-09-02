@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { userLogin } from '../../store/userSllice';
 
 import './login.css';
 
-const Login = ({ setCurrUser, setShow }) => {
+const Login = ({ setCurrUser }) => {
   // const { user } = useSelector((store) => store.user);
+
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
     email: '',
@@ -14,22 +16,24 @@ const Login = ({ setCurrUser, setShow }) => {
   });
 
   const login = async (userData, setCurrUser) => {
-    const url = "http://localhost:3001/login";
+    const url = 'http://localhost:3001/login';
     try {
       const response = await fetch(url, {
-        method: "post",
+        method: 'post',
         headers: {
-          "content-type": "application/json",
-          "accept": "application/json",
+          'content-type': 'application/json',
+          accept: 'application/json',
         },
         body: JSON.stringify(userData),
       });
 
-      const data = await response.json();
+      const { status } = await response.json();
       if (!response.ok) throw data.error;
       localStorage.setItem('token', response.headers.get('Authorization'));
-      // setCurrUser(data);
-      console.log(data);
+      const { data } = status;
+      setCurrUser(data.user);
+
+      navigate('/furnitures');
     } catch (error) {
       console.log(error);
     }
@@ -47,9 +51,10 @@ const Login = ({ setCurrUser, setShow }) => {
   const loginHandler = async (e) => {
     e.preventDefault();
 
-    console.log(userData);
-    login(userData, setCurrUser);
-    e.target.reset();
+    const userInfo = {
+      user: { ...userData },
+    };
+    login(userInfo, setCurrUser);
   };
 
   return (

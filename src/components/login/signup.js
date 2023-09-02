@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 
 const Signup = ({ setCurrUser, setShow }) => {
@@ -10,6 +10,8 @@ const Signup = ({ setCurrUser, setShow }) => {
     password: '',
     confirmPassword: '',
   });
+
+  const navigate = useNavigate();
 
   const signup = async (userInfo, setCurrUser) => {
     const url = 'http://localhost:3001/signup';
@@ -26,6 +28,7 @@ const Signup = ({ setCurrUser, setShow }) => {
       if (!response.ok) throw data.error;
       localStorage.setItem('token', response.headers.get('Authorization'));
       setCurrUser(data);
+      navigate('/furnitures');
     } catch (error) {
       console.log('error', error);
     }
@@ -36,15 +39,14 @@ const Signup = ({ setCurrUser, setShow }) => {
       ...userData,
       [e.target.name]: e.target.value,
     });
-   
   };
 
   const signupHandler = async (e) => {
     e.preventDefault();
 
-     const userInfo = {
-       "user": { ...userData },
-     };
+    const userInfo = {
+      user: { ...userData },
+    };
 
     signup(userInfo, setCurrUser);
   };

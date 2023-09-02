@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFurnitures } from '../../../store/furnitureSlice';
+import LeftSidebar from '../sidebar/leftsidebar';
 
 const Furniture = () => {
   const { furnitures } = useSelector((store) => store.furniture);
@@ -17,6 +18,7 @@ const Furniture = () => {
 
   return (
     <div className="furniture-image">
+      <LeftSidebar />
       {filteredItem && (
         <div className="furniture-image">
           <img src={`${filteredItem[0].image}`} alt="Furniture" />
