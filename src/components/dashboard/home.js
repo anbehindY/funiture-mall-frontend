@@ -1,9 +1,14 @@
-import { Link } from 'react-router-dom';
+import { DashboardProvider } from './dashboardprovider';
+import Dashboard from './dashboard';
 
-const Home = () => (
-  <div>
-    <h1>Welcome to Furniture Mall</h1>
-    <Link to="/login">Click here to Sign in</Link>
-  </div>
-);
+const Home = (data) => {
+  const { children } = data;
+  return (
+    <DashboardProvider>
+      {children}
+      <Dashboard />
+    </DashboardProvider>
+  );
+};
+
 export default Home;
