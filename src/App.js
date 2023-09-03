@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Routes} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/login/login';
 import NotFound from './components/pagenotfound.js/notfound';
@@ -11,6 +11,7 @@ import Furniture from './components/dashboard/furniture/Furniture';
 // import History from './components/dashboard/history/history';
 import Home from './components/dashboard/home';
 import Signup from './components/login/signup';
+import Dashboard from './components/dashboard/dashboard';
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
@@ -28,9 +29,11 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route
-          path="/furnitures"
+          path="/dashboard"
           exact
-          element={<FurnitureList currUser={currUser} />}
+          element={<Dashboard />}
+          currUser={currUser}
+          setCurrUser={setCurrUser}
         />
         <Route path="/furnitures/:id" element={<Furniture />} />
         <Route

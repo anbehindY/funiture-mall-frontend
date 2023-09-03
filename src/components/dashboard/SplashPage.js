@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 // import Login from '../login/login';
 // import Signup from '../login/signup';
 
-const Heropage = () => {
+const SplashPage = () => {
   return (
     <div>
       <h1>Welcome to Furniture mall</h1>
@@ -11,4 +11,4 @@ const Heropage = () => {
   );
 };
 
-export default Heropage;
+export default SplashPage;

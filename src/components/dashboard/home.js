@@ -1,37 +1,26 @@
-import Dashboard from './dashboard';
-import Heropage from './Heropage';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import SplashPage from './SplashPage';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { getLoginStatus } from '../../store/userSllice';
+import Dashboard from './dashboard';
 
 const Home = () => {
-  const [currentUser, setCurrUser] = useState(null);
+  const { isAuthenticated } = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
-  const checkLoginStatus = () => {
-    axios
-      .get('http://localhost:3001/login')
-      .then((response) => {
-        const data = response.data.status.data.user;
-        setCurrUser({
-          ...data,
-        });
-      })
-      .catch((error) => {
-        console.log('login error', error);
-      });
-  };
-
   useEffect(() => {
-    checkLoginStatus();
+    dispatch(getLoginStatus());
   }, []);
 
   return (
-    <>
-      {!currentUser?.email && <Heropage />}
-      {currentUser?.email && navigate('./furnitures')}
-    </>
+    <div>
+      {!isAuthenticated && <SplashPage />}
+      {isAuthenticated && <Dashboard />}
+    </div>
   );
 };
 

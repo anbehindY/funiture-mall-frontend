@@ -1,50 +1,26 @@
 import React, { useState, useEffect } from 'react';
-// // import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LeftSidebar from '../sidebar/leftsidebar';
-// // import { getFurnitures } from '../../../store/furnitureSlice';
+import { getFurnitures } from '../../../store/furnitureSlice';
 
-const FurnitureList = ({ currUser }) => {
-  // const { furnitures } = useSelector((store) => store.furniture);
-  const [fur, setFur] = useState(null);
+import './furniture.css';
+import '../dashboard.css';
 
-  // const dispatch = useDispatch();
+const FurnitureList = ({ currUser, setCurrUser }) => {
+  const { furnitures } = useSelector((store) => store.furniture);
 
-  // console.log(furnitures);
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (curUser) {
-  //     dispatch(getFurnitures());
-  //   }
-  // }, [dispatch, furnitures]);
-
-  const getFurnitures = async () => {
-    try {
-      const response = await fetch('http://[::1]:3001/api/v1/furnitures', {
-        method: 'get',
-        headers: {
-          'content-type': 'application/json',
-          authorization: localStorage.getItem('token'),
-        },
-      });
-      if (!response.ok) throw Error;
-      const data = await response.json();
-      console.log(data);
-      setFur(data);
-    } catch (error) {
-      console.log('error', error);
-      setFur(null);
-    }
-  };
+  console.log(furnitures);
 
   useEffect(() => {
-    getFurnitures();
-  }, [currUser]);
+    dispatch(getFurnitures());
+  }, [currUser, dispatch]);
 
   return (
     <div className="furniture-container">
-      <LeftSidebar />
-      {fur?.map((furniture) => (
+      {furnitures[0]?.map((furniture) => (
         <Link to={`/furnitures/${furniture.id}`} key={furniture.id}>
           <div className="furniture-image">
             <img src={furniture.image} alt="Furniture" />
@@ -57,7 +33,6 @@ const FurnitureList = ({ currUser }) => {
   );
 };
 export default FurnitureList;
-
 
 // i worked on project setup this
 // my attention

@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { userLogin } from '../../store/userSllice';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+// import { postUserLogin } from '../../store/userSllice';
 
 import './login.css';
 
-const Login = ({ setCurrUser }) => {
-  // const { user } = useSelector((store) => store.user);
+const Login = ({ currUser, setCurrUser }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState();
 
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const Login = ({ setCurrUser }) => {
     password: '',
   });
 
-  const login = async (userData, setCurrUser) => {
+  const login = async (userData) => {
     const url = 'http://localhost:3001/login';
     try {
       const response = await fetch(url, {
@@ -27,19 +27,20 @@ const Login = ({ setCurrUser }) => {
         body: JSON.stringify(userData),
       });
 
-      const { status } = await response.json();
-      if (!response.ok) throw data.error;
-      localStorage.setItem('token', response.headers.get('Authorization'));
-      const { data } = status;
-      setCurrUser(data.user);
-
-      navigate('/furnitures');
+      if (response.ok) {
+        const { status } = await response.json();
+        const { data } = status;
+        localStorage.setItem('token', response.headers.get('Authorization'));
+        setIsAuthenticated(true);
+        setCurrUser(data.user);
+        navigate('/dashboard');
+      } else {
+        setIsAuthenticated(false);
+      }
     } catch (error) {
       console.log(error);
     }
   };
-
-  // const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setUserData({
@@ -54,7 +55,7 @@ const Login = ({ setCurrUser }) => {
     const userInfo = {
       user: { ...userData },
     };
-    login(userInfo, setCurrUser);
+    login(userInfo);
   };
 
   return (

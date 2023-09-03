@@ -1,26 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const authToken = localStorage.getItem('token');
+
 export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   const furnitures = await axios.get('http://[::1]:3001/api/v1/furnitures', {
     headers: {
       'content-type': 'application/json',
-      'authorization': localStorage.getItem('token'),
+      'authorization': authToken,
     },
   });
   return furnitures.data;
 });
-
-// export const getSingleFurniture = createAsyncThunk(
-//   'get/furnitures',
-//   async () => {
-//     const furniture = await axios.get(
-//       `http://[::1]:3001/api/v1/furnitures/${id}`
-//     );
-//     // return furnitures.data;
-//     console.log(furniture);
-//   }
-// );
 
 export const initialState = {
   furnitures: [],
@@ -29,19 +20,7 @@ export const initialState = {
 const furnitureSlice = createSlice({
   name: 'furnitures',
   initialState,
-  reducers: {
-    // singleFurniture: (state, { payload }) => {
-    //   console.log(payload);
-    //   console.log(state.furnitures);
-    //   // const newState = state.furnitures.map((furniture) => {
-    //   //   if (furniture.id === payload) {
-    //   //     return { ...furniture };
-    //   //   }
-    //   //   return furniture;
-    //   // });
-    //   // state.furnitures = newState;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getFurnitures.fulfilled, (state, { payload }) => {
       state.furnitures.push(payload);
@@ -50,4 +29,3 @@ const furnitureSlice = createSlice({
 });
 
 export default furnitureSlice;
-// export const { singleFurniture } = furnitureSlice.actions;
