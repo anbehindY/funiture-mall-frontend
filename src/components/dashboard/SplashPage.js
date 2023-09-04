@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
-// import Login from '../login/login';
-// import Signup from '../login/signup';
+
+import './home.css';
 
 const SplashPage = () => {
   return (
-    <div>
+    <div className="containerhome">
       <h1>Welcome to Furniture mall</h1>
-      <Link to="./login">Click here to sign in</Link>
+      <Link to="./login" className="LinkhomeL_login">
+        Click here to sign in
+        {/* <i className="fa fa-arrow-circle-o-right" /> */}
+      </Link>
     </div>
   );
 };
