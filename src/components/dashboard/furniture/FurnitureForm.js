@@ -1,9 +1,9 @@
 import { useState } from 'react';
 // import { Link, redirect, useNavigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// // import { postUserLogin } from '../../store/userSllice';
+import { useDispatch, useSelector } from 'react-redux';
+import { postFurniture } from '../../../store/furnitureSlice';
 
-const FurnitureForm = ({ currUser, setCurrUser }) => {
+const FurnitureForm = () => {
   const [furnitureData, setFurnitureData] = useState({
     name: '',
     description: '',
@@ -11,6 +11,8 @@ const FurnitureForm = ({ currUser, setCurrUser }) => {
     price: '',
     warranty: '',
   });
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFurnitureData({
@@ -26,6 +28,9 @@ const FurnitureForm = ({ currUser, setCurrUser }) => {
       furniture: { ...furnitureData },
     };
     console.log(furnitureInfo);
+
+    dispatch(postFurniture(furnitureInfo));
+
   };
 
   return (

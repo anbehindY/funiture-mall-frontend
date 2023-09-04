@@ -13,6 +13,25 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   return furnitures.data;
 });
 
+export const postFurniture = createAsyncThunk(
+  'add/furnitures',
+  async (furnitureInfo) => {
+    const furniture = await axios.post(
+      'http://[::1]:3001/api/v1/furnitures',
+      furnitureInfo,
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: authToken,
+        },
+      }
+    );
+
+    console.log(furniture.data);
+    // return furniture.data;
+  }
+);
+
 export const initialState = {
   furnitures: [],
 };
@@ -24,6 +43,11 @@ const furnitureSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getFurnitures.fulfilled, (state, { payload }) => {
       state.furnitures.push(payload);
+    });
+  },
+  extraReducers: (builder) => {
+    builder.addCase(postFurniture.fulfilled, (state, { payload }) => {
+      // state.furnitures.push(payload);
     });
   },
 });
