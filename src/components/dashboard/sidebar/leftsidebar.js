@@ -1,7 +1,7 @@
+import Logout from '../../login/Logout';
 import logo from './logo.png';
-import './leftsidebar.css';
 
-const LeftSidebar = () => (
+const LeftSidebar = ({ setCurrUser }) => (
   <div className="leftsidebar-container">
     <div className="upper-part">
       <div className="app-logo">
@@ -43,7 +43,7 @@ const LeftSidebar = () => (
           <span>Help</span>
         </li>
         <li className="item">
-          <span>Logout</span>
+          <Logout setCurrUser={setCurrUser} />
         </li>
       </ul>
     </div>

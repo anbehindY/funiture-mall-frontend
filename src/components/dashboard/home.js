@@ -1,13 +1,24 @@
-import './home.css';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLoginStatus } from '../../store/userSllice';
+import SplashPage from './SplashPage';
+import Dashboard from './dashboard';
 
-const Home = () => (
-  <div className="containerhome">
-    <h1>Home to Furniture Mall</h1>
-    <Link to="/login" className="LinkhomeL_login">
-      Sign in
-      <i className="fa fa-arrow-circle-o-right" />
-    </Link>
-  </div>
-);
+const Home = () => {
+  const { isAuthenticated } = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLoginStatus());
+  }, [dispatch]);
+
+  return (
+    <div>
+      {!isAuthenticated && <SplashPage />}
+      {isAuthenticated && <Dashboard />}
+    </div>
+  );
+};
+
 export default Home;

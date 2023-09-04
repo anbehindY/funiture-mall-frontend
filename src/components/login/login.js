@@ -1,19 +1,46 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { userLogin } from '../../store/userSllice';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+// import { postUserLogin } from '../../store/userSllice';
 
 import './login.css';
 
-const Login = () => {
-  // const { user } = useSelector((store) => store.user);
+const Login = ({ currUser, setCurrUser }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState();
+
+  const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
-  const dispatch = useDispatch();
+  const login = async (userData) => {
+    const url = 'http://localhost:3001/login';
+    try {
+      const response = await fetch(url, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json',
+          accept: 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        const { status } = await response.json();
+        const { data } = status;
+        localStorage.setItem('token', response.headers.get('Authorization'));
+        setIsAuthenticated(true);
+        setCurrUser(data.user);
+        navigate('/dashboard');
+      } else {
+        setIsAuthenticated(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleChange = (e) => {
     setUserData({
@@ -25,34 +52,10 @@ const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
 
-    dispatch(userLogin(userData));
-
-    // try {
-    //   await axios
-    //     .post('http://localhost:3001/login', user, { withCredentials: true })
-    //     .then((response) => {
-    //       if (response.data) {
-    //         navigate('/furnitures');
-    //       }
-    //       setMessage(() => 'Username or password is incorrect.');
-    //     })
-    //     .catch((error) => {
-    //       if (error.response) {
-    //         setMessage(() => `${error.response.data}`);
-    //       } else if (error.request) {
-    //         setMessage(() => `${error.request}`);
-    //       } else {
-    //         setMessage(() => `${error.message}`);
-    //       }
-    //     });
-    // } catch (error) {
-    //   setMessage(
-    //     () =>
-    //       'You cannot access the system.<br> Please contact your administrator.'
-    //   );
-    // } finally {
-    //   e.target.reset();
-    // }
+    const userInfo = {
+      user: { ...userData },
+    };
+    login(userInfo);
   };
 
   return (
@@ -63,10 +66,10 @@ const Login = () => {
           <div className="form-row">
             <input
               type="text"
-              name="username"
-              id="username"
+              name="email"
+              id="email"
               className="input-text"
-              placeholder="Enter username"
+              placeholder="Enter email address"
               required
               onChange={handleChange}
               value={userData.username}
