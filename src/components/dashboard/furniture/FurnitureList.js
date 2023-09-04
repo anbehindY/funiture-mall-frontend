@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import LeftSidebar from '../sidebar/leftsidebar';
+
 import { getFurnitures } from '../../../store/furnitureSlice';
 
 import './furniture.css';
 import '../dashboard.css';
 
-const FurnitureList = ({ currUser, setCurrUser }) => {
+const FurnitureList = () => {
   const { furnitures } = useSelector((store) => store.furniture);
 
   const dispatch = useDispatch();
-
-  console.log(furnitures);
 
   useEffect(() => {
     dispatch(getFurnitures());

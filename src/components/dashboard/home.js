@@ -9,8 +9,6 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
     dispatch(getLoginStatus());
   }, []);
@@ -22,6 +20,5 @@ const Home = () => {
     </div>
   );
 };
-
 
 export default Home;

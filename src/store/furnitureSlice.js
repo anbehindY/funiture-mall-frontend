@@ -7,7 +7,7 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   const furnitures = await axios.get('http://[::1]:3001/api/v1/furnitures', {
     headers: {
       'content-type': 'application/json',
-      'authorization': authToken,
+      authorization: authToken,
     },
   });
   return furnitures.data;

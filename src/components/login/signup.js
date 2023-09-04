@@ -62,7 +62,7 @@ const Signup = (setCurrUser) => {
       {isAuthenticated && (
         <div>
           <p>Congratulations you have successfully registered</p>
-          <Link to={'/login'}>Click here to login in</Link>
+          <Link to="/login">Click here to login in</Link>
         </div>
       )}
       {!isAuthenticated && (
@@ -152,7 +152,8 @@ const Signup = (setCurrUser) => {
             </div>
           </form>
           <p>
-            Already have an account?{' '}
+            Already have an account?
+            {' '}
             <Link to="/login">Click here to Login</Link>
           </p>
         </div>

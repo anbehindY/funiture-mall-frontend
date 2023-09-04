@@ -16,8 +16,7 @@ export const postUserLogin = createAsyncThunk(
       },
     });
     return login.data.status.data.user;
-    
-  }
+  },
 );
 
 const initialState = {
@@ -37,7 +36,7 @@ const userSlice = createSlice({
     });
     builder.addCase(getLoginStatus.fulfilled, (state, { payload }) => {
       state.user = payload;
-      state.isAuthenticated = payload.email === '' ? false : true;
+      state.isAuthenticated = payload.email !== '';
       state.isLoading = false;
     });
     builder.addCase(getLoginStatus.rejected, (state, { payload }) => {
@@ -53,7 +52,7 @@ const userSlice = createSlice({
     });
     builder.addCase(postUserLogin.fulfilled, (state, { payload }) => {
       state.user = payload;
-      state.isAuthenticated = payload.email === '' ? false : true;
+      state.isAuthenticated = payload.email !== '';
       state.isLoading = false;
     });
     builder.addCase(getLoginStatus.rejected, (state, { payload }) => {
