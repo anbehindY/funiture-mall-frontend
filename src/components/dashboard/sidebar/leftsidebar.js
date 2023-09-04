@@ -1,4 +1,5 @@
 import logo from './logo.png';
+import './leftsidebar.css';
 
 const LeftSidebar = () => (
   <div className="leftsidebar-container">
