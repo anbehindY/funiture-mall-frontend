@@ -5,7 +5,7 @@ import './dashboard.css';
 import LeftSidebar from './sidebar/leftsidebar';
 
 const Dashboard = () => {
- const { Verifylogin } = useContext(DashboardContext);
+  const { Verifylogin } = useContext(DashboardContext);
   Verifylogin();
   return (
     <div className="dashboard-layout">
