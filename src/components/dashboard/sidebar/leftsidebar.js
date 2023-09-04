@@ -51,4 +51,3 @@ const LeftSidebar = ({ setCurrUser }) => (
 );
 
 export default LeftSidebar;
-

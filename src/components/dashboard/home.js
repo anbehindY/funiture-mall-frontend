@@ -1,8 +1,7 @@
-import SplashPage from './SplashPage';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { getLoginStatus } from '../../store/userSllice';
+import SplashPage from './SplashPage';
 import Dashboard from './dashboard';
 
 const Home = () => {
@@ -10,11 +9,9 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     dispatch(getLoginStatus());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

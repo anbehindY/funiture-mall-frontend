@@ -28,15 +28,16 @@ const Signup = (setCurrUser) => {
       });
 
       if (response.ok) {
-        // const data = await response.json();
         localStorage.setItem('token', response.headers.get('Authorization'));
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
+        const data = await response.json();
+        console.log(data.status.message);
       }
-      throw data.error;
     } catch (error) {
-      console.log('error', error);
+      throw new Error(error);
+     
     }
   };
 
@@ -62,7 +63,7 @@ const Signup = (setCurrUser) => {
       {isAuthenticated && (
         <div>
           <p>Congratulations you have successfully registered</p>
-          <Link to={'/login'}>Click here to login in</Link>
+          <Link to="/login">Click here to login in</Link>
         </div>
       )}
       {!isAuthenticated && (

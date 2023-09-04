@@ -30,13 +30,16 @@ const Furniture = () => {
           </p>
           <p>
             <span>Waranty:</span>
-            <span>{filteredItem[0].warranty}years</span>
+            <span>
+              {filteredItem[0].warranty}
+              years
+            </span>
           </p>
           <p>
             <span>Production date:</span>
             <span>{filteredItem[0].created_at}</span>
           </p>
-          <button>Reserve</button>
+          <button type="submit">Reserve</button>
         </div>
       )}
     </div>

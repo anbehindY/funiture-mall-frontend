@@ -5,9 +5,7 @@ export const DashboardContext = createContext();
 export const DashboardProvider = (data) => {
   const { children } = data;
 
-  const Verifylogin = () => {
-    return true;
-  };
+  const Verifylogin = () => true;
 
   return (
     <DashboardContext.Provider value={{ Verifylogin }}>

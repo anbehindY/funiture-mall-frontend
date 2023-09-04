@@ -36,9 +36,11 @@ const Login = ({ currUser, setCurrUser }) => {
         navigate('/dashboard');
       } else {
         setIsAuthenticated(false);
+        const data = await response.json();
+        console.log(data.status.message);
       }
     } catch (error) {
-      console.log(error);
+      throw new Error(error);
     }
   };
 

@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/login/login';
 import NotFound from './components/pagenotfound.js/notfound';
-import FurnitureList from './components/dashboard/furniture/FurnitureList';
 import Furniture from './components/dashboard/furniture/Furniture';
 // import Customer from './components/dashboard/customer/customer';
 // import Product from './components/dashboard/product/product';
