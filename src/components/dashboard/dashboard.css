@@ -7,8 +7,8 @@
   overflow: auto;
   max-width: 1600px;
   min-height: 548px;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   padding: 20px;
   font-family: "DM Sans", sans-serif;
   font-size: 12px;
@@ -35,13 +35,21 @@ ul {
 }
 
 .left-content {
-  padding: 20px;
+  margin-left: 20px;
 }
 
 .item {
-  color: #353536;
-  margin-bottom: 14px;
-  font-weight: 500;
+  color: black;
+  padding: 5px;
+  font-weight: bolder;
+  padding-right: 100px;
+  margin-bottom: 8px;
+}
+
+.item:hover {
+  background-color: #7dd21f;
+  color: white;
+  padding: 5px;
 }
 
 .category-list {
@@ -111,7 +119,7 @@ ul {
   padding: 10px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 780px) {
   .leftsidebar-container {
     display: none;
   }
