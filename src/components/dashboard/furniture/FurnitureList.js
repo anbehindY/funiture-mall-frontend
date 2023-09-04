@@ -14,7 +14,7 @@ const FurnitureList = () => {
 
   useEffect(() => {
     dispatch(getFurnitures());
-  }, [currUser, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className="furniture-container">

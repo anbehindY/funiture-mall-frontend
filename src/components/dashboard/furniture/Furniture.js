@@ -39,7 +39,7 @@ const Furniture = () => {
             <span>Production date:</span>
             <span>{filteredItem[0].created_at}</span>
           </p>
-          <button type='submit'>Reserve</button>
+          <button type="submit">Reserve</button>
         </div>
       )}
     </div>

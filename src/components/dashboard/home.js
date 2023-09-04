@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getLoginStatus());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

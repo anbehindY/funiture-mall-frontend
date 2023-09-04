@@ -1,4 +1,4 @@
-import {Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import './dashboard.css';
 import LeftSidebar from './sidebar/leftsidebar';
 import FurnitureList from './furniture/FurnitureList';
@@ -6,7 +6,7 @@ import FurnitureList from './furniture/FurnitureList';
 const Dashboard = () => (
   <div className="dashboard-layout">
     <LeftSidebar />
-    <FurnitureList/>
+    <FurnitureList />
 
     <div className="dashboard-content">
       <Outlet />
