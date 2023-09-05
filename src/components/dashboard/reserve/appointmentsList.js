@@ -13,7 +13,7 @@ function AppointmentsList() {
     // Fetch user appointments when the component mounts
     dispatch(fetchAppointments());
     dispatch(getFurnitures());
-  }, []);
+  }, [dispatch, message]);
 
   const handleDeleteAppointment = (id) => {
     if (status === 'succeeded') {
@@ -29,7 +29,7 @@ function AppointmentsList() {
     if (message === 'loaded') {
       const selected = furnitures.filter((item) => item.id === id);
 
-      return kind === 'price' ? selected[0].price : selected[0].name;
+      return kind === 'price' ? selected[0].price : kind === 'warranty' ? selected[0].warranty : selected[0].name;
     }
   };
   if (error) {
@@ -75,6 +75,5 @@ function AppointmentsList() {
     </div>
   );
 }
-
 
 export default AppointmentsList;
