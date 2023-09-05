@@ -82,10 +82,10 @@ import Dashboard from './components/dashboard/dashboard';
 import FurnitureForm from './components/dashboard/furniture/FurnitureForm';
 import FurnitureList from './components/dashboard/furniture/FurnitureList';
 import Customer from './components/dashboard/customer/customer';
-import Product from './components/dashboard/product/product';
+// import Product from './components/dashboard/product/product';
 import Reserve from './components/dashboard/reserve/reserve';
-import History from './components/dashboard/history/history';
-import AppointmentsList from './components/appointmentsList';
+// import History from './components/dashboard/history/history';
+import AppointmentsList from './components/dashboard/reserve/appointmentsList';
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
@@ -106,9 +106,9 @@ function App() {
       <Route path="/signup" exact element={<Signup currUser={currUser} setCurrUser={setCurrUser} />} />
       <Route path="/furnitures" exact element={<FurnitureList />} />
       <Route path="/customers" exact element={<Customer />} />
-      <Route path="/products" exact element={<Product />} />
+      {/* <Route path="/products" exact element={<Product />} /> */}
       <Route path="/reserve" exact element={<Reserve />} />
-      <Route path="/histories" exact element={<History />} />
+      {/* <Route path="/histories" exact element={<History />} /> */}
       <Route path="/appointments" exact element={<AppointmentsList />} />
       <Route path="*" exact element={<NotFound />} />
     </Routes>
