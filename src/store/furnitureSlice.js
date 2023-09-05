@@ -67,6 +67,42 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
 
 const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your actual API URL
 
+export const addFurniture = createAsyncThunk(
+  'post/furnitures',
+  async (furnitureData) => {
+    const authToken = 'your-auth-token'; // Replace with your actual authentication token
+    const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your API URL
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`, // Include your authentication token here
+      },
+      body: JSON.stringify(furnitureData), // Convert the data to JSON format
+    };
+
+    try {
+      const response = await fetch(apiUrl, requestOptions);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json(); // Parse the response body as JSON
+      console.log('Response:', data);
+
+      // Handle the data or return it if needed
+      return data;
+    } catch (error) {
+      // Handle errors here
+      console.error('Error:', error);
+      throw error; // Rethrow the error to be caught by the Redux action
+    }
+  }
+);
+
+
 
 
 export const initialState = {
