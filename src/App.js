@@ -11,6 +11,7 @@ import Furniture from './components/dashboard/furniture/Furniture';
 import Home from './components/dashboard/home';
 import Signup from './components/login/signup';
 import Dashboard from './components/dashboard/dashboard';
+import FurnitureForm from './components/dashboard/furniture/FurnitureForm';
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
@@ -39,6 +40,13 @@ function App() {
           path="/login"
           exact
           element={<Login currUser={currUser} setCurrUser={setCurrUser} />}
+        />
+        <Route
+          path="/new-furniture"
+          exact
+          element={
+            <FurnitureForm currUser={currUser} setCurrUser={setCurrUser} />
+          }
         />
         <Route
           path="/signup"
