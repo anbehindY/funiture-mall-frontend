@@ -26,12 +26,18 @@ function AppointmentsList() {
   };
 
   const findFuniture = (id, kind) => {
+    let result = null;
     if (message === 'loaded') {
       const selected = furnitures.filter((item) => item.id === id);
-
-      return kind === 'price' ? selected[0].price : kind === 'warranty' ? selected[0].warranty : selected[0].name;
+      if (kind === 'price') {
+        result = selected[0].price;
+      } if (kind === 'warranty') {
+        result = selected[0].warranty;
+      } else { result = selected[0].name; }
     }
+    return result;
   };
+
   if (error) {
     return (
       <div>
@@ -66,7 +72,7 @@ function AppointmentsList() {
                 <td>{findFuniture(appointment.furniture_id, 'warranty')}</td>
                 <td>{appointment.city}</td>
                 <td>{appointment.appoint_date}</td>
-                <td><button onClick={() => handleDeleteAppointment(appointment.id)}>Delete</button></td>
+                <td><button type="button" onClick={() => handleDeleteAppointment(appointment.id)}>Delete</button></td>
               </tr>
             ))}
           </tbody>
