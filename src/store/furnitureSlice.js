@@ -18,10 +18,10 @@ export const getSingleFurniture = createAsyncThunk(
   'get/furnitures',
   async (id) => {
     const furniture = await axios.get(
-      `http://[::1]:3001/api/v1/furnitures/${id}`
+      `http://[::1]:3001/api/v1/furnitures/${id}`,
     );
     // return furnitures.data;
-  }
+  },
   // export const addFurniture = createAsyncThunk(
   //   'post/furnitures',
   //   async (furnitureData) => {
@@ -90,23 +90,17 @@ export const addFurniture = createAsyncThunk(
       body: JSON.stringify(furnitureData), // Convert the data to JSON format
     };
 
-    try {
-      const response = await fetch(apiUrl, requestOptions);
+    const response = await fetch(apiUrl, requestOptions);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json(); // Parse the response body as JSON
-
-      // Handle the data or return it if needed
-      return data;
-    } catch (error) {
-      // Handle errors here
-
-      throw error; // Rethrow the error to be caught by the Redux action
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-  }
+
+    const data = await response.json(); // Parse the response body as JSON
+
+    // Handle the data or return it if needed
+    return data;
+  },
 );
 
 export const initialState = {
