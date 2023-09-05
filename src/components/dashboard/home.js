@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLoginStatus } from '../../store/userSllice';
+import { getLoginStatus } from '../../store/userSlice';
 import SplashPage from './SplashPage';
 import Dashboard from './dashboard';
 
