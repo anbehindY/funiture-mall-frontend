@@ -2,14 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getFurnitures } from '../../../store/furnitureSlice';
-
-import { getFurnitures } from '../../../store/furnitureSlice';
-
 import './furniture.css';
 import '../dashboard.css';
 
 const FurnitureList = () => {
-  const { furnitures } = useSelector((store) => store.furniture);
+  const { furnitures } = useSelector((state) => state.furniture);
 
   const dispatch = useDispatch();
 
@@ -19,7 +16,7 @@ const FurnitureList = () => {
 
   return (
     <div className="furniture-container">
-      {furnitures[0]?.map((furniture) => (
+      {furnitures[0].map((furniture) => (
         <Link to={`/furnitures/${furniture.id}`} key={furniture.id}>
           <div className="furniture-image">
             <img src={furniture.image} alt="Furniture" />

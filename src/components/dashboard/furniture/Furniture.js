@@ -5,7 +5,7 @@ import { getFurnitures } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
 
 const Furniture = () => {
-  const { furnitures } = useSelector((store) => store.furniture);
+  const { furnitures } = useSelector((state) => state.furniture);
 
   const { id } = useParams();
   const dispatch = useDispatch();
