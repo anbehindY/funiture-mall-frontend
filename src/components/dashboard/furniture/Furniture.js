@@ -12,7 +12,7 @@ const Furniture = () => {
 
   useEffect(() => {
     dispatch(getFurnitures());
-  }, [id]);
+  }, [id, dispatch]);
 
   const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
 
@@ -53,7 +53,8 @@ const Furniture = () => {
             </button>
             <button type="submit" className="back_furniture">
               {' '}
-              <i className="fa fa-arrow-left" />{' '}
+              <i className="fa fa-arrow-left" />
+              {' '}
             </button>
           </div>
         )}
