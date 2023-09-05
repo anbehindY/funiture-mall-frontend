@@ -1,6 +1,17 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const authToken = localStorage.getItem('token');
+export const getAppointments = createAsyncThunk('get/appointments', async () => {
+  const response = await axios.get('http://[::1]:3001/api/v1/appointments', {
+    headers: {
+      'content-type': 'application/json',
+      authorization: authToken,
+    },
+  });
+  const appointments = response.data;
+  return appointments;
+});
 // Define an initial state
 const initialState = {
   appointments: [],
@@ -29,7 +40,6 @@ export const deleteAppointment = createAsyncThunk('appointments/deleteAppointmen
 export const fetchAppointments = createAsyncThunk('appointments/fetchAppointments', async () => {
   try {
     const response = await axios.get('http://localhost:3001/api/v1/appointments');
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch appointments');
@@ -60,7 +70,7 @@ const appointmentsSlice = createSlice({
       .addCase(deleteAppointment.fulfilled, (state, action) => {
         state.status = 'succeeded';
         // Update the appointments state to remove the deleted appointment
-        state.appointments = state.appointments.filter((appointment) => appointment.id !== action.payload.id);
+        state.appointments = state.appointments.filter((apment) => apment.id !== action.payload.id);
       })
       .addCase(deleteAppointment.rejected, (state, action) => {
         state.status = 'failed';
