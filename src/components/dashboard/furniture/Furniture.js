@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFurnitures } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
@@ -39,7 +39,7 @@ const Furniture = () => {
             <span>Production date:</span>
             <span>{filteredItem[0].created_at}</span>
           </p>
-          <button type="submit">Reserve</button>
+          <Link to="/new-appointment">Book appointment</Link>
         </div>
       )}
     </div>

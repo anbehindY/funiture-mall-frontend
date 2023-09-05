@@ -65,21 +65,19 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
 //   }
 // );
 
-const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your actual API URL
-
 export const addFurniture = createAsyncThunk(
   'post/furnitures',
   async (furnitureData) => {
-    const authToken = 'your-auth-token'; // Replace with your actual authentication token
+    const authToken = localStorage.getItem('token');
     const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your API URL
 
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`, // Include your authentication token here
+        authorization: authToken,
       },
-      body: JSON.stringify(furnitureData), // Convert the data to JSON format
+      body: JSON.stringify(furnitureData),
     };
 
     try {
@@ -101,9 +99,6 @@ export const addFurniture = createAsyncThunk(
     }
   }
 );
-
-
-
 
 export const initialState = {
   furnitures: [],

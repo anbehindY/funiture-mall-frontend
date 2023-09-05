@@ -4,43 +4,45 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFurniture } from '../../../store/furnitureSlice';
 
 const FurnitureForm = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
-  const [price, setPrice] = useState('');
-  const [warranty, setWarranty] = useState();
+  const [furnitureData, setFurnitureData] = useState({
+    name: '',
+    description: '',
+    image: '',
+    price: '',
+    warranty: '',
+  });
 
   const dispatch = useDispatch();
 
-  // const handleChange = (e) => {
-  //   setFurnitureData({
-  //     ...furnitureData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
+  const handleChange = (e) => {
+    setFurnitureData({
+      ...furnitureData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  // const handlePrice = (e) => {
-  //   setFurnitureData({
-  //     ...furnitureData,
-  //     [e.target.name]: Number(e.target.value),
-  //   });
-  // };
+  const handlePrice = (e) => {
+    setFurnitureData({
+      ...furnitureData,
+      [e.target.name]: Number(e.target.value),
+    });
+  };
 
-  // const handleWarranty = (e) => {
-  //   setFurnitureData({
-  //     ...furnitureData,
-  //     [e.target.name]: Number(e.target.value),
-  //   });
-  // };
+  const handleWarranty = (e) => {
+    setFurnitureData({
+      ...furnitureData,
+      [e.target.name]: Number(e.target.value),
+    });
+  };
 
   const furnitureHandler = (e) => {
     e.preventDefault();
 
-    // const furnitureInfo = {
-    //   furniture: { ...furnitureData },
-    // };
+    const furnitureInfo = {
+      furniture: { ...furnitureData },
+    };
 
-    dispatch(addFurniture({ name, description, image, price, warranty }))
+    dispatch(addFurniture(furnitureInfo))
       .unwrap()
       .then((fulfilledAction) => {
         // Handle successful response (fulfilledAction.payload)
@@ -64,10 +66,8 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture name"
               required
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              value={name}
+              onChange={handleChange}
+              // value={furnitureDataname}
             />
           </div>
           <div className="form-row">
@@ -78,10 +78,8 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Enter image url"
               required
-              onChange={(e) => {
-                setImage(e.target.value);
-              }}
-              value={image}
+              onChange={handleChange}
+              // value={image}
             />
           </div>
 
@@ -93,10 +91,8 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture price"
               required
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
-              value={price}
+              onChange={handlePrice}
+              value={furnitureData.price}
             />
           </div>
           <div className="form-row-last">
@@ -107,10 +103,8 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Warranty"
               required
-              onChange={(e) => {
-                setWarranty(e.target.value);
-              }}
-              value={warranty}
+              onChange={handleWarranty}
+              value={furnitureData.warranty}
             />
           </div>
           <div className="form-row-last">
@@ -123,10 +117,8 @@ const FurnitureForm = () => {
               rows={10}
               cols={30}
               required
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-              value={description}
+              onChange={handleChange}
+              // value={description}
             />
           </div>
           <div className="form-row-last">

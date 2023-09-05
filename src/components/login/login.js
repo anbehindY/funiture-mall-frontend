@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './login.css';
 
-const Login = ({ currUser, setCurrUser }) => {
+const Login = () => {
   const [isAuthenticated, setIsAuthenticated] = useState();
 
   const navigate = useNavigate();
@@ -32,7 +32,6 @@ const Login = ({ currUser, setCurrUser }) => {
         const { data } = status;
         localStorage.setItem('token', response.headers.get('Authorization'));
         setIsAuthenticated(true);
-        setCurrUser(data.user);
         navigate('/dashboard');
       } else {
         setIsAuthenticated(false);

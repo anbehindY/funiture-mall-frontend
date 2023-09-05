@@ -12,47 +12,20 @@ import Home from './components/dashboard/home';
 import Signup from './components/login/signup';
 import Dashboard from './components/dashboard/dashboard';
 import FurnitureForm from './components/dashboard/furniture/FurnitureForm';
+import AppointmentForm from './components/dashboard/reserve/reserveForm';
 
 function App() {
-  const [currUser, setCurrUser] = useState(null);
-
-  // const navigate = useNavigate();
-
-  // if (currUser) {
-  //   navigate('/furnitures');
-  // } else {
-  //   navigate('/login');
-  // }
-
   return (
     <>
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route
-          path="/dashboard"
-          exact
-          element={<Dashboard />}
-          currUser={currUser}
-          setCurrUser={setCurrUser}
-        />
+        <Route path="/dashboard" exact element={<Dashboard />} />
         <Route path="/furnitures/:id" element={<Furniture />} />
-        <Route
-          path="/login"
-          exact
-          element={<Login currUser={currUser} setCurrUser={setCurrUser} />}
-        />
-        <Route
-          path="/new-furniture"
-          exact
-          element={
-            <FurnitureForm currUser={currUser} setCurrUser={setCurrUser} />
-          }
-        />
-        <Route
-          path="/signup"
-          exact
-          element={<Signup currUser={currUser} setCurrUser={setCurrUser} />}
-        />
+        <Route path="/new-furniture" exact element={<FurnitureForm />} />
+        <Route path="/new-appointment" exact element={<AppointmentForm />} />
+        <Route path="/login" exact element={<Login />} />
+
+        <Route path="/signup" exact element={<Signup />} />
         <Route path="*" exact element={<NotFound />} />
       </Routes>
     </>
