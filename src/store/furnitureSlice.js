@@ -34,52 +34,38 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
 //   }
 // );
 
-export const addFurniture = createAsyncThunk(
-  'post/furnitures',
-  async (furnitureData, { rejectWithValue }) => {
-    try {
-      const furniture = await axios.post(
-        'http://[::1]:3001/api/v1/furnitures',
-        furnitureData,
-        {
-          headers: {
-            'content-type': 'application/json',
-            authorization: authToken,
-          },
-        }
-      );
+// export const addFurniture = createAsyncThunk(
+//   'post/furnitures',
+//   async (furnitureData, { rejectWithValue }) => {
+//     try {
+//       const furniture = await axios.post(
+//         'http://[::1]:3001/api/v1/furnitures',
+//         furnitureData,
+//         {
+//           headers: {
+//             'content-type': 'application/json',
+//             authorization: authToken,
+//           },
+//         }
+//       );
 
-      return furniture.data;
-    } catch (error) {
-      if (error.response) {
-        // The request was made and the server responded with an error status
-        console.log (rejectWithValue(error.response.data));
-      } else if (error.request) {
-        // The request was made but no response was received
-        return rejectWithValue('No response received from the server.');
-      } else {
-        // Something happened in setting up the request
-        return rejectWithValue('Error setting up the request.');
-      }
-    }
-  }
-);
+//       return furniture.data;
+//     } catch (error) {
+//       if (error.response) {
+//         // The request was made and the server responded with an error status
+//         console.log (rejectWithValue(error.response.data));
+//       } else if (error.request) {
+//         // The request was made but no response was received
+//         return rejectWithValue('No response received from the server.');
+//       } else {
+//         // Something happened in setting up the request
+//         return rejectWithValue('Error setting up the request.');
+//       }
+//     }
+//   }
+// );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your actual API URL
 
 
 
@@ -94,7 +80,6 @@ const furnitureSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getFurnitures.fulfilled, (state, { payload }) => {
       state.furnitures.push(payload);
-  
     });
   },
   // extraReducers: (builder) => {

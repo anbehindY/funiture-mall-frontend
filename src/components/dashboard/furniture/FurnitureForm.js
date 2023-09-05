@@ -4,36 +4,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFurniture } from '../../../store/furnitureSlice';
 
 const FurnitureForm = () => {
-  const [furnitureData, setFurnitureData] = useState({
-    name: '',
-    description: '',
-    image: '',
-    price: '',
-    warranty: '',
-  });
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
+  const [price, setPrice] = useState('');
+  const [warranty, setWarranty] = useState();
 
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    setFurnitureData({
-      ...furnitureData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   setFurnitureData({
+  //     ...furnitureData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
-  const handlePrice = (e) => {
-    setFurnitureData({
-      ...furnitureData,
-      [e.target.name]: Number(e.target.value),
-    });
-  };
+  // const handlePrice = (e) => {
+  //   setFurnitureData({
+  //     ...furnitureData,
+  //     [e.target.name]: Number(e.target.value),
+  //   });
+  // };
 
-  const handleWarranty = (e) => {
-    setFurnitureData({
-      ...furnitureData,
-      [e.target.name]: Number(e.target.value),
-    });
-  };
+  // const handleWarranty = (e) => {
+  //   setFurnitureData({
+  //     ...furnitureData,
+  //     [e.target.name]: Number(e.target.value),
+  //   });
+  // };
 
   const furnitureHandler = (e) => {
     e.preventDefault();
@@ -42,7 +40,7 @@ const FurnitureForm = () => {
     //   furniture: { ...furnitureData },
     // };
 
-    dispatch(addFurniture(furnitureData))
+    dispatch(addFurniture({ name, description, image, price, warranty }))
       .unwrap()
       .then((fulfilledAction) => {
         // Handle successful response (fulfilledAction.payload)
@@ -66,8 +64,10 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture name"
               required
-              onChange={handleChange}
-              value={furnitureData.name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              value={name}
             />
           </div>
           <div className="form-row">
@@ -78,8 +78,10 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Enter image url"
               required
-              onChange={handleChange}
-              value={furnitureData.image}
+              onChange={(e) => {
+                setImage(e.target.value);
+              }}
+              value={image}
             />
           </div>
 
@@ -91,8 +93,10 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture price"
               required
-              onChange={handlePrice}
-              value={furnitureData.price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+              value={price}
             />
           </div>
           <div className="form-row-last">
@@ -103,13 +107,15 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Warranty"
               required
-              onChange={handleWarranty}
-              value={furnitureData.warranty}
+              onChange={(e) => {
+                setWarranty(e.target.value);
+              }}
+              value={warranty}
             />
           </div>
           <div className="form-row-last">
-            <textarea
-              type="textarea"
+            <input
+              type="text"
               name="description"
               id="description"
               className="input-text"
@@ -117,8 +123,10 @@ const FurnitureForm = () => {
               rows={10}
               cols={30}
               required
-              onChange={handleChange}
-              value={furnitureData.description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+              value={description}
             />
           </div>
           <div className="form-row-last">

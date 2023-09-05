@@ -28,7 +28,7 @@ const Signup = (setCurrUser) => {
       });
 
       if (response.ok) {
-        localStorage.setItem('token', response.headers.get('Authorization'));
+        // localStorage.setItem('token', response.headers.get('Authorization'));
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
