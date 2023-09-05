@@ -1,13 +1,23 @@
-import { DashboardProvider } from './dashboardprovider';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getLoginStatus } from '../../store/userSllice';
+import SplashPage from './SplashPage';
 import Dashboard from './dashboard';
 
-const Home = (data) => {
-  const { children } = data;
+const Home = () => {
+  const { isAuthenticated } = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLoginStatus());
+  }, [dispatch]);
+
   return (
-    <DashboardProvider>
-      {children}
-      <Dashboard />
-    </DashboardProvider>
+    <div>
+      {!isAuthenticated && <SplashPage />}
+      {isAuthenticated && <Dashboard />}
+    </div>
   );
 };
 

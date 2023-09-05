@@ -1,62 +1,109 @@
-import axios from 'axios';
-import './login.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+// import { postUserLogin } from '../../store/userSllice';
 
-const Login = () => {
-  const [message, setMessage] = useState('');
+import './login.css';
+
+const Login = ({ currUser, setCurrUser }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState();
+
   const navigate = useNavigate();
-  const signin = async (e) => {
-    e.preventDefault();
-    const user = { user: { email: e.target.email.value, password: e.target.password.value } };
+
+  const [userData, setUserData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const login = async (userData) => {
+    const url = 'http://localhost:3001/login';
     try {
-      await axios.post('http://localhost:3001/login', user, { withCredentials: true })
-        .then((response) => {
-          if (response.data) {
-            navigate('/furnitures');
-          }
-          setMessage(() => 'Username or password is incorrect.');
-        })
-        .catch((error) => {
-          if (error.response) {
-            setMessage(() => `${error.response.data}`);
-          } else if (error.request) {
-            setMessage(() => `${error.request}`);
-          } else {
-            setMessage(() => `${error.message}`);
-          }
-        });
+      const response = await fetch(url, {
+        method: 'post',
+        headers: {
+          'content-type': 'application/json',
+          accept: 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        const { status } = await response.json();
+        const { data } = status;
+        localStorage.setItem('token', response.headers.get('Authorization'));
+        setIsAuthenticated(true);
+        setCurrUser(data.user);
+        navigate('/dashboard');
+      } else {
+        setIsAuthenticated(false);
+        const data = await response.json();
+        console.log(data.status.message);
+      }
     } catch (error) {
-      setMessage(() => 'You cannot access the system.<br> Please contact your administrator.');
-    } finally {
-      e.target.reset();
+      throw new Error(error);
     }
   };
+
+  const handleChange = (e) => {
+    setUserData({
+      ...userData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+
+    const userInfo = {
+      user: { ...userData },
+    };
+    login(userInfo);
+  };
+
   return (
     <div className="container-login">
       <div className="container-form">
-        <form className="form-login" onSubmit={signin}>
+        <form className="form-login" onSubmit={loginHandler}>
           <h2>Login Furniture Mall</h2>
           <div className="form-row">
-            <label htmlFor="email_id">
-              Your Email
-              <input type="text" name="email" id="email_id" className="input-text" placeholder="Your Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" minLength={8} maxLength={30} />
-            </label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              className="input-text"
+              placeholder="Enter email address"
+              required
+              onChange={handleChange}
+              value={userData.username}
+            />
           </div>
           <div className="form-row">
-            <label htmlFor="password_id">
-              Password
-              <input type="password" name="password" id="password_id" className="input-text" placeholder="Your Password" required minLength={6} maxLength={50} />
-            </label>
+            <input
+              type="password"
+              name="password"
+              id="password_id"
+              className="input-text"
+              placeholder="Enter Password"
+              required
+              minLength={6}
+              maxLength={50}
+              onChange={handleChange}
+              value={userData.password}
+            />
           </div>
           <div className="form-row-last">
-            <input type="submit" name="register" className="register" value="Login" />
+            <input
+              type="submit"
+              name="register"
+              className="register"
+              value="Login"
+            />
           </div>
-          <strong>
-            {message}
-            {' '}
-          </strong>
         </form>
+        <p>
+          Don&apos;t have an account?
+          <Link to="/signup">Click here to Register</Link>
+        </p>
       </div>
     </div>
   );
