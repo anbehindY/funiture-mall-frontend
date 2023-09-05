@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFurnitures } from '../../../store/furnitureSlice';
-import { deleteAppointment, fetchAppointments, addWarrantyToAppointment } from '../../../store/appointmentsSlice';
+import {
+  deleteAppointment,
+  fetchAppointments,
+  addWarrantyToAppointment,
+} from '../../../store/appointmentsSlice';
 
 function AppointmentsList() {
   const dispatch = useDispatch();
@@ -28,12 +32,16 @@ function AppointmentsList() {
   const findFuniture = (id, kind) => {
     let result = null;
     if (message === 'loaded') {
-      const selected = furnitures.filter((item) => item.id === id);
-      if (kind === 'price') {
-        result = selected[0].price;
-      } if (kind === 'warranty') {
-        result = selected[0].warranty;
-      } else { result = selected[0].name; }
+      const selected = furnitures.find((item) => item.id === id);
+      if (selected) {
+        if (kind === 'price') {
+          result = selected.price;
+        } else if (kind === 'warranty') {
+          result = selected.warranty;
+        } else {
+          result = selected.name;
+        }
+      }
     }
     return result;
   };
@@ -72,7 +80,14 @@ function AppointmentsList() {
                 <td>{findFuniture(appointment.furniture_id, 'warranty')}</td>
                 <td>{appointment.city}</td>
                 <td>{appointment.appoint_date}</td>
-                <td><button type="button" onClick={() => handleDeleteAppointment(appointment.id)}>Delete</button></td>
+                <td>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteAppointment(appointment.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
