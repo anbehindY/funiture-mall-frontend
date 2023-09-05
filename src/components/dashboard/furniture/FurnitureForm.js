@@ -40,7 +40,9 @@ const FurnitureForm = () => {
     //   furniture: { ...furnitureData },
     // };
 
-    dispatch(addFurniture({ name, description, image, price, warranty }))
+    dispatch(addFurniture({
+      name, description, image, price, warranty,
+    }))
       .unwrap()
       .then((fulfilledAction) => {
         // Handle successful response (fulfilledAction.payload)

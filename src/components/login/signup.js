@@ -37,7 +37,6 @@ const Signup = (setCurrUser) => {
       }
     } catch (error) {
       throw new Error(error);
-     
     }
   };
 
@@ -153,7 +152,8 @@ const Signup = (setCurrUser) => {
             </div>
           </form>
           <p>
-            Already have an account?{' '}
+            Already have an account?
+            {' '}
             <Link to="/login">Click here to Login</Link>
           </p>
         </div>
