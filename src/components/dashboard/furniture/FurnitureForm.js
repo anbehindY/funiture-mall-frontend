@@ -1,7 +1,7 @@
 import { useState } from 'react';
 // import { Link, redirect, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { postFurniture } from '../../../store/furnitureSlice';
+import { addFurniture } from '../../../store/furnitureSlice';
 
 const FurnitureForm = () => {
   const [furnitureData, setFurnitureData] = useState({
@@ -21,16 +21,36 @@ const FurnitureForm = () => {
     });
   };
 
-  const furnitureHandler = async (e) => {
+  const handlePrice = (e) => {
+    setFurnitureData({
+      ...furnitureData,
+      [e.target.name]: Number(e.target.value),
+    });
+  };
+
+  const handleWarranty = (e) => {
+    setFurnitureData({
+      ...furnitureData,
+      [e.target.name]: Number(e.target.value),
+    });
+  };
+
+  const furnitureHandler = (e) => {
     e.preventDefault();
 
-    const furnitureInfo = {
-      furniture: { ...furnitureData },
-    };
-    console.log(furnitureInfo);
+    // const furnitureInfo = {
+    //   furniture: { ...furnitureData },
+    // };
 
-    dispatch(postFurniture(furnitureInfo));
-
+    dispatch(addFurniture(furnitureData))
+      .unwrap()
+      .then((fulfilledAction) => {
+        // Handle successful response (fulfilledAction.payload)
+      })
+      .catch((rejectedAction) => {
+        // Handle error (rejectedAction.payload)
+        console.log(rejectedAction.payload);
+      });
   };
 
   return (
@@ -71,7 +91,7 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture price"
               required
-              onChange={handleChange}
+              onChange={handlePrice}
               value={furnitureData.price}
             />
           </div>
@@ -83,7 +103,7 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Warranty"
               required
-              onChange={handleChange}
+              onChange={handleWarranty}
               value={furnitureData.warranty}
             />
           </div>

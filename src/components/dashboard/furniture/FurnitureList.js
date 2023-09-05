@@ -12,8 +12,6 @@ const FurnitureList = () => {
 
   const dispatch = useDispatch();
 
-  console.log(furnitures);
-
   useEffect(() => {
     dispatch(getFurnitures());
   }, [dispatch]);
