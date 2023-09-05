@@ -1,25 +1,18 @@
-const Reserve = () => (
-  <div>
-    <h1>Reserve</h1>
-  </div>
-);
-export default Reserveimport React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import countries from 'countries-list'; // Import the countries-list library
 import { setUsername } from '../../../store/reservationActions';
 
 function Reserve() {
   const [selectedItem, setSelectedItem] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
-  const [selectedCountry, setSelectedCountry] = useState(''); // State to store the selected country
 
   // Assuming you have a username stored in Redux state
   const usernameFromRedux = useSelector((state) => state.username);
   const dispatch = useDispatch();
 
   // Get the list of cities based on the selected country
-  const cities = selectedCountry ? countries.countries[selectedCountry].cities : [];
+  const cities = ['Abuja', 'Uyo', 'Asaba'];
 
   const handleReserve = (event) => {
     event.preventDefault();
@@ -37,8 +30,7 @@ function Reserve() {
     <div>
       <h2>Reserve an Appointment</h2>
       <form onSubmit={handleReserve}>
-       
-            <label htmlFor="selectedDate">
+        <label htmlFor="selectedDate">
           Select Date:
           <input
             type="date"
@@ -46,20 +38,6 @@ function Reserve() {
             value={selectedDate}
             onChange={(event) => setSelectedDate(event.target.value)}
           />
-        </label>
-        <label htmlFor="selectedCountry">
-          Select Country:
-          <select
-            id="selectedCountry"
-            value={selectedCountry}
-            onChange={(event) => setSelectedCountry(event.target.value)}
-          >
-            {Object.keys(countries.countries).map((countryCode) => (
-              <option key={countryCode} value={countryCode}>
-                {countries.countries[countryCode].name}
-              </option>
-            ))}
-          </select>
         </label>
         <label htmlFor="selectedCity">
           Select City:
@@ -76,9 +54,7 @@ function Reserve() {
                 </option>
               ))}
             </select>
-          ) : (
-            <p>No cities available for the selected country.</p>
-          )}
+          ) : null}
         </label>
         <button type="submit">Reserve</button>
       </form>
@@ -87,4 +63,3 @@ function Reserve() {
 }
 
 export default Reserve;
-;
