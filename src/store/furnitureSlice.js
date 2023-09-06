@@ -14,40 +14,48 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   return furnitures;
 });
 
-// export const addFurniture = createAsyncThunk(
-//   'post/furnitures',
-//   async (furnitureData) => {
-//     console.log(furnitureData);
-//     const furniture = await axios.post(
-//       "http://[::1]:3001/api/v1/furnitures",
-//       furnitureData,
-//       {
-//         headers: {
-//           "content-type": "application/json",
-//           "authorization": authToken,
-//         },
-//       }
-//     );
+export const getSingleFurniture = createAsyncThunk(
+  'get/furnitures',
+  async (id) => {
+    const furniture = await axios.get(
+      `http://[::1]:3001/api/v1/furnitures/${id}`,
+    );
+    // return furnitures.data;
+  },
+  // export const addFurniture = createAsyncThunk(
+  //   'post/furnitures',
+  //   async (furnitureData) => {
+  //     console.log(furnitureData);
+  //     const furniture = await axios.post(
+  //       "http://[::1]:3001/api/v1/furnitures",
+  //       furnitureData,
+  //       {
+  //         headers: {
+  //           "content-type": "application/json",
+  //           "authorization": authToken,
+  //         },
+  //       }
+  //     );
 
-//     console.log(furniture.data);
-//     // return furniture.data;
-//   }
-// );
+  //     console.log(furniture.data);
+  //     // return furniture.data;
+  //   }
+  // );
 
-// export const addFurniture = createAsyncThunk(
-//   'post/furnitures',
-//   async (furnitureData, { rejectWithValue }) => {
-//     try {
-//       const furniture = await axios.post(
-//         'http://[::1]:3001/api/v1/furnitures',
-//         furnitureData,
-//         {
-//           headers: {
-//             'content-type': 'application/json',
-//             authorization: authToken,
-//           },
-//         }
-//       );
+  // export const addFurniture = createAsyncThunk(
+  //   'post/furnitures',
+  //   async (furnitureData, { rejectWithValue }) => {
+  //     try {
+  //       const furniture = await axios.post(
+  //         'http://[::1]:3001/api/v1/furnitures',
+  //         furnitureData,
+  //         {
+  //           headers: {
+  //             'content-type': 'application/json',
+  //             authorization: authToken,
+  //           },
+  //         }
+  //       );
 
 //       return furniture.data;
 //     } catch (error) {
@@ -63,9 +71,9 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
 //       }
 //     }
 //   }
-// );
+);
 
-const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your actual API URL
+// const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your actual API URL
 
 export const addFurniture = createAsyncThunk(
   'post/furnitures',
@@ -90,23 +98,20 @@ export const addFurniture = createAsyncThunk(
       }
 
       const data = await response.json(); // Parse the response body as JSON
-      console.log('Response:', data);
 
       // Handle the data or return it if needed
       return data;
     } catch (error) {
       // Handle errors here
-      console.error('Error:', error);
+
       throw error; // Rethrow the error to be caught by the Redux action
     }
-  }
+  },
 );
-
-
-
 
 export const initialState = {
   furnitures: [],
+  message: '',
 };
 
 const furnitureSlice = createSlice({
@@ -115,7 +120,8 @@ const furnitureSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getFurnitures.fulfilled, (state, { payload }) => {
-      state.furnitures.push(payload);
+      state.furnitures = payload;
+      state.message = 'loaded';
     });
   },
   // extraReducers: (builder) => {
@@ -125,4 +131,4 @@ const furnitureSlice = createSlice({
   // },
 });
 
-export default furnitureSlice;
+export default furnitureSlice.reducer;
