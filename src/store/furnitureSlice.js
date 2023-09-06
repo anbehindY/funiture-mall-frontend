@@ -18,10 +18,10 @@ export const getSingleFurniture = createAsyncThunk(
   'get/furnitures',
   async (id) => {
     const furniture = await axios.get(
-      `http://[::1]:3001/api/v1/furnitures/${id}`,
+      `http://[::1]:3001/api/v1/furnitures/${id}`
     );
     // return furnitures.data;
-  },
+  }
   // export const addFurniture = createAsyncThunk(
   //   'post/furnitures',
   //   async (furnitureData) => {
@@ -57,20 +57,20 @@ export const getSingleFurniture = createAsyncThunk(
   //         }
   //       );
 
-//       return furniture.data;
-//     } catch (error) {
-//       if (error.response) {
-//         // The request was made and the server responded with an error status
-//         console.log (rejectWithValue(error.response.data));
-//       } else if (error.request) {
-//         // The request was made but no response was received
-//         return rejectWithValue('No response received from the server.');
-//       } else {
-//         // Something happened in setting up the request
-//         return rejectWithValue('Error setting up the request.');
-//       }
-//     }
-//   }
+  //       return furniture.data;
+  //     } catch (error) {
+  //       if (error.response) {
+  //         // The request was made and the server responded with an error status
+  //         console.log (rejectWithValue(error.response.data));
+  //       } else if (error.request) {
+  //         // The request was made but no response was received
+  //         return rejectWithValue('No response received from the server.');
+  //       } else {
+  //         // Something happened in setting up the request
+  //         return rejectWithValue('Error setting up the request.');
+  //       }
+  //     }
+  //   }
 );
 
 // const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your actual API URL
@@ -106,7 +106,7 @@ export const addFurniture = createAsyncThunk(
 
       throw error; // Rethrow the error to be caught by the Redux action
     }
-  },
+  }
 );
 
 export const initialState = {
@@ -120,7 +120,7 @@ const furnitureSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getFurnitures.fulfilled, (state, { payload }) => {
-      state.furnitures = payload;
+      state.furnitures.push(payload);
       state.message = 'loaded';
     });
   },
