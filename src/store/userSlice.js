@@ -44,9 +44,6 @@ const userSlice = createSlice({
       state.isAuthenticated = false;
       state.error = true;
     });
-  },
-
-  extraReducers: (builder) => {
     builder.addCase(postUserLogin.pending, (state, { payload }) => {
       state.isLoading = true;
     });
