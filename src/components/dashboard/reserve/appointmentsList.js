@@ -4,7 +4,7 @@ import { getFurnitures } from '../../../store/furnitureSlice';
 import {
   deleteAppointment,
   fetchAppointments,
- addWarrantyToAppointment,
+  addWarrantyToAppointment,
 } from '../../../store/appointmentsSlice';
 
 function AppointmentsList() {
@@ -25,9 +25,9 @@ function AppointmentsList() {
     }
   };
 
-   const addWarranty = (id) => {
-   dispatch(addWarrantyToAppointment(id));
-   };
+  const addWarranty = (id) => {
+    dispatch(addWarrantyToAppointment(id));
+  };
 
   const findFuniture = (id, kind) => {
     let result = null;
