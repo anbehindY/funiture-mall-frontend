@@ -1,20 +1,37 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import { Link, redirect, useNavigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addFurniture } from '../../../store/furnitureSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { addAppointment } from '../../../store/appointmentsSlice';
+import { getLoginStatus } from '../../store/userSllice';
+import { getFurnitures } from '../../../store/furnitureSlice';
 
 const AppointmentForm = () => {
+  const { user } = useSelector((store) => store.user);
+  const { furnitures } = useSelector((state) => state.furniture);
+
+    const location = useLocation();
+    const furnitureState = location.state;
+    const { fromFurniture } = furnitureState;
+
   const [appointmentDetail, setAppointmentDetail] = useState({
     city: '',
-    date: '',
-    furniture: '',
+    appoint_date: '',
+    furniture_id: '',
+    user_id: '',
   });
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLoginStatus());
+    dispatch(getFurnitures());
+  }, []);
 
   const handleChange = (e) => {
     setAppointmentDetail({
       ...appointmentDetail,
+      furniture_id: '',
+      user_id: '',
       [e.target.name]: e.target.value,
     });
   };
@@ -22,11 +39,8 @@ const AppointmentForm = () => {
   const appointmentHandler = (e) => {
     e.preventDefault();
 
-    // const furnitureInfo = {
-    //   furniture: { ...furnitureData },
-    // };
     console.log(appointmentDetail);
-    // dispatch(addFurniture(furnitureInfo));
+    dispatch(addAppointment(appointmentDetail));
   };
 
   return (
@@ -53,7 +67,7 @@ const AppointmentForm = () => {
           <div className="form-row">
             <input
               type="date"
-              name="date"
+              name="appoint_date"
               id="date"
               className="input-text"
               placeholder="Select a preferred date"
@@ -73,5 +87,3 @@ const AppointmentForm = () => {
 };
 
 export default AppointmentForm;
-
-
