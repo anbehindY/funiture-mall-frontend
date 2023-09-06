@@ -24,7 +24,6 @@ function AppointmentsList() {
     dispatch(deleteAppointment(id));
   };
 
-
   const currentUserFurnitures = furnitures[0]?.map((item) => {
     if (item.id === user.id) {
       return item;

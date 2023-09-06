@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-// import { postUserLogin } from '../../store/userSllice';
 
 import './login.css';
 
@@ -32,7 +31,7 @@ const Login = () => {
         const { status } = await response.json();
         const { data } = status;
         localStorage.setItem('token', response.headers.get('Authorization'));
-        console.log(data);
+      
         localStorage.setItem('user', JSON.stringify(data));
         setIsAuthenticated(true);
         navigate('/dashboard');
