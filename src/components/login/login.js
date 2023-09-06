@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, redirect, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 // import { postUserLogin } from '../../store/userSllice';
 
@@ -110,3 +111,12 @@ const Login = () => {
 };
 
 export default Login;
+
+Login.propTypes = {
+  currUser: PropTypes.shape({
+    id: PropTypes.number,
+    username: PropTypes.string,
+    email: PropTypes.string,
+  }).isRequired,
+  setCurrUser: PropTypes.func.isRequired,
+};

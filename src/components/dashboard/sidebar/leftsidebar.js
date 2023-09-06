@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Logout from '../../login/Logout';
 import logo from './logo.png';
 
@@ -51,3 +52,7 @@ const LeftSidebar = ({ setCurrUser }) => (
 );
 
 export default LeftSidebar;
+
+LeftSidebar.propTypes = {
+  setCurrUser: PropTypes.func.isRequired,
+};
