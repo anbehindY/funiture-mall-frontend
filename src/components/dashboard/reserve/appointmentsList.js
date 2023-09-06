@@ -64,7 +64,7 @@ function AppointmentsList() {
         <table>
           <thead>
             <tr>
-              <th>Item Name</th>
+              <th>Furniture Name</th>
               <th>Price</th>
               <th>Warranty</th>
               <th>Date</th>
