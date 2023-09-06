@@ -33,7 +33,6 @@ const Signup = (setCurrUser) => {
       } else {
         setIsAuthenticated(false);
         const data = await response.json();
-        console.log(data.status.message);
       }
     } catch (error) {
       throw new Error(error);

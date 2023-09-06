@@ -4,7 +4,7 @@ import { getFurnitures } from '../../../store/furnitureSlice';
 import {
   deleteAppointment,
   fetchAppointments,
-  addWarrantyToAppointment,
+ addWarrantyToAppointment,
 } from '../../../store/appointmentsSlice';
 
 function AppointmentsList() {
@@ -25,9 +25,9 @@ function AppointmentsList() {
     }
   };
 
-  const addWarranty = (id) => {
-    dispatch(addWarrantyToAppointment(id));
-  };
+   const addWarranty = (id) => {
+   dispatch(addWarrantyToAppointment(id));
+   };
 
   const findFuniture = (id, kind) => {
     let result = null;
@@ -65,7 +65,6 @@ function AppointmentsList() {
           <thead>
             <tr>
               <th>Item Name</th>
-              <th>City</th>
               <th>Price</th>
               <th>Warranty</th>
               <th>Date</th>
@@ -78,7 +77,6 @@ function AppointmentsList() {
                 <td>{findFuniture(appointment.furniture_id, 'name')}</td>
                 <td>{findFuniture(appointment.furniture_id, 'price')}</td>
                 <td>{findFuniture(appointment.furniture_id, 'warranty')}</td>
-                <td>{appointment.city}</td>
                 <td>{appointment.appoint_date}</td>
                 <td>
                   <button

@@ -21,7 +21,6 @@ export const getSingleFurniture = createAsyncThunk(
       `http://[::1]:3001/api/v1/furnitures/${id}`,
     );
     // return furnitures.data;
-    console.log(furniture);
   },
   // export const addFurniture = createAsyncThunk(
   //   'post/furnitures',
@@ -99,13 +98,12 @@ export const addFurniture = createAsyncThunk(
       }
 
       const data = await response.json(); // Parse the response body as JSON
-      console.log('Response:', data);
 
       // Handle the data or return it if needed
       return data;
     } catch (error) {
       // Handle errors here
-      console.error('Error:', error);
+
       throw error; // Rethrow the error to be caught by the Redux action
     }
   },
