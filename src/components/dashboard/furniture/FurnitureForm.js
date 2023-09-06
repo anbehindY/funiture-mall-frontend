@@ -49,7 +49,6 @@ const FurnitureForm = () => {
       })
       .catch((rejectedAction) => {
         // Handle error (rejectedAction.payload)
-        console.log(rejectedAction.payload);
       });
   };
 

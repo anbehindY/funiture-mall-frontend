@@ -5,19 +5,20 @@ import { getFurnitures } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
 
 const Furniture = () => {
-  const { furnitures } = useSelector((store) => store.furniture);
+  const { furnitures } = useSelector((state) => state.furniture);
 
   const { id } = useParams();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getFurnitures());
-  }, [dispatch]);
+  }, [id]);
 
   const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
 
   return (
-    <div className="furniture-image">
+    <div className="main_furniture_select">
+      {' '}
       <LeftSidebar />
       {filteredItem && (
         <div className="furniture-image">
