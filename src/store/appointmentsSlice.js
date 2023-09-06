@@ -3,17 +3,21 @@ import axios from 'axios';
 
 const authToken = localStorage.getItem('token');
 
-export const getAppointments = createAsyncThunk(
-  'get/appointments',
-  async () => {
-    const response = await axios.get('http://[::1]:3001/api/v1/appointments', {
-      headers: {
-        'content-type': 'application/json',
-        authorization: authToken,
-      },
-    });
+export const fetchAppointments = createAsyncThunk(
+  'fetch/appointments',
+  async (user_id) => {
+    const response = await axios.get(
+      `http://[::1]:3001//api/v1/users/${user_id}/appointments`,
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: authToken,
+        },
+      }
+    );
     const appointments = response.data;
     return appointments;
+    // console.log(appointments);
   }
 );
 
@@ -21,7 +25,7 @@ export const addAppointment = createAsyncThunk(
   'add/appointment',
   async (appointmentDetail) => {
     const response = await axios.post(
-      `http://[::1]:3001//api/v1/furnitures/${appointmentDetail.furniture_id}/appointment`,
+      `http://[::1]:3001//api/v1/furnitures/${appointmentDetail.furniture_id}/appointments`,
       appointmentDetail,
       {
         headers: {
@@ -31,18 +35,9 @@ export const addAppointment = createAsyncThunk(
       }
     );
     const appointment = await response.data;
-    // return appointments;
-
-    console.log(appointment);
+    return appointment;
   }
 );
-
-// Define an initial state
-const initialState = {
-  appointments: [],
-  error: null,
-  status: '',
-};
 
 // Define the addWarrantyToAppointment async thunk
 export const addWarrantyToAppointment = createAsyncThunk(
@@ -59,12 +54,20 @@ export const addWarrantyToAppointment = createAsyncThunk(
   }
 );
 
+// http://localhost:3001/api/v1/furnitures/${furniture_id}/appointments/${id}
+
 export const deleteAppointment = createAsyncThunk(
   'appointments/deleteAppointment',
   async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/api/v1/appointments/${id}`
+        `http://localhost:3001/api/v1/appointments/${id}`,
+        {
+          headers: {
+            'content-type': 'application/json',
+            authorization: authToken,
+          },
+        }
       );
       return response.data;
     } catch (error) {
@@ -73,19 +76,12 @@ export const deleteAppointment = createAsyncThunk(
   }
 );
 
-export const fetchAppointments = createAsyncThunk(
-  'appointments/fetchAppointments',
-  async () => {
-    try {
-      const response = await axios.get(
-        'http://localhost:3001/api/v1/appointments'
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error('Failed to fetch appointments');
-    }
-  }
-);
+// Define an initial state
+const initialState = {
+  appointments: [],
+  error: null,
+  status: '',
+};
 
 const appointmentsSlice = createSlice({
   name: 'appointments',
@@ -122,9 +118,9 @@ const appointmentsSlice = createSlice({
       .addCase(fetchAppointments.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchAppointments.fulfilled, (state, action) => {
+      .addCase(fetchAppointments.fulfilled, (state, { payload }) => {
         state.status = 'succeeded';
-        state.appointments = action.payload;
+        state.appointments.push(payload);
       })
       .addCase(fetchAppointments.rejected, (state, action) => {
         state.status = 'failed';

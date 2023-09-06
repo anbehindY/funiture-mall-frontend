@@ -9,6 +9,7 @@ import Signup from './components/login/signup';
 import Dashboard from './components/dashboard/dashboard';
 import FurnitureForm from './components/dashboard/furniture/FurnitureForm';
 import AppointmentForm from './components/dashboard/appointment/appointmentForm';
+import AppointmentsList from './components/dashboard/appointment/appointmentsList';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/furnitures/:id" element={<Furniture />} />
         <Route path="/new-furniture" exact element={<FurnitureForm />} />
         <Route path="/new-appointment" exact element={<AppointmentForm />} />
+        <Route path="/my-appointments" exact element={<AppointmentsList/>} />
         <Route path="/login" exact element={<Login />} />
 
         <Route path="/signup" exact element={<Signup />} />

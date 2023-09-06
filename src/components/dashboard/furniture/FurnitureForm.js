@@ -4,7 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFurniture } from '../../../store/furnitureSlice';
 
 const FurnitureForm = () => {
+  const { user } = JSON.parse(localStorage.getItem('user'));
+
   const [furnitureData, setFurnitureData] = useState({
+    user_id: '',
     name: '',
     description: '',
     image: '',
@@ -31,6 +34,7 @@ const FurnitureForm = () => {
   const handleWarranty = (e) => {
     setFurnitureData({
       ...furnitureData,
+      user_id: user.id,
       [e.target.name]: Number(e.target.value),
     });
   };
@@ -38,18 +42,7 @@ const FurnitureForm = () => {
   const furnitureHandler = (e) => {
     e.preventDefault();
 
-    const furnitureInfo = {
-      furniture: { ...furnitureData },
-    };
-
-    dispatch(addFurniture(furnitureInfo))
-      .unwrap()
-      .then((fulfilledAction) => {
-        // Handle successful response (fulfilledAction.payload)
-      })
-      .catch((rejectedAction) => {
-        // Handle error (rejectedAction.payload)
-      });
+    dispatch(addFurniture(furnitureData));
   };
 
   return (

@@ -40,7 +40,9 @@ const Furniture = () => {
             <span>Production date:</span>
             <span>{filteredItem[0].created_at}</span>
           </p>
-          <Link {to="/new-appointment",{state}}>Book appointment</Link>
+          <Link to="/new-appointment" state={{ furniture: filteredItem[0] }}>
+            Book appointment
+          </Link>
         </div>
       )}
     </div>

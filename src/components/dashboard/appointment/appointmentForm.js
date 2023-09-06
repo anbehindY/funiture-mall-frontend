@@ -1,17 +1,11 @@
-import { useEffect, useState } from 'react';
-// import { Link, redirect, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { addAppointment } from '../../../store/appointmentsSlice';
-import { getLoginStatus } from '../../store/userSllice';
-import { getFurnitures } from '../../../store/furnitureSlice';
 
 const AppointmentForm = () => {
-  const { user } = useSelector((store) => store.user);
-  const { furnitures } = useSelector((state) => state.furniture);
-
-    const location = useLocation();
-    const furnitureState = location.state;
-    const { fromFurniture } = furnitureState;
+  const location = useLocation();
+  const { furniture } = location.state;
 
   const [appointmentDetail, setAppointmentDetail] = useState({
     city: '',
@@ -20,27 +14,26 @@ const AppointmentForm = () => {
     user_id: '',
   });
 
-  const dispatch = useDispatch();
+  const { user } = JSON.parse(localStorage.getItem('user'));
 
-  useEffect(() => {
-    dispatch(getLoginStatus());
-    dispatch(getFurnitures());
-  }, []);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setAppointmentDetail({
       ...appointmentDetail,
-      furniture_id: '',
-      user_id: '',
+      furniture_id: furniture.id,
+      user_id: user.id,
       [e.target.name]: e.target.value,
     });
   };
 
-  const appointmentHandler = (e) => {
+  const appointmentHandler = async (e) => {
     e.preventDefault();
-
-    console.log(appointmentDetail);
-    dispatch(addAppointment(appointmentDetail));
+    const response = await dispatch(addAppointment(appointmentDetail));
+    if (response.type === 'add/appointment/fulfilled') {
+      navigate('/dashboard');
+    }
   };
 
   return (
