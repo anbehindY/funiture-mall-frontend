@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { Link, redirect, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 
 import './login.css';
 
 const Login = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState();
-
-  const navigate = useNavigate();
-
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const login = async (userData) => {
     const url = 'http://localhost:3001/login';
@@ -31,13 +28,8 @@ const Login = () => {
         const { status } = await response.json();
         const { data } = status;
         localStorage.setItem('token', response.headers.get('Authorization'));
-      
         localStorage.setItem('user', JSON.stringify(data));
-        setIsAuthenticated(true);
         navigate('/dashboard');
-      } else {
-        setIsAuthenticated(false);
-        const data = await response.json();
       }
     } catch (error) {
       throw new Error(error);
@@ -117,5 +109,4 @@ Login.propTypes = {
     username: PropTypes.string,
     email: PropTypes.string,
   }).isRequired,
-  setCurrUser: PropTypes.func.isRequired,
 };

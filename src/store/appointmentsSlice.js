@@ -5,9 +5,9 @@ const authToken = localStorage.getItem('token');
 
 export const fetchAppointments = createAsyncThunk(
   'fetch/appointments',
-  async (user_id) => {
+  async (userId) => {
     const response = await axios.get(
-      `http://[::1]:3001//api/v1/users/${user_id}/appointments`,
+      `http://[::1]:3001//api/v1/users/${userId}/appointments`,
       {
         headers: {
           'content-type': 'application/json',
@@ -17,7 +17,6 @@ export const fetchAppointments = createAsyncThunk(
     );
     const appointments = response.data;
     return appointments;
-    // console.log(appointments);
   },
 );
 
@@ -39,23 +38,6 @@ export const addAppointment = createAsyncThunk(
   },
 );
 
-// Define the addWarrantyToAppointment async thunk
-export const addWarrantyToAppointment = createAsyncThunk(
-  'appointments/addWarranty',
-  async (appointmentId) => {
-    const response = await fetch(
-      `/api/appointments/${appointmentId}/addWarranty`,
-      {
-        method: 'POST',
-      },
-    );
-    const data = await response.json();
-    return data;
-  },
-);
-
-// http://localhost:3001/api/v1/furnitures/${furniture_id}/appointments/${id}
-
 export const deleteAppointment = createAsyncThunk(
   'appointments/deleteAppointment',
   async (id) => {
@@ -76,7 +58,6 @@ export const deleteAppointment = createAsyncThunk(
   },
 );
 
-// Define an initial state
 const initialState = {
   appointments: [],
   error: null,
@@ -89,27 +70,13 @@ const appointmentsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(addWarrantyToAppointment.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(addWarrantyToAppointment.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        // Update the state with the new appointment data or any other necessary updates
-        // For example, you can mark the appointment as having a warranty
-      })
-      .addCase(addWarrantyToAppointment.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      })
       .addCase(deleteAppointment.pending, (state) => {
         state.status = 'loading';
       })
       .addCase(deleteAppointment.fulfilled, (state, action) => {
         state.status = 'succeeded';
         // Update the appointments state to remove the deleted appointment
-        state.appointments = state.appointments.filter(
-          (apment) => apment.id !== action.payload.id,
-        );
+        state.appointments = state.appointments.filter((apment) => apment.id !== action.payload.id);
       })
       .addCase(deleteAppointment.rejected, (state, action) => {
         state.status = 'failed';

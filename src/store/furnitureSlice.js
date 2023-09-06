@@ -47,9 +47,7 @@ const furnitureSlice = createSlice({
         state.message = 'loaded';
       })
 
-      .addCase(addFurniture.fulfilled, (state, { payload }) => {
-        console.log(payload);
-      });
+      .addCase(addFurniture.fulfilled, (state, { payload }) => {});
   },
 });
 
