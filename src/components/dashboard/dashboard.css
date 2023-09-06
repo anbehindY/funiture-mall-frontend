@@ -27,11 +27,14 @@ ul {
 }
 
 .leftsidebar-container {
-  background-color: #f5f8ff;
-  width: 200px;
+  background-color: white;
+  width: 18vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
   overflow-x: hidden;
   border-right: 1px solid #e3e7f7;
-  position: relative;
+  position: absolute;
 }
 
 .left-content {
