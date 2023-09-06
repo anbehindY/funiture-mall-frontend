@@ -16,23 +16,11 @@ import '../dashboard.css';
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style }}
-      onClick={onClick}
-    />
-  );
+  return <div className={className} style={{ ...style }} onClick={onClick} />;
 }
 function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style }}
-      onClick={onClick}
-    />
-  );
+  return <div className={className} style={{ ...style }} onClick={onClick} />;
 }
 
 const settings = {
@@ -86,19 +74,28 @@ const FurnitureList = () => {
       <h2 className="titlefurniture1">Please Select a models </h2>
 
       <Slider {...settings}>
-
         {furnitures[0]?.map((furniture) => (
           <div className="furnitureItem">
-            <Link to={`/furnitures/${furniture.id}`} key={furniture.id} className="furniture-link ">
+            <Link
+              to={`/furnitures/${furniture.id}`}
+              key={furniture.id}
+              className="furniture-link "
+            >
               <div className="furnitureimage">
-                <img src={furniture.image} className="imgfurniure" alt="Furniture" />
+                <img
+                  src={furniture.image}
+                  className="imgfurniure"
+                  alt="Furniture"
+                />
                 <h1 className="furniture_name center">{furniture.name}</h1>
                 <div className="Divtiret-pointille">
                   {' '}
                   <span className="tiret-pointille" />
                   {' '}
                 </div>
-                <h6 className="furniture_description ">{furniture.description}</h6>
+                <h6 className="furniture_description ">
+                  {furniture.description}
+                </h6>
               </div>
             </Link>
           </div>
