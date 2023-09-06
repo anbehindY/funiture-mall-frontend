@@ -24,8 +24,6 @@ function AppointmentsList() {
     dispatch(deleteAppointment(id));
   };
 
-  console.log(appointments);
-  // console.log(furnitures);
 
   const currentUserFurnitures = furnitures[0]?.map((item) => {
     if (item.id === user.id) {
@@ -33,7 +31,6 @@ function AppointmentsList() {
     }
     return item;
   });
-  console.log(currentUserFurnitures);
 
   const addWarranty = (id) => {
     dispatch(addWarrantyToAppointment(id));

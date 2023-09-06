@@ -13,12 +13,12 @@ export const fetchAppointments = createAsyncThunk(
           'content-type': 'application/json',
           authorization: authToken,
         },
-      }
+      },
     );
     const appointments = response.data;
     return appointments;
     // console.log(appointments);
-  }
+  },
 );
 
 export const addAppointment = createAsyncThunk(
@@ -32,11 +32,11 @@ export const addAppointment = createAsyncThunk(
           'content-type': 'application/json',
           authorization: authToken,
         },
-      }
+      },
     );
     const appointment = await response.data;
     return appointment;
-  }
+  },
 );
 
 // Define the addWarrantyToAppointment async thunk
@@ -47,11 +47,11 @@ export const addWarrantyToAppointment = createAsyncThunk(
       `/api/appointments/${appointmentId}/addWarranty`,
       {
         method: 'POST',
-      }
+      },
     );
     const data = await response.json();
     return data;
-  }
+  },
 );
 
 // http://localhost:3001/api/v1/furnitures/${furniture_id}/appointments/${id}
@@ -67,13 +67,13 @@ export const deleteAppointment = createAsyncThunk(
             'content-type': 'application/json',
             authorization: authToken,
           },
-        }
+        },
       );
       return response.data;
     } catch (error) {
       throw new Error('Failed to delete appointment');
     }
-  }
+  },
 );
 
 // Define an initial state
@@ -108,7 +108,7 @@ const appointmentsSlice = createSlice({
         state.status = 'succeeded';
         // Update the appointments state to remove the deleted appointment
         state.appointments = state.appointments.filter(
-          (apment) => apment.id !== action.payload.id
+          (apment) => apment.id !== action.payload.id,
         );
       })
       .addCase(deleteAppointment.rejected, (state, action) => {

@@ -12,7 +12,7 @@ const Furniture = () => {
 
   useEffect(() => {
     dispatch(getFurnitures());
-  }, [id]);
+  }, [dispatch, id]);
 
   const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
 
@@ -49,3 +49,4 @@ const Furniture = () => {
   );
 };
 export default Furniture;
+

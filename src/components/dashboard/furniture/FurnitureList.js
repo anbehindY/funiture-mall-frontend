@@ -68,7 +68,7 @@ const FurnitureList = () => {
     dispatch(getFurnitures());
   }, [dispatch]);
 
-   console.log(furnitures[0]);
+  console.log(furnitures[0]);
 
   return (
     <div className="carousel">
@@ -91,7 +91,8 @@ const FurnitureList = () => {
                 <h1 className="furniture_name center">{furniture.name}</h1>
                 <div className="Divtiret-pointille">
                   {' '}
-                  <span className="tiret-pointille" />{' '}
+                  <span className="tiret-pointille" />
+                  {' '}
                 </div>
                 <h6 className="furniture_description ">
                   {furniture.description}

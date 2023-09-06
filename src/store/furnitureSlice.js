@@ -25,10 +25,10 @@ export const addFurniture = createAsyncThunk(
           'content-type': 'application/json',
           authorization: authToken,
         },
-      }
+      },
     );
     return furniture.data;
-  }
+  },
 );
 
 export const initialState = {
