@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addAppointment } from '../../../store/appointmentsSlice';
+import LeftSidebar from '../sidebar/leftsidebar';
 
 const AppointmentForm = () => {
   const location = useLocation();
@@ -33,11 +34,14 @@ const AppointmentForm = () => {
     const response = await dispatch(addAppointment(appointmentDetail));
     if (response.type === 'add/appointment/fulfilled') {
       navigate('/dashboard');
+    } else {
+      return;
     }
   };
 
   return (
     <div className="container-login">
+      <LeftSidebar />
       <div className="container-form">
         <form className="form-login" onSubmit={appointmentHandler}>
           <h2>Book an appointment</h2>

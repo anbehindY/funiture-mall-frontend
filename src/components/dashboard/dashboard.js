@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import './dashboard.css';
+import './sidebar/leftsidebar.css';
 import LeftSidebar from './sidebar/leftsidebar';
 import FurnitureList from './furniture/FurnitureList';
 
