@@ -4,45 +4,52 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFurniture } from '../../../store/furnitureSlice';
 
 const FurnitureForm = () => {
-  const { user } = JSON.parse(localStorage.getItem('user'));
-
-  const [furnitureData, setFurnitureData] = useState({
-    user_id: '',
-    name: '',
-    description: '',
-    image: '',
-    price: '',
-    warranty: '',
-  });
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
+  const [price, setPrice] = useState('');
+  const [warranty, setWarranty] = useState();
 
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    setFurnitureData({
-      ...furnitureData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   setFurnitureData({
+  //     ...furnitureData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
-  const handlePrice = (e) => {
-    setFurnitureData({
-      ...furnitureData,
-      [e.target.name]: Number(e.target.value),
-    });
-  };
+  // const handlePrice = (e) => {
+  //   setFurnitureData({
+  //     ...furnitureData,
+  //     [e.target.name]: Number(e.target.value),
+  //   });
+  // };
 
-  const handleWarranty = (e) => {
-    setFurnitureData({
-      ...furnitureData,
-      user_id: user.id,
-      [e.target.name]: Number(e.target.value),
-    });
-  };
+  // const handleWarranty = (e) => {
+  //   setFurnitureData({
+  //     ...furnitureData,
+  //     [e.target.name]: Number(e.target.value),
+  //   });
+  // };
 
   const furnitureHandler = (e) => {
     e.preventDefault();
 
-    dispatch(addFurniture(furnitureData));
+    // const furnitureInfo = {
+    //   furniture: { ...furnitureData },
+    // };
+
+    dispatch(addFurniture({
+      name, description, image, price, warranty,
+    }))
+      .unwrap()
+      .then((fulfilledAction) => {
+        // Handle successful response (fulfilledAction.payload)
+      })
+      .catch((rejectedAction) => {
+        // Handle error (rejectedAction.payload)
+      });
   };
 
   return (
@@ -58,8 +65,10 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture name"
               required
-              onChange={handleChange}
-              // value={furnitureDataname}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              value={name}
             />
           </div>
           <div className="form-row">
@@ -70,8 +79,10 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Enter image url"
               required
-              onChange={handleChange}
-              // value={image}
+              onChange={(e) => {
+                setImage(e.target.value);
+              }}
+              value={image}
             />
           </div>
 
@@ -83,8 +94,10 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture price"
               required
-              onChange={handlePrice}
-              value={furnitureData.price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+              value={price}
             />
           </div>
           <div className="form-row-last">
@@ -95,8 +108,10 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Warranty"
               required
-              onChange={handleWarranty}
-              value={furnitureData.warranty}
+              onChange={(e) => {
+                setWarranty(e.target.value);
+              }}
+              value={warranty}
             />
           </div>
           <div className="form-row-last">
@@ -109,8 +124,10 @@ const FurnitureForm = () => {
               rows={10}
               cols={30}
               required
-              onChange={handleChange}
-              // value={description}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+              value={description}
             />
           </div>
           <div className="form-row-last">
