@@ -38,43 +38,46 @@ const AppointmentForm = () => {
   };
 
   return (
-    <div className="container-login">
-      <div className="container-form">
-        <form className="form-login" onSubmit={appointmentHandler}>
-          <h2>Book an appointment</h2>
-          <div className="form-row">
-            <select
-              name="city"
-              id="city"
-              className="input-text"
-              onChange={handleChange}
-            >
-              <option>Select a city</option>
-              <option>Abuja</option>
-              <option>Addis Ababa</option>
-              <option>Lodon</option>
-              <option>Nairobi</option>
-              <option>New york</option>
-              <option>Taipei</option>
-            </select>
-          </div>
-          <div className="form-row">
-            <input
-              type="date"
-              name="appoint_date"
-              id="date"
-              className="input-text"
-              placeholder="Select a preferred date"
-              required
-              onChange={handleChange}
-              value={appointmentDetail.date}
-            />
-          </div>
+    <div>
+      <LeftSidebar />
+      <div className="container-login">
+        <div className="container-form">
+          <form className="form-login" onSubmit={appointmentHandler}>
+            <h2>Book an appointment</h2>
+            <div className="form-row">
+              <select
+                name="city"
+                id="city"
+                className="input-text"
+                onChange={handleChange}
+              >
+                <option>Select a city</option>
+                <option>Abuja</option>
+                <option>Addis Ababa</option>
+                <option>Lodon</option>
+                <option>Nairobi</option>
+                <option>New york</option>
+                <option>Taipei</option>
+              </select>
+            </div>
+            <div className="form-row">
+              <input
+                type="date"
+                name="appoint_date"
+                id="date"
+                className="input-text"
+                placeholder="Select a preferred date"
+                required
+                onChange={handleChange}
+                value={appointmentDetail.date}
+              />
+            </div>
 
-          <div className="form-row-last">
-            <input type="submit" className="register" />
-          </div>
-        </form>
+            <div className="form-row-last">
+              <input type="submit" className="register" />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ const FurnitureList = () => {
   return (
     <div className="carousel">
       <h2 className="titlefurniture"> LATEST MODELS </h2>
-      <h2 className="titlefurniture1">Please Select a models </h2>
+      <h2 className="titlefurniture1">Please Select a model </h2>
 
       <Slider
         dots
