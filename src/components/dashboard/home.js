@@ -5,7 +5,7 @@ import SplashPage from './SplashPage';
 import Dashboard from './dashboard';
 
 const Home = () => {
-  const currentUserToken = JSON.parse(localStorage.getItem('token'));
+  const currentUserToken = JSON.parse(localStorage.getItem('user'));
   return (
     <div>
       {!currentUserToken && <SplashPage />}
