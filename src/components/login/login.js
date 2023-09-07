@@ -31,7 +31,10 @@ const Login = () => {
         localStorage.setItem('token', response.headers.get('Authorization'));
         localStorage.setItem('user', JSON.stringify(data));
         setIsAuthenticated(true);
-        navigate('/dashboard');
+        const user = localStorage.getItem('user');
+        {
+          user && navigate('/dashboard');
+        }
       } else {
         setIsAuthenticated(false);
         const data = await response.json();
