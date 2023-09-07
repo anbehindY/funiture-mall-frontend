@@ -33,6 +33,9 @@ const userSlice = createSlice({
       state.user = payload;
       state.isAuthenticated = payload.email !== '';
       state.isLoading = false;
+    }).addCase(postUserLogin.rejected, (state) => {
+      state.isLoading = false;
+      state.error = 'Username or password is incorrect';
     });
   },
 });
