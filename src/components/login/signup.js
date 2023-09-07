@@ -150,10 +150,15 @@ const Signup = (setCurrUser) => {
               />
             </div>
           </form>
-          <p className='P_singup'>
+          <p className="P_singup">
             Already have an account?
             {' '}
-            <Link to="/login" className='loginlink'> <i className="fa fa-arrow-right" /> Click here to Login</Link>
+            <Link to="/login" className="loginlink">
+              {' '}
+              <i className="fa fa-arrow-right" />
+              {' '}
+              Click here to Login
+            </Link>
           </p>
         </div>
       )}

@@ -6,7 +6,7 @@ import {
   fetchAppointments,
 } from '../../../store/appointmentsSlice';
 
-import './appointments.css'
+import './appointments.css';
 
 function AppointmentsList() {
   const dispatch = useDispatch();
