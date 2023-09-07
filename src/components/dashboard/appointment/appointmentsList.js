@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFurnitures } from '../../../store/furnitureSlice';
+import './appointments.css'
 import {
   deleteAppointment,
   fetchAppointments,
 } from '../../../store/appointmentsSlice';
 
-import './appointments.css'
 
 function AppointmentsList() {
   const dispatch = useDispatch();
