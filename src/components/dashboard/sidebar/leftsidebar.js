@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Logout from '../../login/Logout';
 import logo from './logo.png';
@@ -15,34 +16,38 @@ const LeftSidebar = ({ setCurrUser }) => (
     <div className="left-content">
       <ul className="action-list">
         <li className="item">
-          <span>Furniture</span>
+          <NavLink to="/furnitures" className="menubar-link">
+            <span>Furnitures</span>
+          </NavLink>
         </li>
         <li className="item">
-          <span>Appointment</span>
+          <NavLink to="/customers" className="menubar-link">
+            <span>Appointment</span>
+          </NavLink>
         </li>
         <li className="item">
-          <span>Sold History</span>
+          <NavLink to="/products" className="menubar-link">
+            <span>Add Furniture</span>
+          </NavLink>
+
         </li>
         <li className="item">
-          <span>Discount</span>
+          <NavLink to="/appointments" className="menubar-link">
+            <span>Add Appointment</span>
+          </NavLink>
         </li>
         <li className="item">
-          <span>Meetings</span>
+          <NavLink to="/histories" className="menubar-link">
+            <span>Delete Furniture</span>
+          </NavLink>
         </li>
         <li className="item">
-          <span>Trash</span>
+          <NavLink to="/histories" className="menubar-link">
+            <span>Delete User</span>
+          </NavLink>
         </li>
       </ul>
       <ul className="category-list">
-        <li className="item">
-          <span>Customer</span>
-        </li>
-        <li className="item">
-          <span>Address</span>
-        </li>
-        <li className="item">
-          <span>Help</span>
-        </li>
         <li className="item">
           <Logout setCurrUser={setCurrUser} />
         </li>
