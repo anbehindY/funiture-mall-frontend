@@ -1,16 +1,24 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { getLoginStatus } from '../../store/userSlice';
 import SplashPage from './SplashPage';
 import Dashboard from './dashboard';
 
 const Home = () => {
-  const currentUserToken = JSON.parse(localStorage.getItem('token'));
+  const { isAuthenticated } = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getLoginStatus());
+  }, [dispatch]);
+
   return (
     <div>
-      {!currentUserToken && <SplashPage />}
-      {currentUserToken && <Dashboard />}
+      {!isAuthenticated && <SplashPage />}
+      {isAuthenticated && <Dashboard />}
     </div>
   );
 };
+
 export default Home;
