@@ -24,6 +24,7 @@ const DeleteFurniture = () => {
 
   return (
     <div className="carousel">
+      <LeftSidebar />
       <h2 className="titlefurniture"> ALL MODELS </h2>
 
       {furnitures[0]?.map((furniture) => (

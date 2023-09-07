@@ -56,9 +56,14 @@ const furnitureSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getFurnitures.fulfilled, (state, { payload }) => {
+    builder.addCase(getFurnitures.pending, (state) => {
+      state.message = 'Loading...';
+    }).addCase(getFurnitures.fulfilled, (state, { payload }) => {
       state.furnitures.push(payload);
       state.message = 'loaded';
+    }).addCase(getFurnitures.rejected, (state, { payload }) => {
+      state.furnitures.push(payload);
+      state.message = 'Failed';
     });
   },
 });
