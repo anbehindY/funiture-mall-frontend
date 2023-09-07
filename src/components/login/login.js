@@ -53,6 +53,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <div className='blur'></div>
     <div className="container-login">
       <div className="container-form">
         <form className="form-login" onSubmit={loginHandler}>
@@ -92,12 +94,13 @@ const Login = () => {
             />
           </div>
         </form>
-        <p>
+        <div className='P_singin'>
           Don&apos;t have an account?
-          <Link to="/signup">Click here to Register</Link>
-        </p>
+          <Link to="/signup" className='loginlink'> <i className="fa fa-arrow-right" />Click here to Register</Link>
+        </div>
       </div>
     </div>
+    </>
   );
 };
 
