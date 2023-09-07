@@ -39,7 +39,6 @@ const AppointmentForm = () => {
 
   return (
     <div className="container-login">
-      <LeftSidebar />
       <div className="container-form">
         <form className="form-login" onSubmit={appointmentHandler}>
           <h2>Book an appointment</h2>

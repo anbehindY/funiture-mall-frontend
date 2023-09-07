@@ -11,6 +11,7 @@ import FurnitureForm from './components/dashboard/furniture/FurnitureForm';
 import AppointmentForm from './components/dashboard/appointment/appointmentForm';
 import AppointmentsList from './components/dashboard/appointment/appointmentsList';
 import DeleteFurniture from './components/dashboard/furniture/DeleteFurniture';
+import AdminSignUp from './components/login/Admin';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/my-appointments" exact element={<AppointmentsList />} />
         <Route path="/delete-furniture" exact element={<DeleteFurniture />} />
         <Route path="/login" exact element={<Login />} />
-
+        <Route path="/admin" exact element={<AdminSignUp />} />
         <Route path="/signup" exact element={<Signup />} />
         <Route path="*" exact element={<NotFound />} />
       </Routes>
