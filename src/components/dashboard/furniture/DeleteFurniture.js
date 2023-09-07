@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
 
-import { getFurnitures } from '../../../store/furnitureSlice';
-import { deleteFurniture } from '../../../store/furnitureSlice';
+import { getFurnitures, deleteFurniture } from '../../../store/furnitureSlice';
 
 import './furniture.css';
 import '../dashboard.css';
@@ -34,7 +33,7 @@ const DeleteFurniture = () => {
             <th>Name</th>
             <th>Price</th>
             <th>Warranty</th>
-            <th></th>
+            <th />
           </tr>
 
           <tr>

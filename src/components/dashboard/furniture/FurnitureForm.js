@@ -20,13 +20,15 @@ const FurnitureForm = () => {
     // const response = await dispatch(addAppointment(appointmentDetail));
 
     const response = await dispatch(
-      addFurniture({ name, description, image, price, warranty })
+      addFurniture({
+        name, description, image, price, warranty,
+      }),
     );
 
     if (response.type === 'add/furniture/fulfilled') {
       navigate('/dashboard');
     } else {
-      return;
+
     }
   };
 

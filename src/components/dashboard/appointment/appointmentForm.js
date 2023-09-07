@@ -34,8 +34,6 @@ const AppointmentForm = () => {
     const response = await dispatch(addAppointment(appointmentDetail));
     if (response.type === 'add/appointment/fulfilled') {
       navigate('/dashboard');
-    } else {
-      return;
     }
   };
 
