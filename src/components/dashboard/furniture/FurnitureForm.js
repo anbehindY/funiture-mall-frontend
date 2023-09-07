@@ -12,7 +12,7 @@ const FurnitureForm = () => {
   const [warranty, setWarranty] = useState();
 
   const { user } = JSON.parse(localStorage.getItem('user'));
-  const user_id = user.id;
+  const userId = user.id;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,20 +20,20 @@ const FurnitureForm = () => {
   const furnitureHandler = async (e) => {
     e.preventDefault();
 
-    dispatch(
+    const response = await dispatch(
       addFurniture({
         name,
         description,
         image,
         price,
         warranty,
-        user_id,
-      })
+        userId,
+      }),
     );
 
-    // if (response.type === 'add/furniture/fulfilled') {
-    //   navigate('/dashboard');
-    // }
+    if (response.type === 'add/furniture/fulfilled') {
+      navigate('/dashboard');
+    }
   };
 
   return (

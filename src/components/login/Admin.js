@@ -48,7 +48,6 @@ const AdminSignUp = () => {
 
   const signupHandler = async (e) => {
     e.preventDefault();
-    console.log(userData);
     const userInfo = {
       user: { ...userData },
     };
@@ -151,10 +150,13 @@ const AdminSignUp = () => {
             </div>
           </form>
           <p className="P_singup">
-            Already have an account?{' '}
+            Already have an account?
+            {' '}
             <Link to="/login" className="loginlink">
               {' '}
-              <i className="fa fa-arrow-right" /> Click here to Login
+              <i className="fa fa-arrow-right" />
+              {' '}
+              Click here to Login
             </Link>
           </p>
         </div>

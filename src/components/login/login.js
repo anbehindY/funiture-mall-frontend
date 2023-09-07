@@ -31,13 +31,13 @@ const Login = () => {
         localStorage.setItem('token', response.headers.get('Authorization'));
         localStorage.setItem('user', JSON.stringify(data));
         setIsAuthenticated(true);
-        const user = localStorage.getItem('user');
-        {
-          user && navigate('/dashboard');
-        }
       } else {
         setIsAuthenticated(false);
         const data = await response.json();
+      }
+      const user = localStorage.getItem('user');
+      if (user) {
+        navigate('/dashboard');
       }
     } catch (error) {
       throw new Error(error);

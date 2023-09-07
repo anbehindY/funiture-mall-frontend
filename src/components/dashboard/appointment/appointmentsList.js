@@ -19,7 +19,7 @@ function AppointmentsList() {
   useEffect(() => {
     dispatch(fetchAppointments(user.id));
     dispatch(getFurnitures());
-  }, [dispatch]);
+  }, [dispatch, user.id]);
 
   if (error) {
     return <p>Sorry, could not load your appointments</p>;
@@ -49,21 +49,21 @@ function AppointmentsList() {
                 <td>
                   {
                     furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id
+                      (furniture) => furniture.id === appointment.furniture_id,
                     )?.name
                   }
                 </td>
                 <td>
                   {
                     furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id
+                      (furniture) => furniture.id === appointment.furniture_id,
                     )?.price
                   }
                 </td>
                 <td>
                   {
                     furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id
+                      (furniture) => furniture.id === appointment.furniture_id,
                     )?.warranty
                   }
                 </td>
