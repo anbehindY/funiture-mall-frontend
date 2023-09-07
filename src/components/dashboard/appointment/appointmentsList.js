@@ -6,32 +6,36 @@ import {
   fetchAppointments,
 } from '../../../store/appointmentsSlice';
 
+import './appointments.css';
+
 function AppointmentsList() {
   const dispatch = useDispatch();
   const { appointments, status } = useSelector((state) => state.appointments);
   const error = useSelector((state) => state.appointments.error);
   const { furnitures, message } = useSelector((state) => state.furniture);
 
+  const { user } = JSON.parse(localStorage.getItem('user'));
+
   useEffect(() => {
-    // Fetch user appointments when the component mounts
     dispatch(fetchAppointments());
     dispatch(getFurnitures());
   }, [dispatch, message]);
 
   const handleDeleteAppointment = (id) => {
-    if (status === 'succeeded') {
-      dispatch(deleteAppointment(id));
-    }
+    dispatch(deleteAppointment(id));
   };
 
-  // const addAppointment = (id) => {
-  //   dispatch(addAppointment(id));
-  // };
+  const currentUserFurnitures = furnitures[0]?.map((item) => {
+    if (item.id === user.id) {
+      return item;
+    }
+    return item;
+  });
 
   const findFuniture = (id, kind) => {
     let result = null;
     if (message === 'loaded') {
-      const selected = furnitures.find((item) => item.id === id);
+      const selected = currentUserFurnitures?.find((item) => item.id === id);
       if (selected) {
         if (kind === 'price') {
           result = selected.price;
@@ -55,7 +59,7 @@ function AppointmentsList() {
   }
 
   return (
-    <div>
+    <div className=" Appointments">
       <h2>My Appointments</h2>
       {appointments.length === 0 ? (
         <p>No appointments to display.</p>
@@ -66,21 +70,24 @@ function AppointmentsList() {
               <th>Furniture Name</th>
               <th>Price</th>
               <th>Warranty</th>
+              <th>City</th>
               <th>Date</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {appointments.map((appointment) => (
+            {appointments[0].map((appointment) => (
               <tr key={appointment.id}>
                 <td>{findFuniture(appointment.furniture_id, 'name')}</td>
                 <td>{findFuniture(appointment.furniture_id, 'price')}</td>
                 <td>{findFuniture(appointment.furniture_id, 'warranty')}</td>
+                <td>{appointment.city}</td>
                 <td>{appointment.appoint_date}</td>
+
                 <td>
                   <button
                     type="button"
-                    onClick={() => handleDeleteAppointment(appointment.id)}
+                    onClick={(e) => handleDeleteAppointment(appointment.id)}
                   >
                     Delete
                   </button>

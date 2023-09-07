@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import furnitureReducer from './furnitureSlice';
 import appointmentsReducer from './appointmentsSlice';
-import userSlice from './userSllice';
+import userSlice from './userSlice';
 
 const store = configureStore({
   reducer: {
