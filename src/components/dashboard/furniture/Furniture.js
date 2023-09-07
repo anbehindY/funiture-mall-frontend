@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFurnitures } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
@@ -12,7 +12,7 @@ const Furniture = () => {
 
   useEffect(() => {
     dispatch(getFurnitures());
-  }, [id, dispatch]);
+  }, [dispatch, id]);
 
   const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
 
@@ -41,7 +41,7 @@ const Furniture = () => {
             <span>{filteredItem[0].created_at}</span>
           </p>
           <Link to="/new-appointment" state={{ furniture: filteredItem[0] }}>
-            Book an appointment
+            Book appointment
           </Link>
         </div>
       )}
