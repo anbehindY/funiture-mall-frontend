@@ -7,6 +7,7 @@ import {
 } from '../../../store/appointmentsSlice';
 
 import './appointments.css';
+import LeftSidebar from '../sidebar/leftsidebar';
 
 function AppointmentsList() {
   const dispatch = useDispatch();
@@ -60,6 +61,7 @@ function AppointmentsList() {
 
   return (
     <div className=" Appointments">
+      <LeftSidebar />
       <h2>My Appointments</h2>
       {appointments.length === 0 ? (
         <p>No appointments to display.</p>
