@@ -34,7 +34,6 @@ const DeleteFurniture = () => {
             <th>Price</th>
             <th>Warranty</th>
           </tr>
-
           <tr>
             <th>{furniture.id}</th>
             <th>{furniture.name}</th>
