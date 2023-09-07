@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getFurnitures } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
@@ -13,7 +13,7 @@ const Furniture = () => {
 
   useEffect(() => {
     dispatch(getFurnitures());
-  }, [id, dispatch]);
+  }, [dispatch, id]);
 
   const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
 
