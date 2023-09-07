@@ -57,7 +57,7 @@ const Signup = (setCurrUser) => {
   };
 
   return (
-    <div className="container-login">
+    <div className="container-signup">
       {isAuthenticated && (
         <div>
           <p>Congratulations you have successfully registered</p>
@@ -65,7 +65,7 @@ const Signup = (setCurrUser) => {
         </div>
       )}
       {!isAuthenticated && (
-        <div className="container-form">
+        <div className="container-form2">
           <form className="form-login" onSubmit={signupHandler}>
             <h2>Signup Online Furniture Account</h2>
             <div className="form-row">
@@ -150,10 +150,10 @@ const Signup = (setCurrUser) => {
               />
             </div>
           </form>
-          <p>
+          <p className='P_singup'>
             Already have an account?
             {' '}
-            <Link to="/login">Click here to Login</Link>
+            <Link to="/login" className='loginlink'> <i className="fa fa-arrow-right" /> Click here to Login</Link>
           </p>
         </div>
       )}

@@ -178,7 +178,7 @@
 
 .reserver_furniture {
   position: absolute;
-  right: 100px;
+  right: 70px;
   padding: 15px 25px;
   border-radius: 10px;
   background-color: #7dd21f;
@@ -257,6 +257,19 @@
 
 .fa {
   font-size: 50px;
+}
+
+.new-appointment {
+ text-decoration: none;
+ position: absolute;
+ padding-top: 5px;
+ top: 15vh;
+ color:  white;
+ background-color: rgba(128, 128, 128, 0.282);
+ right: 30px;
+ margin-left: 5px;
+ margin-top: 10px;
+ width: 220px;
 }
 
 @media (max-width: 768px) {
@@ -403,7 +416,7 @@
 
   .reserver_furniture {
     position: absolute;
-    right: 50px;
+    right: 30px;
     padding: 15px 25px;
     border-radius: 10px;
     background-color: #7dd21f;
