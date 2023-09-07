@@ -5,8 +5,6 @@ import { addFurniture } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
 
 const FurnitureForm = () => {
-
-
   const [furnitureDetail, setFurnitureDetail] = useState({
     name: '',
     description: '',
@@ -46,8 +44,6 @@ const FurnitureForm = () => {
 
   const furnitureHandler = async (e) => {
     e.preventDefault();
-
-    console.log(furnitureDetail);
 
     const response = await dispatch(addFurniture(furnitureDetail));
 

@@ -17,7 +17,10 @@ import Sidebar from './Sidebar';
 function App() {
   return (
     <>
-    <div className="Sidebarmain"> <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} /></div> 
+      <div className="Sidebarmain">
+        {' '}
+        <Sidebar pageWrapId="page-wrap" outerContainerId="outer-container" />
+      </div>
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/dashboard" exact element={<Dashboard />} />

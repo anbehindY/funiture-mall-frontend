@@ -25,11 +25,11 @@ export const addFurniture = createAsyncThunk(
           'content-type': 'application/json',
           authorization: authToken,
         },
-      }
+      },
     );
     const furniture = response.data;
     return furniture;
-  }
+  },
 );
 
 export const deleteFurniture = createAsyncThunk('add/furniture', async (id) => {
@@ -40,7 +40,7 @@ export const deleteFurniture = createAsyncThunk('add/furniture', async (id) => {
         'content-type': 'application/json',
         authorization: authToken,
       },
-    }
+    },
   );
   const furniture = response.data;
   return furniture;

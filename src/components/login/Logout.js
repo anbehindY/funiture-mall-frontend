@@ -5,7 +5,6 @@ const Logout = () => {
   const navigate = useNavigate();
 
   const handleClick = (e) => {
-  
     localStorage.removeItem('token');
     localStorage.removeItem('user');
 

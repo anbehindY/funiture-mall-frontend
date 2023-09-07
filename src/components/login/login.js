@@ -39,8 +39,7 @@ const Login = () => {
       if (user) {
         setTimeout(() => {
           navigate('/dashboard');
-        },2000);
-        
+        }, 2000);
       }
     } catch (error) {
       throw new Error(error);
