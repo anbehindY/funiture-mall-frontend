@@ -17,7 +17,7 @@ const LeftSidebar = (data) => {
       <div className="left-content">
         <ul className="action-list">
           <li className="item">
-            <NavLink to="/furnitures" className="menubar-link">
+            <NavLink to="/dashboard" className="menubar-link">
               <span>Furnitures</span>
             </NavLink>
           </li>
