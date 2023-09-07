@@ -6,6 +6,8 @@ import {
   fetchAppointments,
 } from '../../../store/appointmentsSlice';
 
+import './appointments.css'
+
 function AppointmentsList() {
   const dispatch = useDispatch();
   const { appointments, status } = useSelector((state) => state.appointments);
@@ -57,7 +59,7 @@ function AppointmentsList() {
   }
 
   return (
-    <div>
+    <div className=" Appointments">
       <h2>My Appointments</h2>
       {appointments.length === 0 ? (
         <p>No appointments to display.</p>

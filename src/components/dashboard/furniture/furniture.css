@@ -259,6 +259,18 @@
   font-size: 50px;
 }
 
+.new-appointment {
+ text-decoration: none;
+ position: absolute;
+ padding-top: 5px;
+ top: 15vh;
+ color:  white;
+ background-color: rgba(128, 128, 128, 0.282);
+ right: 30px;
+ margin-top: 10px;
+ width: 220px;
+}
+
 @media (max-width: 768px) {
   .titlefurniture {
     margin-top: 10vh;

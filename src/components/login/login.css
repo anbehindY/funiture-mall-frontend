@@ -10,9 +10,9 @@
   align-items: center;
   border-radius: 20px;
   border: #7dd21f solid 2px;
-  box-shadow: 10px 8px 37px -3px rgba(125,210,31,0.75);
--webkit-box-shadow: 10px 8px 37px -3px rgba(125,210,31,0.75);
--moz-box-shadow: 10px 8px 37px -3px rgba(125,210,31,0.75);
+  box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
+  -webkit-box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
+  -moz-box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
 }
 
 .blur {
@@ -34,9 +34,9 @@
   align-items: center;
   border-radius: 20px;
   border: #7dd21f solid 2px;
-  box-shadow: 10px 8px 37px -3px rgba(125,210,31,0.75);
-  -webkit-box-shadow: 10px 8px 37px -3px rgba(125,210,31,0.75);
-  -moz-box-shadow: 10px 8px 37px -3px rgba(125,210,31,0.75);
+  box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
+  -webkit-box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
+  -moz-box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
 }
 
 .container-form {
@@ -67,7 +67,6 @@
 }
 
 .form-login h2 {
-  font-weight: 500;
   font-size: 25px;
   font-weight: bolder;
   position: relative;

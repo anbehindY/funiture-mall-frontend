@@ -41,9 +41,11 @@ const Furniture = () => {
         <span>{filteredItem[0].created_at}</span>
       </p>
       <button type="submit" className="reserver_furniture">Reserve  <i className="fa fa-arrow-circle-o-right" /></button>
+      <Link to="/dashboard" >
       <button type="submit" className="back_furniture"> <i className="fa fa-arrow-left" /> </button>
+      </Link>
 
-      <Link to="/new-appointment" state={{ furniture: filteredItem[0] }}>
+      <Link to="/new-appointment" className="new-appointment" state={{ furniture: filteredItem[0] }}>
             Book appointment
           </Link>
     </div>
