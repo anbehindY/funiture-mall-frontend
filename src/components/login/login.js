@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import './login.css';
 
-const Login = ({ currUser, setCurrUser }) => {
+const Login = () => {
   const [isAuthenticated, setIsAuthenticated] = useState();
 
   const navigate = useNavigate();

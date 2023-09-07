@@ -13,11 +13,11 @@ export const fetchAppointments = createAsyncThunk(
           'content-type': 'application/json',
           authorization: authToken,
         },
-      }
+      },
     );
     const appointments = response.data;
     return appointments;
-  }
+  },
 );
 
 export const addAppointment = createAsyncThunk(
@@ -31,11 +31,11 @@ export const addAppointment = createAsyncThunk(
           'content-type': 'application/json',
           authorization: authToken,
         },
-      }
+      },
     );
     const appointment = await response.data;
     return appointment;
-  }
+  },
 );
 
 export const deleteAppointment = createAsyncThunk(
@@ -49,13 +49,13 @@ export const deleteAppointment = createAsyncThunk(
             'content-type': 'application/json',
             authorization: authToken,
           },
-        }
+        },
       );
       return response.data;
     } catch (error) {
       throw new Error('Failed to delete appointment');
     }
-  }
+  },
 );
 
 const initialState = {
@@ -77,7 +77,7 @@ const appointmentsSlice = createSlice({
         state.status = 'succeeded';
         // Update the appointments state to remove the deleted appointment
         state.appointments = state.appointments.filter(
-          (apment) => apment.id !== action.payload.id
+          (apment) => apment.id !== action.payload.id,
         );
       })
       .addCase(deleteAppointment.rejected, (state, action) => {
