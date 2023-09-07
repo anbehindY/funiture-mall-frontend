@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import './Delete.css'
 // import { Link } from 'react-router-dom';
 
 import { getFurnitures } from '../../../store/furnitureSlice';
@@ -23,10 +24,11 @@ const DeleteFurniture = () => {
   };
 
   return (
-    <div className="carousel">
+    <div className="carousel1">
       <LeftSidebar />
+      <div className="tabledelete">
       <h2 className="titlefurniture"> ALL MODELS </h2>
-
+    
       {furnitures[0]?.map((furniture) => (
         <table className="furnitureItem" key={furniture.id}>
           <tr>
@@ -42,8 +44,8 @@ const DeleteFurniture = () => {
             <th>{furniture.name}</th>
             <th>{furniture.price}</th>
             <th>{furniture.warranty}</th>
-            <th>
-              <button
+            <th >
+              <button className='bnt'
                 onClick={() => {
                   handleDeleteFurniture(furniture.id);
                 }}
@@ -54,6 +56,7 @@ const DeleteFurniture = () => {
           </tr>
         </table>
       ))}
+        </div>
     </div>
   );
 };
