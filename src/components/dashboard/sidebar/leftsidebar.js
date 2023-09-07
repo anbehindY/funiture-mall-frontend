@@ -4,6 +4,11 @@ import logo from './logo.png';
 
 const LeftSidebar = (data) => {
   const { setCurrUser } = data;
+  const { user } = JSON.parse(localStorage.getItem('user'));
+  let role = 'is-customer';
+  if (user.role === 'Admin') {
+    role = 'is-admin';
+  }
   return (
     <div className="leftsidebar-container">
       <div className="upper-part">
@@ -26,12 +31,12 @@ const LeftSidebar = (data) => {
               <span> My Appointments</span>
             </NavLink>
           </li>
-          <li className="item">
+          <li className={`${role} item`}>
             <NavLink to="/new-furniture" className="menubar-link">
               <span>Add Furniture</span>
             </NavLink>
           </li>
-          <li className="item">
+          <li className={`${role} item`}>
             <NavLink to="/delete-furniture" className="menubar-link">
               <span>Delete Furniture</span>
             </NavLink>
