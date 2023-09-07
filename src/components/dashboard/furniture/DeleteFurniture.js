@@ -33,7 +33,6 @@ const DeleteFurniture = () => {
             <th>Name</th>
             <th>Price</th>
             <th>Warranty</th>
-            <th />
           </tr>
 
           <tr>
@@ -42,13 +41,7 @@ const DeleteFurniture = () => {
             <th>{furniture.price}</th>
             <th>{furniture.warranty}</th>
             <th>
-              <button
-                onClick={() => {
-                  handleDeleteFurniture(furniture.id);
-                }}
-              >
-                Delete
-              </button>
+              <button type="button" onClick={() => { handleDeleteFurniture(furniture.id); }}>Delete</button>
             </th>
           </tr>
         </table>
