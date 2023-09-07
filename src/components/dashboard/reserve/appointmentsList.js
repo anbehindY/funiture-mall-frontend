@@ -4,6 +4,7 @@ import { getFurnitures } from '../../../store/furnitureSlice';
 import {
   deleteAppointment,
   fetchAppointments,
+  addWarrantyToAppointment,
 } from '../../../store/appointmentsSlice';
 
 function AppointmentsList() {
@@ -12,28 +13,26 @@ function AppointmentsList() {
   const error = useSelector((state) => state.appointments.error);
   const { furnitures, message } = useSelector((state) => state.furniture);
 
-  const { user } = JSON.parse(localStorage.getItem('user'));
-
   useEffect(() => {
+    // Fetch user appointments when the component mounts
     dispatch(fetchAppointments());
     dispatch(getFurnitures());
   }, [dispatch, message]);
 
   const handleDeleteAppointment = (id) => {
-    dispatch(deleteAppointment(id));
+    if (status === 'succeeded') {
+      dispatch(deleteAppointment(id));
+    }
   };
 
-  const currentUserFurnitures = furnitures[0]?.map((item) => {
-    if (item.id === user.id) {
-      return item;
-    }
-    return item;
-  });
+  const addWarranty = (id) => {
+    dispatch(addWarrantyToAppointment(id));
+  };
 
   const findFuniture = (id, kind) => {
     let result = null;
     if (message === 'loaded') {
-      const selected = currentUserFurnitures?.find((item) => item.id === id);
+      const selected = furnitures.find((item) => item.id === id);
       if (selected) {
         if (kind === 'price') {
           result = selected.price;
@@ -68,24 +67,21 @@ function AppointmentsList() {
               <th>Furniture Name</th>
               <th>Price</th>
               <th>Warranty</th>
-              <th>City</th>
               <th>Date</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {appointments[0].map((appointment) => (
+            {appointments.map((appointment) => (
               <tr key={appointment.id}>
                 <td>{findFuniture(appointment.furniture_id, 'name')}</td>
                 <td>{findFuniture(appointment.furniture_id, 'price')}</td>
                 <td>{findFuniture(appointment.furniture_id, 'warranty')}</td>
-                <td>{appointment.city}</td>
                 <td>{appointment.appoint_date}</td>
-
                 <td>
                   <button
                     type="button"
-                    onClick={(e) => handleDeleteAppointment(appointment.id)}
+                    onClick={() => handleDeleteAppointment(appointment.id)}
                   >
                     Delete
                   </button>
