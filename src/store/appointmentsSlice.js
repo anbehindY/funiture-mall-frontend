@@ -76,7 +76,9 @@ const appointmentsSlice = createSlice({
       .addCase(deleteAppointment.fulfilled, (state, action) => {
         state.status = 'succeeded';
         // Update the appointments state to remove the deleted appointment
-        state.appointments = state.appointments.filter((apment) => apment.id !== action.payload.id);
+        state.appointments = state.appointments.filter(
+          (apment) => apment.id !== action.payload.id,
+        );
       })
       .addCase(deleteAppointment.rejected, (state, action) => {
         state.status = 'failed';

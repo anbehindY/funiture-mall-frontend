@@ -17,7 +17,6 @@ const Furniture = () => {
   const filteredItem = furnitures[0]?.filter((fur) => fur.id === Number(id));
 
   return (
-
 <div className="main_furniture_select"> <LeftSidebar />
 <div className="furniture_select">
 
@@ -43,6 +42,10 @@ const Furniture = () => {
       </p>
       <button type="submit" className="reserver_furniture">Reserve  <i className="fa fa-arrow-circle-o-right" /></button>
       <button type="submit" className="back_furniture"> <i className="fa fa-arrow-left" /> </button>
+
+      <Link to="/new-appointment" state={{ furniture: filteredItem[0] }}>
+            Book appointment
+          </Link>
     </div>
   )}
 </div>
