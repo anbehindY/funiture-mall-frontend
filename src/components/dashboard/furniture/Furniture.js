@@ -41,7 +41,7 @@ const Furniture = () => {
             <span>{filteredItem[0].created_at}</span>
           </p>
           <Link to="/new-appointment" state={{ furniture: filteredItem[0] }}>
-            Book appointment
+            Book an appointment
           </Link>
         </div>
       )}
