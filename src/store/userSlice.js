@@ -11,7 +11,7 @@ export const postUserLogin = createAsyncThunk(
       },
     });
     return login.data.status.data.user;
-  }
+  },
 );
 
 const initialState = {
