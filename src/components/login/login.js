@@ -1,8 +1,5 @@
 import { useState } from 'react';
-import { Link, redirect, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-// import { postUserLogin } from '../../store/userSllice';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './login.css';
 
@@ -33,7 +30,6 @@ const Login = ({ currUser, setCurrUser }) => {
         const { data } = status;
         localStorage.setItem('token', response.headers.get('Authorization'));
         setIsAuthenticated(true);
-        setCurrUser(data.user);
         navigate('/dashboard');
       } else {
         setIsAuthenticated(false);
@@ -110,12 +106,3 @@ const Login = ({ currUser, setCurrUser }) => {
 };
 
 export default Login;
-
-Login.propTypes = {
-  currUser: PropTypes.shape({
-    id: PropTypes.number,
-    username: PropTypes.string,
-    email: PropTypes.string,
-  }).isRequired,
-  setCurrUser: PropTypes.func.isRequired,
-};
