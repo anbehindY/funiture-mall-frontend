@@ -17,8 +17,6 @@ const FurnitureForm = () => {
   const furnitureHandler = async (e) => {
     e.preventDefault();
 
-    // const response = await dispatch(addAppointment(appointmentDetail));
-
     const response = await dispatch(
       addFurniture({
         name, description, image, price, warranty,
@@ -27,8 +25,6 @@ const FurnitureForm = () => {
 
     if (response.type === 'add/furniture/fulfilled') {
       navigate('/dashboard');
-    } else {
-
     }
   };
 
