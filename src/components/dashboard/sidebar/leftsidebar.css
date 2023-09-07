@@ -6,3 +6,11 @@
   background-color: white;
   margin-bottom: -5px;
 }
+
+.menubar-link {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+}
