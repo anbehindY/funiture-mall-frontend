@@ -1,0 +1,20 @@
+.carousel1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.tabledelete {
+ top: -50px;
+ position: absolute;
+ top: 0;
+ left: 30vw;
+}
+
+.furnitureItem{
+ width: 50vw;
+}
+
+.bnt {
+ width: 80px;
+}
