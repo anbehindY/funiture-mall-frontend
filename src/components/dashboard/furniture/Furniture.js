@@ -53,12 +53,12 @@ const Furniture = () => {
             </button>
             <button type="submit" className="back_furniture">
               {' '}
-              <i className="fa fa-arrow-left" />
-              {' '}
+              <i className="fa fa-arrow-left" />{' '}
             </button>
           </div>
         )}
       </div>
+    </div>
   );
 };
 export default Furniture;
