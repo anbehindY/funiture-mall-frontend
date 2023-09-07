@@ -27,11 +27,6 @@ const LeftSidebar = (data) => {
             </NavLink>
           </li>
           <li className="item">
-            <NavLink to="/new-appointment" className="menubar-link">
-              <span>Add Appointment</span>
-            </NavLink>
-          </li>
-          <li className="item">
             <NavLink to="/new-furniture" className="menubar-link">
               <span>Add Furniture</span>
             </NavLink>

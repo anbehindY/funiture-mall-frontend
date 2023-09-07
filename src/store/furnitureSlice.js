@@ -14,41 +14,37 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
   return furnitures;
 });
 
-export const getSingleFurniture = createAsyncThunk(
-  'get/furnitures',
-  async (id) => {
-    const furniture = await axios.get(
-      `http://[::1]:3001/api/v1/furnitures/${id}`,
-    );
-    return furniture.data;
-  },
-);
-
 export const addFurniture = createAsyncThunk(
-  'post/furnitures',
+  'add/furniture',
   async (furnitureData) => {
-    const authToken = 'your-auth-token'; // Replace with your actual authentication token
-    const apiUrl = 'http://[::1]:3001/api/v1/furnitures'; // Replace with your API URL
-
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`, // Include your authentication token here
-      },
-      body: JSON.stringify(furnitureData), // Convert the data to JSON format
-    };
-
-    const response = await fetch(apiUrl, requestOptions);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    return data;
-  },
+    const response = await axios.post(
+      'http://[::1]:3001/api/v1/furnitures',
+      { furnitureData },
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: authToken,
+        },
+      }
+    );
+    const furniture = response.data;
+    return furniture;
+  }
 );
+
+export const deleteFurniture = createAsyncThunk('add/furniture', async (id) => {
+  const response = await axios.delete(
+    `http://[::1]:3001/api/v1/furnitures/${id}`,
+    {
+      headers: {
+        'content-type': 'application/json',
+        authorization: authToken,
+      },
+    }
+  );
+  const furniture = response.data;
+  return furniture;
+});
 
 export const initialState = {
   furnitures: [],

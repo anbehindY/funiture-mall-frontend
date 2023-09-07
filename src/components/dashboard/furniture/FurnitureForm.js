@@ -1,7 +1,8 @@
 import { useState } from 'react';
-// import { Link, redirect, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { addFurniture } from '../../../store/furnitureSlice';
+import LeftSidebar from '../sidebar/leftsidebar';
 
 const FurnitureForm = () => {
   const [name, setName] = useState('');
@@ -11,45 +12,22 @@ const FurnitureForm = () => {
   const [warranty, setWarranty] = useState();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  // const handleChange = (e) => {
-  //   setFurnitureData({
-  //     ...furnitureData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
-
-  // const handlePrice = (e) => {
-  //   setFurnitureData({
-  //     ...furnitureData,
-  //     [e.target.name]: Number(e.target.value),
-  //   });
-  // };
-
-  // const handleWarranty = (e) => {
-  //   setFurnitureData({
-  //     ...furnitureData,
-  //     [e.target.name]: Number(e.target.value),
-  //   });
-  // };
-
-  const furnitureHandler = (e) => {
+  const furnitureHandler = async (e) => {
     e.preventDefault();
 
-    // const furnitureInfo = {
-    //   furniture: { ...furnitureData },
-    // };
+    // const response = await dispatch(addAppointment(appointmentDetail));
 
-    dispatch(addFurniture({
-      name, description, image, price, warranty,
-    }))
-      .unwrap()
-      .then((fulfilledAction) => {
-        // Handle successful response (fulfilledAction.payload)
-      })
-      .catch((rejectedAction) => {
-        // Handle error (rejectedAction.payload)
-      });
+    const response = await dispatch(
+      addFurniture({ name, description, image, price, warranty })
+    );
+
+    if (response.type === 'add/furniture/fulfilled') {
+      navigate('/dashboard');
+    } else {
+      return;
+    }
   };
 
   return (
