@@ -27,7 +27,7 @@ const Furniture = () => {
           <p>{filteredItem[0].description}</p>
           <p>
             <span>Price:</span>
-            <span>{filteredItem[0].price}</span>
+            <span>${filteredItem[0].price}</span>
           </p>
           <p>
             <span>Waranty:</span>
