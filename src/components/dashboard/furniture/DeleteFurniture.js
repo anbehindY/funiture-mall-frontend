@@ -44,8 +44,8 @@ const DeleteFurniture = () => {
             <th>{furniture.name}</th>
             <th>{furniture.price}</th>
             <th>{furniture.warranty}</th>
-            <th>
-              <button
+            <th >
+              <button className='bnt'
                 onClick={() => {
                   handleDeleteFurniture(furniture.id);
                 }}

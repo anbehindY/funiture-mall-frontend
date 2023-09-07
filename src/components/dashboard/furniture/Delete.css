@@ -7,14 +7,20 @@
 .tabledelete {
   top: -50px;
   position: absolute;
-  top: 0;
   left: 30vw;
 }
 
 .furnitureItem {
-  width: 50vw;
+  width: 60vw;
+}
+
+th {
+  background: none;
 }
 
 .bnt {
-  width: 80px;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  right: 5px;
 }
