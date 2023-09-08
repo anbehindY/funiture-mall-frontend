@@ -273,6 +273,13 @@
 }
 
 @media (max-width: 768px) {
+  .dashboard-layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+
   .titlefurniture {
     margin-top: 10vh;
     font-size: xx-large;
@@ -296,11 +303,8 @@
     height: 50px;
     width: 60px;
     padding-top: 7px;
-    background-color: white;
+    background:none;
     color: #f2f3f4;
-    padding-right: 10px;
-    padding-left: 15px;
-    margin-right: 5px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
   }
@@ -308,11 +312,7 @@
   .slick-next {
     height: 50px;
     width: 60px;
-    padding-top: 7px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 5px;
-    background-color: white;
+    background:none;
     color: #f2f3f4;
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
@@ -327,36 +327,39 @@
   }
 
   .carousel {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: 0;
-    width: 100vw;
+    left: 10vw;
+    width: 80vw;
   }
 
   .slick-prev::before {
-    display: none;
+    display: block;
     font-family: 'slick';
     font-size: 40px;
     line-height: 1;
     opacity: 0.75;
-    color: white;
+    color:  #7dd21f;
+    margin-left: 0;
   }
 
   .slick-next::before {
-    display: none;
+    display: block;
     font-family: 'slick';
     font-size: 40px;
     line-height: 1;
     opacity: 0.75;
-    color: white;
+    color: #7dd21f;
+    margin-right: 5px;
+    z-index: 2;
   }
 
   .name_furniture_select {
     position: absolute;
-    font-size: x-large;
+    font-size: large;
     right: 10px;
     top: 10vh;
-    width: 220px;
+    width: 38vw;
     padding: 5px;
   }
 
@@ -373,8 +376,9 @@
     right: 10px;
     margin-top: 10px;
     top: 20vh;
-    width: 220px;
+    width: 38vw;
     padding: 5px;
+    font-size: medium;
   }
 
   .price_furniture_select {
@@ -383,10 +387,11 @@
     justify-content: space-between;
     right: 10px;
     margin-top: 10px;
-    top: 32vh;
-    width: 220px;
+    top:  38vh;
+    width: 38vw;
     padding: 5px;
     background-color: rgba(128, 128, 128, 0.282);
+    font-size: medium;
   }
 
   .warranty_furniture_select {
@@ -394,24 +399,27 @@
     display: flex;
     justify-content: space-between;
     right: 10px;
-    top: 40vh;
-    width: 220px;
+    top: 45vh;
+    width: 38vw;
     padding: 5px;
+    font-size: medium;
   }
 
   .production_furniture_select {
     position: absolute;
     right: 10px;
-    top: 45vh;
-    width: 150px;
+    top: 50vh;
+    width: 38vw;
     padding: 5px;
     background-color: rgba(128, 128, 128, 0.282);
+    font-size: medium;
   }
 
   .furniture_select {
     position: absolute;
     left: 0;
     width: 100vw;
+    font-size: medium;
   }
 
   .reserver_furniture {
