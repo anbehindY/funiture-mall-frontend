@@ -29,6 +29,13 @@ th {
   right: 5px;
 }
 
+/* .custom-icon {
+  font-size: 50px;
+  color: rgb(1, 9, 1);
+  font-weight: bolder;
+  display: none;
+} */
+
 @media (max-width: 768px) {
   table {
     width: 90vw;
@@ -39,4 +46,10 @@ th {
     position: absolute;
     left: 20px;
   }
+
+  /* .custom-icon {
+    font-size: 50px;
+    color: rgb(1, 9, 1);
+    font-weight: bolder;
+  } */
 }

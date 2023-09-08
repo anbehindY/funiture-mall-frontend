@@ -12,10 +12,12 @@ import AppointmentForm from './components/dashboard/appointment/appointmentForm'
 import AppointmentsList from './components/dashboard/appointment/appointmentsList';
 import DeleteFurniture from './components/dashboard/furniture/DeleteFurniture';
 import AdminSignUp from './components/login/Admin';
+import Sidebar from './Sidebar';
 
 function App() {
   return (
     <>
+    <div className="Sidebarmain"> <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} /></div> 
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/dashboard" exact element={<Dashboard />} />
