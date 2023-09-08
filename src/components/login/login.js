@@ -39,7 +39,7 @@ const Login = () => {
       if (user) {
         setTimeout(() => {
           navigate('/dashboard');
-        },100);
+        },2000);
         
       }
     } catch (error) {
