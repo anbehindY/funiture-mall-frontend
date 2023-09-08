@@ -57,9 +57,9 @@ const FurnitureForm = () => {
   };
 
   return (
-    <div className="container-login">
-      <div className="container-form">
-        <form className="form-login" onSubmit={furnitureHandler}>
+    <div className="containerFur">
+      <div className="container-formfu">
+        <form className="form-loginFur" onSubmit={furnitureHandler}>
           <h2>Login Furniture Mall</h2>
           <div className="form-row">
             <input

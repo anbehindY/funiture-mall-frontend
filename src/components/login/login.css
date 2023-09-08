@@ -2,7 +2,7 @@
   position: absolute;
   left: 20vw;
   top: 10vh;
-  height: 80vh;
+  height: auto;
   width: 60vw;
   background: #f2f2f2;
   display: flex;
@@ -155,6 +155,14 @@ input::placeholder {
   margin-left: 30px;
   margin-bottom: 4px;
 }
+
+/* .Sidebarmain {
+  display: none;
+  width: 50vw;
+  height: 100vh;
+  right: 50vw;
+  z-index: 2000;
+} */
 
 @media screen and (max-width: 767px) {
   .container-form {

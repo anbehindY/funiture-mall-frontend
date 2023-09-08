@@ -1,7 +1,7 @@
 .bm-burger-button {
   position: fixed;
-  width: 36px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   left: 36px;
   top: 36px;
 }
@@ -30,7 +30,6 @@
 }
 
 .bm-menu {
-  /* position: fixed; */
   top: 10px;
   left: 0;
   background: white;
@@ -53,9 +52,3 @@
 .bm-overlay {
   background: rgb(1, 0, 0);
 }
-
-/* .bm-burger-button {
-  z-index: 2000;
-  width: 20px;
-  height: 20px;
-} */

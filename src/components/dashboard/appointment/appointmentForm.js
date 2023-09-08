@@ -38,8 +38,8 @@ const AppointmentForm = () => {
   };
 
   return (
-    <div className="container-login">
-      <div className="container-form">
+    <div className="container-App">
+      <div className="container-formApp">
         <form className="form-login" onSubmit={appointmentHandler}>
           <h2>Book an appointment</h2>
           <div className="form-row">

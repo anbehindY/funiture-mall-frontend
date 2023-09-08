@@ -2,6 +2,22 @@
   margin: 20px;
 }
 
+.container-formApp {
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  width: auto;
+}
+
+.container-App {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: #7fd21f7a;
+}
+
 h2 {
   font-size: 24px;
   margin-bottom: 10px;
@@ -45,7 +61,13 @@ button:hover {
 
 @media (max-width: 768px) {
   .Appointments {
-    position: fixed;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  table {
+    width: 100%;
   }
 
   thead.left-aligned {
