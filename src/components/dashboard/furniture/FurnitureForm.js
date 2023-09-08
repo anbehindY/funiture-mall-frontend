@@ -5,11 +5,14 @@ import { addFurniture } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
 
 const FurnitureForm = () => {
-  const [appointmentDetail, setAppointmentDetail] = useState({
+
+
+  const [furnitureDetail, setFurnitureDetail] = useState({
     name: '',
-    name: '',
-    appoint_date: '',
-    furniture_id: '',
+    description: '',
+    image: '',
+    price: '',
+    warranty: '',
     user_id: '',
   });
 
@@ -19,19 +22,34 @@ const FurnitureForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleChange = (e) => {
+    setFurnitureDetail({
+      ...furnitureDetail,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const pricehandler = (e) => {
+    setFurnitureDetail({
+      ...furnitureDetail,
+      [e.target.name]: Number(e.target.value),
+    });
+  };
+
+  const warrantyhandler = (e) => {
+    setFurnitureDetail({
+      ...furnitureDetail,
+      user_id: user.id,
+      [e.target.name]: Number(e.target.value),
+    });
+  };
+
   const furnitureHandler = async (e) => {
     e.preventDefault();
 
-    const response = await dispatch(
-      addFurniture({
-        name,
-        description,
-        image,
-        price,
-        warranty,
-        userId,
-      }),
-    );
+    console.log(furnitureDetail);
+
+    const response = await dispatch(addFurniture(furnitureDetail));
 
     if (response.type === 'add/furniture/fulfilled') {
       navigate('/dashboard');
@@ -51,10 +69,7 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture name"
               required
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-              value={name}
+              onChange={handleChange}
             />
           </div>
           <div className="form-row">
@@ -65,10 +80,7 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Enter image url"
               required
-              onChange={(e) => {
-                setImage(e.target.value);
-              }}
-              value={image}
+              onChange={handleChange}
             />
           </div>
 
@@ -80,10 +92,7 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Furniture price"
               required
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
-              value={price}
+              onChange={pricehandler}
             />
           </div>
           <div className="form-row-last">
@@ -94,10 +103,7 @@ const FurnitureForm = () => {
               className="input-text"
               placeholder="Warranty"
               required
-              onChange={(e) => {
-                setWarranty(e.target.value);
-              }}
-              value={warranty}
+              onChange={warrantyhandler}
             />
           </div>
           <div className="form-row-last">
@@ -110,10 +116,7 @@ const FurnitureForm = () => {
               rows={10}
               cols={30}
               required
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-              value={description}
+              onChange={handleChange}
             />
           </div>
           <div className="form-row-last">

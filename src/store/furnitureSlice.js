@@ -16,10 +16,10 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
 
 export const addFurniture = createAsyncThunk(
   'add/furniture',
-  async (furnitureData) => {
+  async (furnitureDetail) => {
     const response = await axios.post(
       'http://[::1]:3001/api/v1/furnitures',
-      { furnitureData },
+      { furniture: furnitureDetail },
       {
         headers: {
           'content-type': 'application/json',
@@ -79,4 +79,3 @@ const furnitureSlice = createSlice({
 });
 
 export default furnitureSlice.reducer;
-
