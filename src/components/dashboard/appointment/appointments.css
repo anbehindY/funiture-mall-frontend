@@ -42,3 +42,21 @@ button {
 button:hover {
   background-color: #7dd21f;
 }
+
+@media (max-width: 768px) {
+  .Appointments {
+    position: fixed;
+  }
+
+  thead.left-aligned {
+    position: absolute;
+    top: 5px;
+    text-align: left;
+  }
+
+  tbody.right-aligned {
+    text-align: right;
+    position: absolute;
+    left: 0;
+  }
+}

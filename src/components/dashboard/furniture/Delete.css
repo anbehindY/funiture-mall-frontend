@@ -4,6 +4,10 @@
   left: 0;
 }
 
+table {
+  width: 60vw;
+}
+
 .tabledelete {
   top: -50px;
   position: absolute;
@@ -23,4 +27,16 @@ th {
   justify-content: center;
   position: absolute;
   right: 5px;
+}
+
+@media (max-width: 768px) {
+  table {
+    width: 90vw;
+  }
+
+  .tabledelete {
+    top: 5px;
+    position: absolute;
+    left: 20px;
+  }
 }
