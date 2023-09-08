@@ -25,11 +25,11 @@ export const addFurniture = createAsyncThunk(
           'content-type': 'application/json',
           authorization: authToken,
         },
-      },
+      }
     );
     const furniture = response.data;
     return furniture;
-  },
+  }
 );
 
 export const deleteFurniture = createAsyncThunk('add/furniture', async (id) => {
@@ -40,7 +40,7 @@ export const deleteFurniture = createAsyncThunk('add/furniture', async (id) => {
         'content-type': 'application/json',
         authorization: authToken,
       },
-    },
+    }
   );
   const furniture = response.data;
   return furniture;
@@ -48,6 +48,8 @@ export const deleteFurniture = createAsyncThunk('add/furniture', async (id) => {
 
 export const initialState = {
   furnitures: [],
+  isLoading: false,
+  loadingError: false,
   message: '',
 };
 
@@ -56,16 +58,25 @@ const furnitureSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getFurnitures.pending, (state) => {
-      state.message = 'Loading...';
-    }).addCase(getFurnitures.fulfilled, (state, { payload }) => {
-      state.furnitures.push(payload);
-      state.message = 'loaded';
-    }).addCase(getFurnitures.rejected, (state, { payload }) => {
-      state.furnitures.push(payload);
-      state.message = 'Failed';
-    });
+    builder
+      .addCase(getFurnitures.pending, (state) => {
+        state.isLoading = true;
+        state.loadingError = false;
+      })
+      .addCase(getFurnitures.fulfilled, (state, { payload }) => {
+        state.furnitures.push(payload);
+        state.isLoading = false;
+        state.loadingError = false;
+
+        state.message = 'Loaded';
+      })
+      .addCase(getFurnitures.rejected, (state) => {
+        state.loadingError = true;
+        state.isLoading = false;
+        state.message = 'Failed';
+      });
   },
 });
 
 export default furnitureSlice.reducer;
+

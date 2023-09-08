@@ -6,10 +6,11 @@ import Dashboard from './dashboard';
 
 const Home = () => {
   const currentUserToken = JSON.parse(localStorage.getItem('user'));
+  const apiToken = localStorage.getItem('token');
   return (
     <div>
-      {!currentUserToken && <SplashPage />}
-      {currentUserToken && <Dashboard />}
+      {!currentUserToken && !apiToken && <SplashPage />}
+      {currentUserToken && apiToken && <Dashboard />}
     </div>
   );
 };
