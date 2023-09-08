@@ -49,21 +49,21 @@ function AppointmentsList() {
                 <td>
                   {
                     furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id
+                      (furniture) => furniture.id === appointment.furniture_id,
                     )?.name
                   }
                 </td>
                 <td>
                   {
                     furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id
+                      (furniture) => furniture.id === appointment.furniture_id,
                     )?.price
                   }
                 </td>
                 <td>
                   {
                     furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id
+                      (furniture) => furniture.id === appointment.furniture_id,
                     )?.warranty
                   }
                 </td>
