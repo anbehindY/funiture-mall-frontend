@@ -2,8 +2,7 @@ import { NavLink } from 'react-router-dom';
 import Logout from '../../login/Logout';
 import logo from './logo.png';
 
-const LeftSidebar = (data) => {
-  const { setCurrUser } = data;
+const LeftSidebar = () => {
   const { user } = JSON.parse(localStorage.getItem('user'));
   let role = 'is-customer';
   if (user.role === 'Admin') {
@@ -44,7 +43,7 @@ const LeftSidebar = (data) => {
         </ul>
         <ul className="category-list">
           <li className="item">
-            <Logout setCurrUser={setCurrUser} />
+            <Logout />
           </li>
         </ul>
       </div>

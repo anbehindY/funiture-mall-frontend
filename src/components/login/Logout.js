@@ -7,6 +7,7 @@ const Logout = ({ setCurrUser }) => {
   const handleClick = (e) => {
     e.preventDefault();
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     navigate('/');
   };
 

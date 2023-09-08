@@ -11,6 +11,9 @@ const FurnitureForm = () => {
   const [price, setPrice] = useState('');
   const [warranty, setWarranty] = useState();
 
+  const { user } = JSON.parse(localStorage.getItem('user'));
+  const userId = user.id;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,7 +22,12 @@ const FurnitureForm = () => {
 
     const response = await dispatch(
       addFurniture({
-        name, description, image, price, warranty,
+        name,
+        description,
+        image,
+        price,
+        warranty,
+        userId,
       }),
     );
 
