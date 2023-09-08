@@ -15,16 +15,16 @@
 }
 
 .bm-cross-button {
- position: absolute; 
- width: 24px;
- height: 24px; 
- left:35vw;
- top: 8px;
- background-color: #060a00;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: 35vw;
+  top: 8px;
+  background-color: #060a00;
 }
 
 .bm-cross-button .fa {
- color: white;
+  color: white;
 }
 
 .bm-cross {
@@ -44,13 +44,13 @@
 }
 
 .bm-item-list {
- position: fixed;
- top: 0;
- left:0;
- padding: 0;
- width: 45vw;
- background: white;
- border-right: #373a47a4 2px solid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  width: 45vw;
+  background: white;
+  border-right: #373a47a4 2px solid;
 }
 
 .bm-morph-shape {
@@ -71,31 +71,10 @@
 }
 
 .bm-burger-button {
- position: fixed;
- top: 10px;
- left: 10px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
   z-index: 2000;
   width: 20px;
   height: 20px;
 }
-
-/* @media (max-width: 645px) {
- .bm-cross-button {
-  position: absolute; 
-  width: 24px;
-  height: 24px; 
-  right: 20%;
-  top: 8px;
-  background-color: #060a00;
- }
-}
-@media (max-width: ) {
- .bm-cross-button {
-  position: absolute; 
-  width: 24px;
-  height: 24px; 
-  right: 20%;
-  top: 8px;
-  background-color: #060a00;
- }
-} */
