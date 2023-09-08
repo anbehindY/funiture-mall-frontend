@@ -37,7 +37,10 @@ const Login = () => {
       }
       const user = localStorage.getItem('user');
       if (user) {
-        navigate('/dashboard');
+        setTimeout(() => {
+          navigate('/dashboard');
+        },100);
+        
       }
     } catch (error) {
       throw new Error(error);

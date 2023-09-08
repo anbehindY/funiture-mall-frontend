@@ -54,13 +54,35 @@ function SamplePrevArrow(props) {
 }
 
 const FurnitureList = () => {
-  const { furnitures } = useSelector((store) => store.furniture);
+  const { furnitures, isLoading, loadingError } = useSelector(
+    (store) => store.furniture
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getFurnitures());
   }, [dispatch]);
+
+  if (isLoading) {
+    return (
+      <div className="carousel">
+        <h3>
+          <em>loading...</em>
+        </h3>
+      </div>
+    );
+  }
+
+  if (loadingError) {
+    return (
+      <div className="carousel">
+        <h3>
+          <em>Error loading furnitures</em>
+        </h3>
+      </div>
+    );
+  }
 
   return (
     <div className="carousel">
@@ -118,8 +140,7 @@ const FurnitureList = () => {
                 <h1 className="furniture_name center">{furniture.name}</h1>
                 <div className="Divtiret-pointille">
                   {' '}
-                  <span className="tiret-pointille" />
-                  {' '}
+                  <span className="tiret-pointille" />{' '}
                 </div>
                 <h6 className="furniture_description ">
                   {furniture.description}
@@ -145,3 +166,4 @@ SamplePrevArrow.propTypes = {
   style: PropTypes.shape.isRequired,
   onClick: PropTypes.func.isRequired,
 };
+

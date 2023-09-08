@@ -5,11 +5,13 @@ import { addFurniture } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
 
 const FurnitureForm = () => {
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
-  const [price, setPrice] = useState('');
-  const [warranty, setWarranty] = useState();
+  const [appointmentDetail, setAppointmentDetail] = useState({
+    name: '',
+    name: '',
+    appoint_date: '',
+    furniture_id: '',
+    user_id: '',
+  });
 
   const { user } = JSON.parse(localStorage.getItem('user'));
   const userId = user.id;
