@@ -17,12 +17,45 @@ function AppointmentsList() {
   const { user } = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    dispatch(fetchAppointments(user.id));
+    dispatch(fetchAppointments());
     dispatch(getFurnitures());
-  }, [dispatch, user.id]);
+  }, [dispatch, message]);
+
+  const handleDeleteAppointment = (id) => {
+    dispatch(deleteAppointment(id));
+  };
+
+  const currentUserFurnitures = furnitures[0]?.map((item) => {
+    if (item.id === user.id) {
+      return item;
+    }
+    return item;
+  });
+
+  const findFuniture = (id, kind) => {
+    let result = null;
+    if (message === 'loaded') {
+      const selected = currentUserFurnitures?.find((item) => item.id === id);
+      if (selected) {
+        if (kind === 'price') {
+          result = selected.price;
+        } else if (kind === 'warranty') {
+          result = selected.warranty;
+        } else {
+          result = selected.name;
+        }
+      }
+    }
+    return result;
+  };
 
   if (error) {
-    return <p>Sorry, could not load your appointments</p>;
+    return (
+      <div>
+        Error:
+        {error}
+      </div>
+    );
   }
 
   return (
@@ -46,36 +79,16 @@ function AppointmentsList() {
           <tbody>
             {appointments[0].map((appointment) => (
               <tr key={appointment.id}>
-                <td>
-                  {
-                    furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id,
-                    )?.name
-                  }
-                </td>
-                <td>
-                  {
-                    furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id,
-                    )?.price
-                  }
-                </td>
-                <td>
-                  {
-                    furnitures[0]?.find(
-                      (furniture) => furniture.id === appointment.furniture_id,
-                    )?.warranty
-                  }
-                </td>
+                <td>{findFuniture(appointment.furniture_id, 'name')}</td>
+                <td>{findFuniture(appointment.furniture_id, 'price')}</td>
+                <td>{findFuniture(appointment.furniture_id, 'warranty')}</td>
                 <td>{appointment.city}</td>
                 <td>{appointment.appoint_date}</td>
 
                 <td>
                   <button
                     type="button"
-                    onClick={() => {
-                      dispatch(deleteAppointment(appointment.id));
-                    }}
+                    onClick={(e) => handleDeleteAppointment(appointment.id)}
                   >
                     Delete
                   </button>
