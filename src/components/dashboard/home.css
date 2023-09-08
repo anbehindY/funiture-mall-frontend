@@ -60,4 +60,12 @@ h1 {
     font-weight: bolder;
     color: white;
   }
+
+  /* .Sidebarmain {
+    display: none;
+    width: 50vw;
+    height: 100vh;
+    right: 50vw;
+    z-index: 2000;
+  } */
 }
