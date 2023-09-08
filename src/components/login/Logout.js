@@ -5,9 +5,10 @@ const Logout = ({ setCurrUser }) => {
   const navigate = useNavigate();
 
   const handleClick = (e) => {
-    e.preventDefault();
+  
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+
     navigate('/');
   };
 

@@ -3,11 +3,10 @@ import Logout from '../../login/Logout';
 import logo from './logo.png';
 
 const LeftSidebar = () => {
-  const { user } = JSON.parse(localStorage.getItem('user'));
-  let role = 'is-customer';
-  if (user.role === 'Admin') {
-    role = 'is-admin';
-  }
+  const data = JSON.parse(localStorage.getItem('user'));
+
+  const role = data && data.user.role === 'Admin' ? 'is-admin' : 'is-customer';
+
   return (
     <div className="leftsidebar-container">
       <div className="upper-part">
