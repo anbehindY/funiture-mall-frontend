@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const Logout = ({ setCurrUser }) => {
+const Logout = () => {
   const navigate = useNavigate();
 
   const handleClick = (e) => {
@@ -19,7 +19,3 @@ const Logout = ({ setCurrUser }) => {
   );
 };
 export default Logout;
-
-Logout.propTypes = {
-  setCurrUser: PropTypes.func.isRequired,
-};
