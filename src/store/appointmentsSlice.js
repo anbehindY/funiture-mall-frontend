@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const authToken = localStorage.getItem('token');
+// const authToken = localStorage.getItem('token');
 
 export const fetchAppointments = createAsyncThunk(
   'fetch/appointments',
   async (userId) => {
+    const authToken = localStorage.getItem('token');
     const response = await axios.get(
       `http://[::1]:3001//api/v1/users/${userId}/appointments`,
       {
@@ -23,6 +24,7 @@ export const fetchAppointments = createAsyncThunk(
 export const addAppointment = createAsyncThunk(
   'add/appointment',
   async (appointmentDetail) => {
+    const authToken = localStorage.getItem('token');
     const response = await axios.post(
       `http://[::1]:3001//api/v1/furnitures/${appointmentDetail.furniture_id}/appointments`,
       appointmentDetail,
@@ -41,20 +43,19 @@ export const addAppointment = createAsyncThunk(
 export const deleteAppointment = createAsyncThunk(
   'appointments/deleteAppointment',
   async (id) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:3001/api/v1/appointments/${id}`,
-        {
-          headers: {
-            'content-type': 'application/json',
-            authorization: authToken,
-          },
+    const authToken = localStorage.getItem('token');
+    const response = await axios.delete(
+      `http://[::1]:3001//api/v1/appointments/${id}`,
+      {
+        headers: {
+          'content-type': 'application/json',
+          authorization: authToken,
         },
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error('Failed to delete appointment');
-    }
+      },
+    );
+    // return response.data;
+    const result = await response.data;
+    return result;
   },
 );
 
@@ -73,11 +74,12 @@ const appointmentsSlice = createSlice({
       .addCase(deleteAppointment.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(deleteAppointment.fulfilled, (state, action) => {
+      .addCase(deleteAppointment.fulfilled, (state, { payload }) => {
         state.status = 'succeeded';
-        state.appointments = state.appointments.filter(
-          (apment) => apment.id !== action.payload.id,
+        const filteredAppointment = state.appointments.filter(
+          (appointment) => appointment.id !== payload,
         );
+        state.appointments = filteredAppointment;
       })
       .addCase(deleteAppointment.rejected, (state, action) => {
         state.status = 'failed';
@@ -87,8 +89,7 @@ const appointmentsSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchAppointments.fulfilled, (state, { payload }) => {
-        state.status = 'succeeded';
-        state.appointments.push(payload);
+        state.appointments = payload;
       })
       .addCase(fetchAppointments.rejected, (state, action) => {
         state.status = 'failed';
@@ -98,7 +99,3 @@ const appointmentsSlice = createSlice({
 });
 
 export default appointmentsSlice.reducer;
-
-export const selectAppointments = (state) => state.appointments.appointments;
-export const selectAppointmentsStatus = (state) => state.appointments.status;
-export const selectAppointmentsError = (state) => state.appointments.error;

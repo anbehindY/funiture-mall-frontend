@@ -5,14 +5,11 @@ import Logout from './components/login/Logout';
 import './Sidebar.css';
 
 const sidebar = (props) => {
-  const { user } = JSON.parse(localStorage.getItem('user'));
-  let role = 'is-customer';
-  if (user.role === 'Admin') {
-    role = 'is-admin';
-  }
+  const data = JSON.parse(localStorage.getItem('user'));
+
+  const role = data && data.user.role === 'Admin' ? 'is-admin' : 'is-customer';
   return (
     <Menu className="sidemenu">
-
       <ul className="action-list">
         <li className="item">
           <NavLink to="/dashboard" className="menubar-link">

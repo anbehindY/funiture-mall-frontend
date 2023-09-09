@@ -45,7 +45,7 @@ const FurnitureForm = () => {
   const furnitureHandler = async (e) => {
     e.preventDefault();
 
-    const response = await dispatch(addFurniture(furnitureDetail));
+    const response = dispatch(addFurniture(furnitureDetail));
 
     if (response.type === 'add/furniture/fulfilled') {
       navigate('/dashboard');

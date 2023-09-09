@@ -13,6 +13,7 @@ import AppointmentsList from './components/dashboard/appointment/appointmentsLis
 import DeleteFurniture from './components/dashboard/furniture/DeleteFurniture';
 import AdminSignUp from './components/login/Admin';
 import Sidebar from './Sidebar';
+import Main from './components/dashboard/main';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Sidebar pageWrapId="page-wrap" outerContainerId="outer-container" />
       </div>
       <Routes>
+        <Route path="/main" exact element={<Main />} />
         <Route path="/" exact element={<Home />} />
         <Route path="/dashboard" exact element={<Dashboard />} />
         <Route path="/furnitures/:id" element={<Furniture />} />

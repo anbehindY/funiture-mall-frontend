@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-// import Carousel from "react-elastic-carousel";
-// import 'bootstrap/dist/css/bootstrap.css';
-// import Carousel from 'react-bootstrap/Carousel';
 import Slider from 'react-slick';
 
 import { getFurnitures } from '../../../store/furnitureSlice';
@@ -55,7 +52,7 @@ function SamplePrevArrow(props) {
 
 const FurnitureList = () => {
   const { furnitures, isLoading, loadingError } = useSelector(
-    (store) => store.furniture,
+    (store) => store.furnitures,
   );
 
   const dispatch = useDispatch();
@@ -87,7 +84,7 @@ const FurnitureList = () => {
   return (
     <div className="carousel">
       <h2 className="titlefurniture"> LATEST MODELS </h2>
-      <h2 className="titlefurniture1">Please Select a models </h2>
+      <h2 className="titlefurniture1">Please Select a model </h2>
 
       <Slider
         dots
@@ -125,7 +122,7 @@ const FurnitureList = () => {
           },
         ]}
       >
-        {furnitures[0]?.map((furniture) => (
+        {furnitures?.map((furniture) => (
           <div className="furnitureItem" key={furniture.id}>
             <Link
               to={`/furnitures/${furniture.id}`}

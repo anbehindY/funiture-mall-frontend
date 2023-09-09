@@ -8,7 +8,6 @@ const Dashboard = () => (
   <div className="dashboard-layout">
     <LeftSidebar />
     <FurnitureList />
-
     <div className="dashboard-content">
       <Outlet />
     </div>
