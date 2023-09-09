@@ -1,9 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const authToken = localStorage.getItem('token');
-
 export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
+  const authToken = localStorage.getItem('token');
   const response = await axios.get('http://[::1]:3001/api/v1/furnitures', {
     headers: {
       'content-type': 'application/json',
@@ -17,6 +16,7 @@ export const getFurnitures = createAsyncThunk('get/furnitures', async () => {
 export const addFurniture = createAsyncThunk(
   'add/furniture',
   async (furnitureDetail) => {
+    const authToken = localStorage.getItem('token');
     const response = await axios.post(
       'http://[::1]:3001/api/v1/furnitures',
       { furniture: furnitureDetail },
@@ -27,12 +27,13 @@ export const addFurniture = createAsyncThunk(
         },
       },
     );
-    const furniture = response.data;
+    const furniture = await response.data;
     return furniture;
   },
 );
 
 export const deleteFurniture = createAsyncThunk('add/furniture', async (id) => {
+  const authToken = localStorage.getItem('token');
   const response = await axios.delete(
     `http://[::1]:3001/api/v1/furnitures/${id}`,
     {
@@ -64,10 +65,9 @@ const furnitureSlice = createSlice({
         state.loadingError = false;
       })
       .addCase(getFurnitures.fulfilled, (state, { payload }) => {
-        state.furnitures.push(payload);
+        state.furnitures = payload;
         state.isLoading = false;
         state.loadingError = false;
-
         state.message = 'Loaded';
       })
       .addCase(getFurnitures.rejected, (state) => {

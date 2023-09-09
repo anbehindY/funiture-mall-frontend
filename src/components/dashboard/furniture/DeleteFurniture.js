@@ -8,7 +8,7 @@ import { getFurnitures, deleteFurniture } from '../../../store/furnitureSlice';
 import LeftSidebar from '../sidebar/leftsidebar';
 
 const DeleteFurniture = () => {
-  const { furnitures } = useSelector((store) => store.furniture);
+  const { furnitures } = useSelector((store) => store.furnitures);
 
   const dispatch = useDispatch();
 
@@ -16,9 +16,13 @@ const DeleteFurniture = () => {
     dispatch(getFurnitures());
   }, [dispatch]);
 
+  const refresh = () => window.location.reload(true);
+
   const handleDeleteFurniture = (id) => {
     dispatch(deleteFurniture(id));
+    refresh();
   };
+
   return (
     <div>
       <LeftSidebar />
@@ -35,14 +39,19 @@ const DeleteFurniture = () => {
             </tr>
           </thead>
           <tbody>
-            {furnitures[0]?.map((furniture) => (
+            {furnitures?.map((furniture) => (
               <tr key={furniture.id}>
                 <td>{furniture.id}</td>
                 <td>{furniture.name}</td>
                 <td>{furniture.price}</td>
                 <td>{furniture.warranty}</td>
                 <td>
-                  <button type="button" onClick={() => handleDeleteFurniture(furniture.id)}>Delete</button>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteFurniture(furniture.id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

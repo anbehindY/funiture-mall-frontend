@@ -76,8 +76,6 @@ const AdminSignUp = () => {
                 placeholder="Enter first and last names"
                 pattern="^([A-Za-z]{2,15})\s([A-Za-z]{2,15})$"
                 required
-                // minLength={6}
-                // maxLength={50}
                 onChange={handleChange}
                 value={userData.fullname}
               />
@@ -105,9 +103,9 @@ const AdminSignUp = () => {
                 className="input-text"
                 placeholder="Your Email"
                 required
-                // pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
-                // minLength={8}
-                // maxLength={30}
+                pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"
+                minLength={8}
+                maxLength={30}
                 onChange={handleChange}
                 value={userData.email}
               />
@@ -137,7 +135,7 @@ const AdminSignUp = () => {
                 minLength={6}
                 maxLength={50}
                 onChange={handleChange}
-                value={userData.password}
+                value={userData.confirmPassword}
               />
             </div>
             <div className="form-row-last">

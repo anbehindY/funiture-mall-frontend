@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Dashboard from '../dashboard/dashboard';
 
 import './login.css';
 
 const Login = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState();
-
   const navigate = useNavigate();
-
   const [userData, setUserData] = useState({
     email: '',
     password: '',
   });
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const login = async (userData) => {
     const url = 'http://localhost:3001/login';
@@ -24,22 +25,11 @@ const Login = () => {
         },
         body: JSON.stringify(userData),
       });
-
       if (response.ok) {
         const { status } = await response.json();
         const { data } = status;
         localStorage.setItem('token', response.headers.get('Authorization'));
         localStorage.setItem('user', JSON.stringify(data));
-        setIsAuthenticated(true);
-      } else {
-        setIsAuthenticated(false);
-        const data = await response.json();
-      }
-      const user = localStorage.getItem('user');
-      if (user) {
-        setTimeout(() => {
-          navigate('/dashboard');
-        }, 2000);
       }
     } catch (error) {
       throw new Error(error);
@@ -55,12 +45,35 @@ const Login = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-
     const userInfo = {
-      user: { ...userData },
+      user: userData,
     };
-    login(userInfo);
+
+    // login(userInfo);
+    const url = 'http://localhost:3001/login';
+    try {
+      const response = await axios.post(url, userInfo, {
+        headers: {
+          'content-type': 'application/json',
+          accept: 'application/json',
+        },
+      });
+
+      if (response.data.status.code === 200) {
+        const { data } = response;
+        const { status } = data;
+        localStorage.setItem('token', response.headers.get('Authorization'));
+        localStorage.setItem('user', JSON.stringify(status.data));
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
   };
+
+  if (isAuthenticated) {
+    return navigate('/dashboard');
+  }
 
   return (
     <>
