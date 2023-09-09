@@ -1,0 +1,84 @@
+.Appointments {
+  margin: 20px;
+}
+
+.container-formApp {
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  width: auto;
+}
+
+.container-App {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: #7fd21f7a;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+table {
+  width: 100%;
+  min-height: 50px;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: #7dd21f solid 1px;
+}
+
+th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 8px;
+}
+
+td {
+  border: #7dd21f solid 1px;
+  padding: 8px;
+}
+
+p {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #7dd21f;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7dd21f;
+}
+
+@media (max-width: 768px) {
+  .Appointments {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  thead.left-aligned {
+    position: absolute;
+    top: 5px;
+    text-align: left;
+  }
+
+  tbody.right-aligned {
+    text-align: right;
+    position: absolute;
+    left: 0;
+  }
+}

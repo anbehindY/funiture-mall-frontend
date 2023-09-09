@@ -1,0 +1,484 @@
+.furnitureItem {
+  display: flex;
+  justify-content: center;
+}
+
+.furniture-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f3f4;
+  padding: 10px;
+  margin: 2px;
+}
+
+.containerFur {
+
+  left: 20vw;
+  top: 5vh;
+  height: 100%;
+  width: 60vw;
+  padding: 20px;
+  background: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: #7dd21f solid 2px;
+  box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
+  -webkit-box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
+  -moz-box-shadow: 10px 8px 37px -3px rgba(125, 210, 31, 0.75);
+}
+
+.form-loginFur {
+margin-top: -80px;
+padding: 30px 45px 30px 45px;
+  position: relative;
+}
+
+.form-loginFur input {
+  width: 94.5%;
+  padding: 10.5px 15px;
+  border: #7dd21f solid 2px;
+  appearance: unset;
+  margin-top: 10px;
+  outline: none;
+  border-radius: 4px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.container-formfu {
+  top: 5vh;
+  width: 70vw;
+  height: 80vh;
+  border-radius: 8px;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  font-weight: 400;
+  position: relative;
+  font-size: 18px;
+}
+
+.furniture-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f2f3f4;
+  padding: 20px;
+  margin: 20px 2px;
+}
+
+.furnitureimage img {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10px;
+  height: 70%;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.imgfurniure {
+  border-radius: 10px;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 20vw;
+  width: 75vw;
+  height: 40vh;
+}
+
+.titlefurniture {
+  margin-top: 15vh;
+  font-size: xx-large;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.titlefurniture1 {
+  margin-bottom: 10vh;
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: gray;
+}
+
+.furniture-link {
+  text-decoration: none;
+}
+
+.main_furniture_select {
+  width: 100vw;
+  height: 100vh;
+}
+
+.furniture_name {
+  color: black;
+  font-weight: bolder;
+  font-family: 'robocup', sans-serif;
+  font-size: 20px;
+}
+
+.furniture_description {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: small;
+  margin-left: 20px;
+  color: gray;
+}
+
+.tiret-pointille {
+  width: 50%;
+  justify-self: center;
+  border-bottom: 2px dashed rgba(128, 128, 128, 0.267);
+}
+
+.Divtiret-pointille {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.furniture_select {
+  position: absolute;
+  top: 0;
+  left: 20vw;
+  width: 80vw;
+  height: 100vh;
+}
+
+.imgfurniture_select {
+  position: absolute;
+  border-radius: 50px;
+  width: 40vw;
+  height: 50vh;
+  left: 50px;
+  top: 25vh;
+}
+
+.name_furniture_select {
+  position: absolute;
+  font-size: x-large;
+  right: 30px;
+  top: 10vh;
+  width: 220px;
+  padding: 5px;
+}
+
+.description_furniture_select {
+  position: absolute;
+  right: 30px;
+  margin-top: 10px;
+  top: 20vh;
+  width: 220px;
+  padding: 5px;
+}
+
+.price_furniture_select {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  right: 30px;
+  margin-top: 10px;
+  top: 32vh;
+  width: 220px;
+  padding: 5px;
+  background-color: rgba(128, 128, 128, 0.282);
+}
+
+.warranty_furniture_select {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  right: 30px;
+  top: 40vh;
+  width: 220px;
+  padding: 5px;
+}
+
+.production_furniture_select {
+  position: absolute;
+  right: 30px;
+  top: 45vh;
+  width: 220px;
+  padding: 5px;
+  background-color: rgba(128, 128, 128, 0.282);
+}
+
+.reserver_furniture {
+  position: absolute;
+  right: 70px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  background-color: #7dd21f;
+  bottom: 20vh;
+  color: #f2f3f4;
+  border: none;
+}
+
+.back_furniture {
+  position: absolute;
+  left: -2vw;
+  height: 40px;
+  width: 80px;
+  padding: 10px 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #7dd21f;
+  bottom: 12vh;
+  color: #f2f3f4;
+  border: none;
+}
+
+.slick-prev::before {
+  content: '←';
+}
+
+.slick-prev {
+  height: 50px;
+  width: 60px;
+  padding-top: 7px;
+  background-color: rgba(128, 128, 128, 0.282);
+  color: #f2f3f4;
+  padding-right: 10px;
+  padding-left: 15px;
+  margin-right: 5px;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+.slick-next {
+  height: 50px;
+  width: 60px;
+  padding-top: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px;
+  background-color: rgba(128, 128, 128, 0.282);
+  color: #f2f3f4;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.slick-next:hover {
+  background-color: #7dd21f;
+}
+
+.slick-prev:hover {
+  background-color: #7dd21f;
+}
+
+.slick-prev::before {
+  font-family: 'slick';
+  font-size: 40px;
+  line-height: 1;
+  opacity: 0.75;
+  color: white;
+}
+
+.slick-next::before {
+  font-family: 'slick';
+  font-size: 40px;
+  line-height: 1;
+  opacity: 0.75;
+  color: white;
+}
+
+.fa {
+  font-size: 50px;
+}
+
+.new-appointment {
+ text-decoration: none;
+ position: absolute;
+ padding-top: 5px;
+ top: 15vh;
+ color:  white;
+ background-color: rgba(128, 128, 128, 0.282);
+ right: 30px;
+ margin-left: 5px;
+ margin-top: 10px;
+ width: 220px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+  }
+
+  .titlefurniture {
+    margin-top: 10vh;
+    font-size: xx-large;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .titlefurniture1 {
+    margin-bottom: 5vh;
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+  }
+
+  .slick-prev {
+    height: 50px;
+    width: 60px;
+    padding-top: 7px;
+    background:none;
+    color: #f2f3f4;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  .slick-next {
+    height: 50px;
+    width: 60px;
+    background:none;
+    color: #f2f3f4;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+
+  .slick-next:hover {
+    background-color: white;
+  }
+
+  .slick-prev:hover {
+    background-color: white;
+  }
+
+  .carousel {
+    position: fixed;
+    top: 0;
+    left: 10vw;
+    width: 80vw;
+  }
+
+  .slick-prev::before {
+    display: block;
+    font-family: 'slick';
+    font-size: 40px;
+    line-height: 1;
+    opacity: 0.75;
+    color:  #7dd21f;
+    margin-left: 0;
+  }
+
+  .slick-next::before {
+    display: block;
+    font-family: 'slick';
+    font-size: 40px;
+    line-height: 1;
+    opacity: 0.75;
+    color: #7dd21f;
+    margin-right: 5px;
+    z-index: 2;
+  }
+
+  .name_furniture_select {
+    position: absolute;
+    font-size: large;
+    right: 10px;
+    top: 10vh;
+    width: 38vw;
+    padding: 5px;
+  }
+
+  .imgfurniture_select {
+    position: absolute;
+    width: 50vw;
+    height: 50vh;
+    left: 10px;
+    top: 15vh;
+  }
+
+  .description_furniture_select {
+    position: absolute;
+    right: 10px;
+    margin-top: 10px;
+    top: 20vh;
+    width: 38vw;
+    padding: 5px;
+    font-size: medium;
+  }
+
+  .price_furniture_select {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    right: 10px;
+    margin-top: 10px;
+    top:  38vh;
+    width: 38vw;
+    padding: 5px;
+    background-color: rgba(128, 128, 128, 0.282);
+    font-size: medium;
+  }
+
+  .warranty_furniture_select {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    right: 10px;
+    top: 45vh;
+    width: 38vw;
+    padding: 5px;
+    font-size: medium;
+  }
+
+  .production_furniture_select {
+    position: absolute;
+    right: 10px;
+    top: 50vh;
+    width: 38vw;
+    padding: 5px;
+    background-color: rgba(128, 128, 128, 0.282);
+    font-size: medium;
+  }
+
+  .furniture_select {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    font-size: medium;
+  }
+
+  .reserver_furniture {
+    position: absolute;
+    right: 30px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    background-color: #7dd21f;
+    bottom: 20vh;
+    color: #f2f3f4;
+    border: none;
+  }
+}
