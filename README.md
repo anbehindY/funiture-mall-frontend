@@ -26,7 +26,7 @@
 
 
 
-he Furniture Mall App serves as a scheduler for booking appointments at a furniture mall. Users can create an account or log in to browse through a selection of available furniture, complete with pricing and descriptions. They can also submit reservation forms to secure their preferred furniture items. Additionally, users have the option to cancel their reservations.
+The Furniture Mall App serves as a scheduler for booking appointments at a furniture mall. Users can create an account or log in to browse through a selection of available furniture, complete with pricing and descriptions. They can also submit reservation forms to secure their preferred furniture items. Additionally, users have the option to cancel their reservations.
 The  "Furniture-mall-FrontEnd" is a React-based application designed to serve as the user interface. It interacts with the 
 [Furniture-mall-backend](https://github.com/anbehindY/furniture-mall-backend.git),  a Rails application that provides the API. The front-end utilizes this API to display furniture data to the user.
 
